@@ -272,8 +272,7 @@
 </section>
 
 <section class="section interactive-grid-container data-privacy-hero">
-  <div class="glow-grid" style="--grid-color: 255, 170, 128;">
-    </div>
+  <div class="glow-grid" style="--grid-color: 255, 170, 128;"></div>
 
   <div class="container grid-overlay-content">
     <div class="transfer-dashboard-massive" data-animate>
@@ -297,9 +296,17 @@
           </div>
 
           <svg class="rebound-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
-             <path d="M 50 100 L 180 100 L 50 150" class="rebound-path" fill="none" stroke="var(--brand-2)" stroke-width="2" opacity="0.4" />
+            <path d="M 50 100 L 180 100 L 50 150"
+                  class="rebound-path"
+                  fill="none"
+                  stroke="var(--brand-2)"
+                  stroke-width="2"
+                  opacity="0.4" />
             <circle r="5" fill="var(--brand-2)">
-              <animateMotion dur="1.5s" repeatCount="indefinite" path="M 50 100 L 195 100 L 50 100" />
+              <animateMotion
+                dur="1.5s"
+                repeatCount="indefinite"
+                path="M 50 100 L 195 100 L 50 100" />
             </circle>
           </svg>
         </div>
@@ -307,24 +314,48 @@
       </div>
 
       <div class="transfer-text-content">
-        <div class="verified-badge" style="background: rgba(255, 170, 128, 0.1); color: var(--accent); border-color: rgba(255, 170, 128, 0.2);">
-          Privacy First Architecture
+        <div class="verified-badge"
+             style="background: rgba(255, 170, 128, 0.1);
+                    color: var(--accent);
+                    border-color: rgba(255, 170, 128, 0.2);">
+          Privacy-First Architecture
         </div>
-        <h1 class="text-gradient" style="background: linear-gradient(135deg, var(--accent), #ff7d7d); -webkit-background-clip: text;">
-          Absolute 0 Data Collected
+
+        <h1 class="text-gradient"
+            style="background: linear-gradient(135deg, var(--accent), #ff7d7d);
+                   -webkit-background-clip: text;">
+          No Personal Data Collected
         </h1>
-        <p class="lead">We don't just "protect" your data—we never even see it. No accounts to create, no emails to provide, and no telemetry tracking your every move. Your business is your own.</p>
-        
+
+        <p class="lead">
+          RemotePC is designed to work entirely over your local network.
+          We don’t require accounts, emails, or logins, and your remote
+          control data never leaves your Wi-Fi. Anonymous analytics are
+          used solely to improve app stability and performance.
+        </p>
+
         <div class="stats-row">
-          <div class="glass-pill"><i data-lucide="user-x"></i> No Accounts</div>
-          <div class="glass-pill"><i data-lucide="eye-off"></i> No Telemetry</div>
+          <div class="glass-pill">
+            <i data-lucide="user-x"></i> No Accounts
+          </div>
+          <div class="glass-pill">
+            <i data-lucide="bar-chart-2"></i> Anonymous Analytics Only
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="scan-line" style="background: linear-gradient(to bottom, transparent, rgba(255, 170, 128, 0.1), transparent);"></div>
+
+  <div class="scan-line"
+       style="background: linear-gradient(
+         to bottom,
+         transparent,
+         rgba(255, 170, 128, 0.1),
+         transparent
+       );">
+  </div>
 </section>
+
 
 <section id="download" class="section container">
   <div class="download-hub-header">
