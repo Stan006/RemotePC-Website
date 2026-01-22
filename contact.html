@@ -180,6 +180,7 @@
       background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1), transparent 70%);
       opacity: 0;
       transition: opacity var(--transition-base);
+      pointer-events: none;
     }
 
     .contact-card:hover {
@@ -241,6 +242,8 @@
       text-decoration: none;
       font-weight: 600;
       transition: all var(--transition-fast);
+      position: relative;
+      z-index: 1;
     }
 
     .email-link:hover {
@@ -253,6 +256,8 @@
       display: flex;
       gap: var(--space-sm);
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     .copy-btn {
@@ -269,6 +274,8 @@
       transition: all var(--transition-fast);
       font-size: 1rem;
       font-family: inherit;
+      position: relative;
+      z-index: 1;
     }
 
     .copy-btn:hover {
@@ -578,58 +585,101 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const copyButtons = document.querySelectorAll('.copy-btn');
+      console.log('Found copy buttons:', copyButtons.length);
       
-      copyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const email = this.getAttribute('data-email');
+      copyButtons.forEach((button, index) => {
+        console.log(`Attaching listener to button ${index}`);
+        
+        button.addEventListener('click', async function(e) {
+          e.preventDefault();
+          console.log('Copy button clicked!');
           
-          // Fallback method for older browsers or when clipboard API isn't available
+          const email = this.getAttribute('data-email');
+          console.log('Email to copy:', email);
+          
+          if (!email) {
+            console.error('No email found on button');
+            return;
+          }
+          
+          const btn = this;
+          const originalHTML = btn.innerHTML;
+          
+          // Fallback method for older browsers
           const fallbackCopy = (text) => {
             const textArea = document.createElement('textarea');
             textArea.value = text;
             textArea.style.position = 'fixed';
             textArea.style.left = '-999999px';
+            textArea.style.top = '0';
             document.body.appendChild(textArea);
+            textArea.focus();
             textArea.select();
+            
             try {
-              document.execCommand('copy');
-              return true;
+              const successful = document.execCommand('copy');
+              document.body.removeChild(textArea);
+              return successful;
             } catch (err) {
               console.error('Fallback copy failed:', err);
-              return false;
-            } finally {
               document.body.removeChild(textArea);
+              return false;
             }
           };
 
           const showSuccess = () => {
-            const originalHTML = this.innerHTML;
-            this.classList.add('copied');
-            this.innerHTML = `
+            btn.classList.add('copied');
+            btn.innerHTML = `
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               Copied!
             `;
             
             setTimeout(() => {
-              this.classList.remove('copied');
-              this.innerHTML = originalHTML;
+              btn.classList.remove('copied');
+              btn.innerHTML = originalHTML;
+            }, 2000);
+          };
+
+          const showError = () => {
+            btn.style.background = 'rgba(239, 68, 68, 0.2)';
+            btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+            btn.style.color = '#ef4444';
+            btn.innerHTML = 'Failed';
+            
+            setTimeout(() => {
+              btn.style.background = '';
+              btn.style.borderColor = '';
+              btn.style.color = '';
+              btn.innerHTML = originalHTML;
             }, 2000);
           };
 
           // Try modern clipboard API first
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(email)
-              .then(() => showSuccess())
-              .catch(() => {
-                // If clipboard API fails, try fallback
-                if (fallbackCopy(email)) {
-                  showSuccess();
-                }
-              });
-          } else {
-            // Use fallback for older browsers
-            if (fallbackCopy(email)) {
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(email);
+              console.log('Copied using Clipboard API');
               showSuccess();
+            } else {
+              // Use fallback for older browsers
+              console.log('Clipboard API not available, using fallback');
+              if (fallbackCopy(email)) {
+                console.log('Copied using fallback method');
+                showSuccess();
+              } else {
+                console.error('Fallback copy failed');
+                showError();
+              }
+            }
+          } catch (err) {
+            console.error('Clipboard API failed:', err);
+            // Try fallback
+            if (fallbackCopy(email)) {
+              console.log('Copied using fallback after API failure');
+              showSuccess();
+            } else {
+              console.error('All copy methods failed');
+              showError();
             }
           }
         });
