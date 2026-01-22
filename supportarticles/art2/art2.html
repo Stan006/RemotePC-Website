@@ -32,21 +32,21 @@
     <header class="article-header">
       <div class="article-category">
         <i data-lucide="rocket"></i>
-        Article: VPN Interference
+        Article: Windows Defender
       </div>
       
       <h1 class="article-title">
-        Why do VPNs interfere with <span class="text-gradient">RemotePC</span>
+        Why does Windows Defender/Smartscreen flag <span class="text-gradient">RemotePC</span>
       </h1>
       
       <p class="article-subtitle">
-        Well, they don't, you can still use all remote functionalities but with some caveats, below is the full explanation.
+        It means Windows Defender is doing its job, full explanation bellow.
       </p>
       
       <div class="article-meta">
         <div class="meta-item">
           <i data-lucide="calendar"></i>
-          <span>January 20, 2026</span>
+          <span>January 22, 2026</span>
         </div>
         <div class="meta-item">
           <i data-lucide="clock"></i>
@@ -60,8 +60,8 @@
     </header>
     
     <div class="article-featured-image">
-      <img src="vpn.png"
-       alt="VPN interference with RemotePC"
+      <img src="example.jpg"
+       alt="Smartscreen Example"
        class="featured-image">
     </div>
 
@@ -69,49 +69,35 @@
     <div class="article-content">
       
       <p>
-        When you connect to a VPN, the VPN client may modify your machine’s network routing table. This reroutes traffic destined for the internet to pass through the VPN tunnel instead of using your local network directly. However, the way routing is configured can also affect local traffic, even if that traffic is not intended to go through the VPN.
-      </p>
-      
-      <p>
-        Specifically, VPNs may add or modify routes that reroute traffic intended for your LAN (Local Area Network). This can occur when the VPN overrides or misconfigures your machine’s routing table, potentially preventing direct access to local network services.
-      </p>
-      
-      <h2>How this causes problems with RemotePC.</h2>
-      
-      <p>
-        NAT (Network Address Translation) is commonly used by VPN providers to allow multiple clients to share a single public IP address. When you connect to a VPN, your machine is typically assigned a private internal IP address within the VPN’s virtual subnet (for example, 10.2.0.10). Depending on the VPN configuration, most or all internet-bound traffic may be routed through the VPN server, while local network traffic may or may not be routed through the tunnel.
-      </p>
+        RemotePC, at its basic level works like this: <br><br>
 
-      <p>
-        VPNs often introduce a NAT boundary and routing separation between your local network and the VPN tunnel. If traffic that would normally remain on the local network is routed through the VPN, this can cause issues such as: <br><br>
-        
-        <b>Connection failures: </b>Local services that expect traffic from LAN IP ranges (for example, 192.168.x.x) may reject connections arriving from the VPN’s internal address space. <br><br>
-        <b>UDP issues: </b>NAT performed by the VPN may alter source IPs or ports, and short NAT timeouts can disrupt UDP-based applications that rely on consistent addressing. <br><br>
-        <b>TCP issues: </b>Existing TCP connections may be interrupted if routing changes, NAT state is reset, or firewall rules associated with the VPN block or reroute traffic.
-        
+        <b>The Android app:</b> It sends a command (e.g Shutdown) or it requests data (e.g Screenshots, Live Stats, Live Screen). <br><br>
 
+        <b>The Windows app:</b> It will execute the commands by calling the specified windows API's or by returning the data requested by the Android app.
+      </p>
+      
+      <p>
+        Now, why is Windows flagging it, it's not a Virus. <br><br>
+        It's simple, Windows sees an Unsigned app that executes commands from another device and becomes suspicious. 
+      </p>
+      
+      <h2>Why is RemotePC unsigned.</h2>
+      
+      <p>
+        Signing a Windows app is simply unaffordable for a non monitized app like ours, as it can cost up to 300$ per year. When the app was created we wanted to bring our users the best possible experience, without filling our app with ads or in app purchases. The cost of maintance of the app is already way too high, since we have to cover domain costs.
       </p>
       
       <div class="callout">
         <div class="callout-header">
           <i data-lucide="lightbulb"></i>
-          Pro Tip
+          Security Tip
         </div>
         <p style="margin: 0; color: var(--muted);">
-          Temporarily disabling your VPN until the application has connected will, in many cases, allow the app to function normally even after the VPN is re-enabled.
+          Download the app from the official site (remotepc.tech) only!
         </p>
-      </div>
-      
-      <h3>TCP and UDP Behavior</h3>
-
-      <ul>
-        <li>UDP: UDP is a connectionless protocol that sends packets to a specific destination address and port. If a VPN reroutes traffic or performs NAT that alters the source IP or port, the receiving service may drop the packets because they appear to originate from an unexpected address (for example, a VPN-assigned address instead of a local 192.168.x.x address).</li>
-      
-        <li>TCP: TCP is connection-oriented and requires a successful handshake between client and server. If a VPN changes routing in a way that prevents traffic from reaching the local network, connections to services bound to local interfaces may fail.</li>
-      </ul>
-      
+      </div>          
       <blockquote>
-        RemotePC uses both the UDP and TCP protocols, but it is for the most part TCP based.
+        RemotePC will never compromise your Privacy or Security.
       </blockquote>   
     </div>
     
@@ -131,4 +117,5 @@
 </script>
 
 </body>
+
 </html>
