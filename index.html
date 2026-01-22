@@ -1,648 +1,391 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RemotePC — Control Your PC</title>
-  <meta name="description" content="RemotePC is a fast, privacy-first remote control app: mouse & keyboard, screenshots, system stats, volume, file transfer — all over your own Wi‑Fi.">
-  
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemotePC – Control Your PC from Anywhere</title>
+  <link rel="icon" href="ASSETS/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="index.css">
   <script defer src="app.js"></script>
+  <meta name="description" content="Privacy-first remote desktop control. Connect your Android to Windows over your local network. No cloud, no accounts, zero latency.">
 </head>
-
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <span class="logo">
-        <i data-lucide="monitor-smartphone"></i>
-      </span>
-      <span>RemotePC</span>
-    </a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-    <nav id="primary-nav" class="navlinks">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#faq">FAQ</a>
-      <div class="mobile-only-actions">
-         <a href="privacy.html">Privacy</a>
-         <a href="terms.html">Terms</a>
-      </div>
-    </nav>
-
-    <div class="nav-actions">
-      <a class="cta-primary" href="#download">Download</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
-        <i data-lucide="menu"></i>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="container hero">
-  <div class="hero-content">
-    <div class="hero-badges" data-animate>
-      <div class="badge-pill">
-        <span class="pulse-dot"></span>
-        Local Network Only
-      </div>
-      <span class="badge-separator"></span>
-      <span class="badge-text">v1.0 Now Stable</span>
-    </div>
-
-    <h1 data-animate>
-      Control your Windows PC <br>
-      <span class="text-gradient">from your Android.</span>
-    </h1>
-
-    <p class="lead" data-animate>
-      A privacy-first remote ecosystem. Turn your phone into a high-precision trackpad, keyboard, and system controller. No accounts, no cloud, no latency.
-    </p>
-
-    <div class="hero-actions" data-animate>
-      <a class="cta-primary" href="#download">
-        Get Started
-        <i data-lucide="arrow-right"></i>
+  <header class="header" role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+        </div>
+        <span>RemotePC</span>
       </a>
-      <a class="btn-secondary" href="#features">
-        See Features
-      </a>
-    </div>
 
-    <div class="hero-stats" data-animate>
-      <div class="stat"><i data-lucide="zap"></i> <strong>0ms</strong> <span>Cloud Latency</span></div>
-      <div class="stat"><i data-lucide="hard-drive"></i> <strong>40MB</strong> <span>Ultra Light</span></div>
-      <div class="stat"><i data-lucide="shield-check"></i> <strong>100%</strong> <span>Private</span></div>
-    </div>
-  </div>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#how-it-works" class="nav-link">How it works</a></li>
+        <li><a href="#download" class="nav-link">Download</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
 
-  <div class="hero-visual" data-animate>
-    <div class="screen-wrapper">
-      <div class="screen-glow"></div>
-      <div class="window">
-        <div class="titlebar">
-          <div class="window-dots"><span></span><span></span><span></span></div>
-          <div class="window-tab">RemotePC Listener</div>
-        </div>
-        <div class="mock-screenshot">
-          <div class="screenshot-overlay">
-            <div class="pulse-circle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="features" class="section container">
-  <div class="features-header">
-    <h2 data-animate>Everything you need, <span class="text-gradient">nothing you don’t</span></h2>
-    <p class="lead" data-animate>Designed for speed, simplicity, and full local control.</p>
-  </div>
-
-  <div class="bento-grid">
-    <div class="card bento-wide" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="monitor-play"></i></div>
-      <h3>Live Screen Stream</h3>
-      <p>Desktop mirroring with low latency. Watch your PC's activity in real-time without leaving the app.</p>
-    </div>
-
-    <div class="card bento-large" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="mouse-pointer-2"></i></div>
-      <h3>Trackpad & Keyboard</h3>
-      <p>Move, click, drag, scroll, and type — your phone becomes a precision input device with zero-latency response.</p>
-    </div>
-
-    <div class="card" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="camera"></i></div>
-      <h3>Instant Snapshots</h3>
-      <p>Capture and save your desktop view instantly. Optimized compression for lightning-fast local previews.</p>
-    </div>
-
-    <div class="card" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="bar-chart-2"></i></div>
-      <h3>System Stats</h3>
-      <p>CPU, RAM, Battery — streamed live from your PC via lightweight telemetry.</p>
-    </div>
-
-    <div class="card bento-wide" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="folder-input"></i></div>
-      <h3>Secure File Transfer</h3>
-      <p>Pick a file on Android and send it directly to your PC over TCP local tunnels. No cloud involved.</p>
-    </div>
-
-    <div class="card" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="volume-2"></i></div>
-      <h3>Audio Volume</h3>
-      <p>Quickly change Windows system volume via the built‑in COM interface.</p>
-    </div>
-
-    <div class="card" data-animate>
-      <div class="card-glow"></div>
-      <div class="card-icon"><i data-lucide="power"></i></div>
-      <h3>System Controls</h3>
-      <p>Shutdown, restart, lock, or sleep — right from your hand.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section interactive-grid-container system-monitor-hero">
-  <div class="glow-grid" style="--grid-color: 110, 168, 255;"></div>
-
-  <div class="container grid-overlay-content">
-    <div class="transfer-dashboard-massive" data-animate>
-      
-      <div class="monitor-visual-stage">
-        <div class="monitor-dashboard-card">
-          
-          <div class="gauge-item">
-            <div class="gauge-header">
-              <span class="gauge-icon">
-                <i data-lucide="cpu"></i>
-              </span>
-              <span class="gauge-label">CPU LOAD</span>
-              <span class="gauge-value" id="cpu-text">24%</span>
-            </div>
-            <div class="gauge-bar-bg">
-              <div class="gauge-bar-fill" id="cpu-fill" style="width: 24%; background: var(--brand);"></div>
-            </div>
-          </div>
-
-          <div class="gauge-item">
-            <div class="gauge-header">
-              <span class="gauge-icon">
-                <i data-lucide="memory-stick"></i>
-              </span>
-              <span class="gauge-label">MEMORY</span>
-              <span class="gauge-value" id="mem-text">4.2GB</span>
-            </div>
-            <div class="gauge-bar-bg">
-              <div class="gauge-bar-fill" id="mem-fill" style="width: 45%; background: var(--brand-2);"></div>
-            </div>
-          </div>
-
-          <div class="gauge-item">
-            <div class="gauge-header">
-              <span class="gauge-icon">
-                <i data-lucide="battery-charging"></i>
-              </span>
-              <span class="gauge-label">BATTERY</span>
-              <span class="gauge-value" id="bat-text">98%</span>
-            </div>
-            <div class="gauge-bar-bg">
-              <div class="gauge-bar-fill" id="bat-fill" style="width: 98%; background: var(--ok);"></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="transfer-text-content">
-        <div class="verified-badge">Low Latency Telemetry</div>
-        <h1 class="text-gradient">Real-Time System Monitoring</h1>
-        <p class="lead">Keep an eye on your hardware without leaving the controller. Stream CPU usage, memory allocation, and battery health directly to your Android device.</p>
-        
-        <div class="stats-row">
-          <div class="glass-pill"><i data-lucide="activity"></i> Low Impact</div>
-          <div class="glass-pill"><i data-lucide="battery-low"></i> Power Optimized</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="scan-line"></div>
-</section>
-
-
-<section id="how" class="section container">
-  <div class="how-header">
-    <h2 data-animate>Three steps to <span class="text-gradient">total control</span></h2>
-    <p class="lead" data-animate>No accounts. No cloud. Just direct local connectivity.</p>
-  </div>
-
-  <div class="steps-container">
-    <div class="step-line">
-      <div class="step-line-fill"></div>
-    </div>
-
-    <div class="step-item" data-animate>
-      <div class="step-visual">
-        <div class="num-bubble">1</div>
-        <div class="icon-box"><i data-lucide="download-cloud"></i></div>
-      </div>
-      <div class="step-content">
-        <h3>Install the Windows Listener</h3>
-        <p>Download and run the lightweight listener app on your PC. It remains dormant until you connect, listening only on your secure local network.</p>
-      </div>
-    </div>
-
-    <div class="step-item" data-animate>
-      <div class="step-visual">
-        <div class="num-bubble">2</div>
-        <div class="icon-box"><i data-lucide="smartphone"></i></div>
-      </div>
-      <div class="step-content">
-        <h3>Pair Your Devices</h3>
-        <p>Launch the Android app and point it to your PC's local IP</p>
-      </div>
-    </div>
-
-    <div class="step-item" data-animate>
-      <div class="step-visual">
-        <div class="num-bubble">3</div>
-        <div class="icon-box"><i data-lucide="command"></i></div>
-      </div>
-      <div class="step-content">
-        <h3>Execute & Transfer</h3>
-        <p>Enjoy low latency for mouse control and high-speed file transfers. Your data never leaves your home Wi‑Fi.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section interactive-grid-container data-privacy-hero">
-  <div class="glow-grid" style="--grid-color: 255, 170, 128;"></div>
-
-  <div class="container grid-overlay-content">
-    <div class="transfer-dashboard-massive" data-animate>
-      <div class="transfer-visual-stage">
-        
-        <div class="security-visual-container">
-          <div class="data-source">
-            <span class="data-particle"></span>
-            <span class="data-particle"></span>
-            <span class="data-particle"></span>
-          </div>
-
-          <div class="shield-node">
-            <div class="shield-icon"><i data-lucide="shield-check"></i></div>
-            <div class="shield-aura"></div>
-          </div>
-
-          <div class="cloud-void">
-            <span class="cloud-icon"><i data-lucide="cloud-off"></i></span>
-            <div class="cross-mark">✕</div>
-          </div>
-
-          <svg class="rebound-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
-            <path d="M 50 100 L 180 100 L 50 150"
-                  class="rebound-path"
-                  fill="none"
-                  stroke="var(--brand-2)"
-                  stroke-width="2"
-                  opacity="0.4" />
-            <circle r="5" fill="var(--brand-2)">
-              <animateMotion
-                dur="1.5s"
-                repeatCount="indefinite"
-                path="M 50 100 L 195 100 L 50 100" />
-            </circle>
-          </svg>
-        </div>
-
-      </div>
-
-      <div class="transfer-text-content">
-        <div class="verified-badge"
-             style="background: rgba(255, 170, 128, 0.1);
-                    color: var(--accent);
-                    border-color: rgba(255, 170, 128, 0.2);">
-          Privacy-First Architecture
-        </div>
-
-        <h1 class="text-gradient"
-            style="background: linear-gradient(135deg, var(--accent), #ff7d7d);
-                   -webkit-background-clip: text;">
-          No Personal Data Collected
-        </h1>
-
-        <p class="lead">
-          RemotePC is designed to work entirely over your local network.
-          We don’t require accounts, emails, or logins, and your remote
-          control data never leaves your Wi-Fi. Anonymous analytics are
-          used solely to improve app stability and performance.
-        </p>
-
-        <div class="stats-row">
-          <div class="glass-pill">
-            <i data-lucide="user-x"></i> No Accounts
-          </div>
-          <div class="glass-pill">
-            <i data-lucide="bar-chart-2"></i> Anonymous Analytics Only
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="scan-line"
-       style="background: linear-gradient(
-         to bottom,
-         transparent,
-         rgba(255, 170, 128, 0.1),
-         transparent
-       );">
-  </div>
-</section>
-
-
-<section id="download" class="section container">
-  <div class="download-hub-header">
-    <h2 data-animate>Get <span class="text-gradient">RemotePC</span></h2>
-    <p class="lead" data-animate>Start controlling your workspace in seconds.</p>
-  </div>
-
-  <div class="download-grid" data-animate>
-    <div class="download-pane windows-pane">
-      <div class="pane-content">
-        <div class="platform-icon"><i data-lucide="monitor"></i></div>
-        <h3>Windows Host</h3>
-        <p>Run the listener on your PC to enable incoming connections.</p>
-        <ul class="spec-list">
-          <li>Windows 10/11</li>
-          <li>Installer (.exe)</li>
-          <li>Local Network Only</li>
-        </ul>
-        <a href="https://github.com/Stan006/RemotePC/releases/download/v1.0.0.8/RemotePC-Server-v1.0.0.8.exe" 
-           class="btn-primary platform-btn" 
-           data-platform="Windows">
-           <i data-lucide="download"></i> Download for Windows
+      <div class="nav-actions">
+        <a href="#download" class="nav-cta">
+          Get Started
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
-    </div>
 
-    <div class="download-pane android-pane">
-      <div class="pane-content">
-        <div class="platform-icon"><i data-lucide="smartphone"></i></div>
-        <h3>Android Client</h3>
-        <p>The controller for your phone or tablet.</p>
-        
-        <div class="store-grid">
-          <a href="https://play.google.com/store/apps/details?id=com.wheat.remotepc" class="store-link">
-            <img src="GetItOnGooglePlay_Badge_Web_color_English.png" alt="Google Play">
-          </a>
-          <a href="https://remotepc.en.uptodown.com/android" class="store-link">
-            <img src="https://stc.utdstc.com/img/mediakit/download-aao-big.png" alt="Uptodown">
-          </a>
-          <a href="https://www.amazon.com/gp/product/B0G5MKCM38" class="store-link">
-            <img src="amazon-appstore-badge-english-black.png" alt="Amazon">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="section container">
-  <div class="faq-header">
-    <h2 data-animate>Common <span class="text-gradient">Questions</span></h2>
-    <p class="lead" data-animate>Everything you need to know about privacy and setup.</p>
-  </div>
-
-  <div class="faq-list">
-    <div class="faq-item" data-animate>
-      <button class="faq-question">
-        <span>What permissions does the Android app use, and why?</span>
-        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
+      <button class="mobile-menu-btn" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p><strong>Network:</strong> to connect to your PC over Wi‑Fi and exchange commands. No external servers involved.</p>
-          <p><strong>Storage:</strong> only when you initiate file transfer. It never scans your storage automatically.</p>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Local Network Only</span>
         </div>
-      </div>
-    </div>
 
-    <div class="faq-item" data-animate>
-      <button class="faq-question">
-        <span>Why does Windows Defender flag the listener?</span>
-        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>It’s a false positive. Remote-control tools simulate keyboard/mouse and send screenshots—behaviors that resemble malware to automated scanners. Unlike malware, RemotePC has no telemetry, no cloud, and runs only when you open it.</p>
-        </div>
-      </div>
-    </div>
+        <h1>
+          Control your Windows PC<br>
+          <span class="gradient-text">from your Android</span>
+        </h1>
 
-    <div class="faq-item" data-animate>
-      <button class="faq-question">
-        <span>Can anyone else access my PC?</span>
-        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>Only devices on your local network that know your IP and port. RemotePC is LAN-first and is not reachable from the internet by default.</p>
-        </div>
-      </div>
-    </div>
+        <p class="hero-description">
+          A privacy-first remote control solution. Turn your phone into a precision trackpad, keyboard, and system controller—no accounts, no cloud, zero latency.
+        </p>
 
-    <div class="faq-item" data-animate>
-      <button class="faq-question">
-        <span>Does the app track me?</span>
-        <div class="faq-icon"><i data-lucide="chevron-down"></i></div>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>No accounts and no personal telemetry. All remote control traffic stays on your local network. Anonymous analytics, such as feature interactions, are collected solely to improve app stability and usability. </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="requirements" class="section container">
-  <div class="req-header">
-    <h2 data-animate>System <span class="text-gradient">Requirements</span></h2>
-    <p class="lead" data-animate>Lightweight and optimized for almost any hardware.</p>
-  </div>
-  
-  <div class="requirements-dashboard" data-animate>
-    <div class="req-column">
-      <div class="req-head">
-        <div class="req-visual-icon win-icon"><i data-lucide="monitor"></i></div>
-        <h3>Windows Listener</h3>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">OS</span>
-        <span class="spec-value">Windows 10 / 11</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Architecture</span>
-        <span class="spec-value">x64 Recommended</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Storage</span>
-        <span class="spec-value">~40MB (Ultra Light)</span>
-      </div>
-    </div>
-
-    <div class="req-column">
-      <div class="req-head">
-        <div class="req-visual-icon android-icon"><i data-lucide="smartphone"></i></div>
-        <h3>Android App</h3>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Version</span>
-        <span class="spec-value">8.0 (Oreo) +</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Memory</span>
-        <span class="spec-value">2GB RAM</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Connectivity</span>
-        <span class="spec-value">Wi-Fi Required</span>
-      </div>
-    </div>
-
-    <div class="req-column">
-      <div class="req-head">
-        <div class="req-visual-icon net-icon"><i data-lucide="wifi"></i></div>
-        <h3>Network</h3>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Environment</span>
-        <span class="spec-value">Single LAN / Wi-Fi</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Protocol</span>
-        <span class="spec-value">TCP (Local Only)</span>
-      </div>
-      <div class="spec-item">
-        <span class="spec-label">Cloud</span>
-        <span class="spec-value">0% (Cloud-Free)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="support" class="section container" aria-label="Support">
-  <div class="support-terminal" data-animate>
-    <div class="terminal-header">
-      <div class="terminal-dots">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="terminal-title">support_channel</div>
-    </div>
-    
-    <div class="terminal-body">
-      <div class="support-main">
-        <div class="support-info">
-          <h3>Found a bug or have a <span class="text-gradient">feature request?</span></h3>
-          <p>Help us build the future of local remote control. Share logs, describe issues, or suggest new tools.</p>
-        </div>
-        
-        <div class="support-actions">
-          <a class="support-btn email-btn" href="mailto:stanwheat00@gmail.com">
-            <span class="btn-icon"><i data-lucide="mail"></i></span>
-            <div class="btn-text">
-              <strong>Email Support</strong>
-              <span>Direct response</span>
-            </div>
+        <div class="hero-actions">
+          <a href="#download" class="btn btn-primary">
+            Get Started
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
+          <a href="#features" class="btn btn-secondary">
+            See Features
+          </a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-value">0ms</span>
+            <span class="stat-label">Cloud Latency</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">40MB</span>
+            <span class="stat-label">Ultra Light</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Private</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mockup">
+          <div class="mockup-header">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-pulse" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Everything you need, <span class="gradient-text">nothing you don't</span>
+        </h2>
+        <p class="section-subtitle">
+          Designed for speed, simplicity, and full local control
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+          </div>
+          <h3>Live Screen Stream</h3>
+          <p>Desktop mirroring with low latency. Watch your PC's activity in real-time without leaving the app.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
+          </div>
+          <h3>Trackpad & Keyboard</h3>
+          <p>Move, click, drag, scroll, and type—your phone becomes a precision input device with zero-latency response.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          </div>
+          <h3>Instant Snapshots</h3>
+          <p>Capture and save your desktop view instantly. Optimized compression for lightning-fast local previews.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
+          </div>
+          <h3>System Stats</h3>
+          <p>CPU, RAM, Battery—streamed live from your PC via lightweight telemetry.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          </div>
+          <h3>Secure File Transfer</h3>
+          <p>Pick a file on Android and send it directly to your PC over TCP local tunnels. No cloud involved.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </div>
+          <h3>Audio Volume</h3>
+          <p>Quickly change Windows system volume via the built-in COM interface.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          </div>
+          <h3>System Controls</h3>
+          <p>Shutdown, restart, lock, or sleep—right from your hand.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3>Privacy First</h3>
+          <p>No accounts, no cloud servers, no data collection. Everything stays on your local network.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Three steps to <span class="gradient-text">total control</span>
+        </h2>
+        <p class="section-subtitle">
+          No accounts. No cloud. Just direct local connectivity.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-content">
+            <h3>Install the Windows Listener</h3>
+            <p>Download and run the lightweight listener app on your PC. It remains dormant until you connect, listening only on your secure local network.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-content">
+            <h3>Pair Your Devices</h3>
+            <p>Launch the Android app and point it to your PC's local IP address. The connection happens instantly over your Wi-Fi.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-content">
+            <h3>Execute & Transfer</h3>
+            <p>Enjoy low latency for mouse control and high-speed file transfers. Your data never leaves your home Wi-Fi.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="download" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Get <span class="gradient-text">RemotePC</span>
+        </h2>
+        <p class="section-subtitle">
+          Start controlling your workspace in seconds
+        </p>
+      </div>
+
+      <div class="download-grid">
+        <article class="download-card">
+          <div class="platform-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
+          </div>
+          <h3>Windows Host</h3>
+          <p>Run the listener on your PC to enable incoming connections</p>
           
-          <a class="support-btn github-btn" href="https://github.com/Stan006/RemotePC/issues">
-            <span class="btn-icon"><i data-lucide="github"></i></span>
-            <div class="btn-text">
-              <strong>GitHub Issues</strong>
-              <span>Public tracker</span>
-            </div>
+          <ul class="requirements-list">
+            <li>Windows 10/11</li>
+            <li>Installer (.exe)</li>
+            <li>Local Network Only</li>
+            <li>~40MB Download</li>
+          </ul>
+
+          <a href="https://github.com/Stan006/RemotePC/releases/download/v1.0.0.8/RemotePC-Server-v1.0.0.8.exe" class="btn btn-primary" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            Download for Windows
           </a>
-        </div>
+
+          <p class="release-note">
+            Looking for all releases? 
+            <a href="https://github.com/Stan006/RemotePC/releases" class="release-link" target="_blank" rel="noopener noreferrer">
+              Press here
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <article class="download-card">
+          <div class="platform-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3>Android Client</h3>
+          <p>The controller for your phone or tablet</p>
+
+          <ul class="requirements-list">
+            <li>Android 8.0+</li>
+            <li>2GB RAM minimum</li>
+            <li>Wi-Fi Required</li>
+            <li>Free Download</li>
+          </ul>
+
+          <div class="store-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.wheat.remotepc" aria-label="Get it on Google Play">
+              <img src="assets/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Google Play" class="store-badge">
+            </a>
+            <a href="https://remotepc.en.uptodown.com/android" aria-label="Download from Uptodown">
+              <img src="https://stc.utdstc.com/img/mediakit/download-aao-big.png" alt="Uptodown" class="store-badge">
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Common <span class="gradient-text">Questions</span>
+        </h2>
+        <p class="section-subtitle">
+          Everything you need to know about privacy and setup
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What permissions does the Android app use, and why?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <p><strong>Network:</strong> to connect to your PC over Wi-Fi and exchange commands. No external servers involved.</p>
+              <p><strong>Storage:</strong> only when you initiate file transfer. It never scans your storage automatically.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Why does Windows Defender flag the listener?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <p>It's a false positive. Remote-control tools simulate keyboard/mouse and send screenshots—behaviors that resemble malware to automated scanners. Unlike malware, RemotePC has no telemetry, no cloud, and runs only when you open it.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can anyone else access my PC?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <p>Only devices on your local network that know your IP and port. RemotePC is LAN-first and is not reachable from the internet by default.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Does the app track me?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <p>No accounts and no personal telemetry. All remote control traffic stays on your local network. Anonymous analytics, such as feature interactions, are collected solely to improve app stability and usability.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+          </div>
+          <span>RemotePC</span>
+        </a>
+        <p class="footer-description">
+          Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="#features" class="footer-link">Features</a></li>
+          <li><a href="#how-it-works" class="footer-link">How it works</a></li>
+          <li><a href="#download" class="footer-link">Download</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="support.html" class="footer-link"> Support</a></li>
+          <li><a href="#faq" class="footer-link">FAQ</a></li>
+          <li><a href="https://github.com/Stan006/RemotePC" class="footer-link">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="index.html">
-        <span class="logo"><i data-lucide="monitor-smartphone"></i></span><span>RemotePC</span>
-      </a>
-      <p class="footer-tagline">Secure, local-first remote control for the modern workspace.</p>
-      <div class="footer-status">
-        <span class="status-indicator"></span>
-        Systems Operational
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 RemotePC. Created for privacy.</p>
       </div>
     </div>
-
-    <div class="footer-links-group">
-      <div class="footer-col">
-        <span class="footer-label">Product</span>
-        <a href="#features">Features</a>
-        <a href="#download">Download</a>
-        <a href="#how">How it works</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-label">Resources</span>
-        <a href="#faq">FAQ</a>
-        <a href="https://github.com/Stan006/RemotePC">GitHub</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-label">Legal</span>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <button type="button" class="cookie-manage-link" onclick="openCookiePreferences()">
-          Cookie settings
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="container footer-bottom">
-    <div class="copyright">© 2026 RemotePC. Created for privacy.</div>
-    <div class="social-links">
-      </div>
-  </div>
-</footer>
-
-<div class="cookie-banner" id="cookie-banner" aria-live="polite">
-  <div class="cookie-banner-inner">
-    <div class="cookie-header">
-      <div class="cookie-icon"><i data-lucide="cookie"></i></div>
-      <h2>Cookie Settings</h2>
-    </div>
-    <div class="cookie-banner-text">
-      <p>
-        We use essential cookies for core functionality and anonymous analytics to improve your experience.
-      </p>
-      <a href="privacy.html" class="cookie-link">Privacy Policy</a>
-    </div>
-    <div class="cookie-banner-actions">
-      <button class="btn-cookie-secondary" id="cookie-essential">Essential only</button>
-      <button class="btn-cookie-primary" id="cookie-all">Accept all</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Initialize Lucide Icons
-  lucide.createIcons();
-
-  window.openCookiePreferences = function () {
-    var banner = document.getElementById('cookie-banner');
-    if (banner) {
-      banner.classList.add('visible');
-    }
-  };
-</script>
-
-<div id="download-toast" class="download-toast" aria-live="polite"></div>
-
+  </footer>
 </body>
 </html>
