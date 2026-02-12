@@ -251,6 +251,8 @@
       
       if (exeAsset) {
         downloadUrl = exeAsset.browser_download_url;
+
+        downloadBtn.innerHTML += ` (${data.tag_name})`;
         
         const downloadBtn = document.getElementById('download-btn');
         downloadBtn.addEventListener('click', (e) => {
