@@ -251,12 +251,16 @@
       
       if (exeAsset) {
         downloadUrl = exeAsset.browser_download_url;
-  
+        
         const downloadBtn = document.getElementById('download-btn');
+        
+        // Add version to button text
+        downloadBtn.innerHTML += ` (${data.tag_name})`;
+        
         downloadBtn.addEventListener('click', (e) => {
           e.preventDefault();
           
-
+          // Create a temporary link and click it
           const tempLink = document.createElement('a');
           tempLink.href = downloadUrl;
           tempLink.download = exeAsset.name;
