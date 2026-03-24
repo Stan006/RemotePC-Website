@@ -333,6 +333,27 @@
 
 .release-card-content {
   padding: 1.5rem 1.5rem 1.75rem;
+  max-height: 520px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.4) transparent;
+}
+
+.release-card-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.release-card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.release-card-content::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 999px;
+}
+
+.release-card-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
 }
 
 /* Notes markdown-like rendering */
