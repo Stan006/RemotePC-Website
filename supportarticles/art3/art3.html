@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows Drag and Drop Security</title>
+  <link rel="stylesheet" href="art2.css">
+  <meta name="description" content="Why Windows blocks drag and drop between privilege levels">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .diagram {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 220px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+      text-align: center;
+    }
+
+    .box.low { border-color: #3b82f6; }
+    .box.medium { border-color: #10b981; }
+    .box.high { border-color: #ef4444; }
+
+    .arrow {
+      text-align: center;
+      font-size: 24px;
+      margin: 10px 0;
+      color: #888;
+    }
+
+    .blocked {
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    .allowed {
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    code {
+      background: #1a1a1a;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="nav">
+    <a class="brand" href="">
+      <span class="logo">
+        <i data-lucide="monitor-smartphone"></i>
+      </span>
+      <span>RemotePC</span>
+    </a>
+    <div class="nav-actions">
+      <a class="cta-primary" href="../../support.html">Back to Support Page</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article class="article-container">
+    
+    <header class="article-header">
+      <div class="article-category">
+        <i data-lucide="shield"></i>
+        Article: Windows Security Model
+      </div>
+      
+      <h1 class="article-title">
+        Why Windows blocks <span class="text-gradient">drag and drop</span> between privilege levels
+      </h1>
+      
+      <p class="article-subtitle">
+        This behavior is enforced by User Account Control (UAC) and Mandatory Integrity Control (MIC) to prevent privilege escalation.
+      </p>
+    </header>
+
+    <div class="article-content">
+
+      <h2>Integrity Level Separation</h2>
+
+      <p>
+        Windows assigns an integrity level to every process. This level determines what other processes it can interact with.
+        The key rule enforced by the system is:
+      </p>
+
+      <blockquote>
+        Lower integrity processes cannot send data to higher integrity processes ("no write up").
+      </blockquote>
+
+      <div class="diagram">
+        <div class="box medium">
+          Standard App<br>
+          <small>(Medium Integrity)</small>
+        </div>
+
+        <div class="box high">
+          Admin App<br>
+          <small>(High Integrity)</small>
+        </div>
+      </div>
+
+      <div class="arrow blocked">🚫 Drag & Drop Blocked</div>
+
+      <p>
+        Even though both applications belong to the same user, Windows treats them as different trust boundaries.
+      </p>
+
+      <h2>What actually gets blocked</h2>
+
+      <p>
+        Drag and drop is not just a UI feature — it relies on multiple IPC mechanisms:
+      </p>
+
+      <ul>
+        <li><b>Window messages</b> (e.g. <code>WM_DROPFILES</code>)</li>
+        <li><b>OLE drag-and-drop</b> via <code>IDropTarget</code></li>
+        <li><b>COM data transfer</b> between processes</li>
+      </ul>
+
+      <p>
+        These mechanisms require one process to send structured data into another process's context. When integrity levels differ,
+        Windows blocks this interaction at the kernel and user32 boundary.
+      </p>
+
+      <h2>Relevant Windows APIs</h2>
+
+      <p>
+        There are APIs that relate to message filtering, but they do not bypass integrity isolation:
+      </p>
+      <ul>
+        <li><code>ChangeWindowMessageFilterEx</code> – allows specific messages through, but only within limits</li>
+        <li><code>AllowSetForegroundWindow</code> – unrelated to drag/drop but often confused</li>
+        <li><code>CoInitializeSecurity</code> – controls COM security boundaries</li>
+      </ul>
+
+      <p>
+        Importantly, <code>ChangeWindowMessageFilterEx</code> cannot override MIC restrictions for drag-and-drop data transfer.
+      </p>
+	  
+	  <p>
+        We are currently looking for ways to make it work, however due to the described security lockdowns, a solution will delayed for the future, or indefinitely.
+      </p>
+
+      <h2>Why Microsoft enforces this</h2>
+
+      <p>
+        If drag and drop were allowed freely across privilege levels, it would enable:
+      </p>
+
+      <ul>
+        <li><b>Shatter attacks</b> via crafted window messages</li>
+        <li><b>Data injection</b> into elevated processes</li>
+        <li><b>Privilege escalation chains</b></li>
+      </ul>
+
+      <p>
+        Historically, older versions of Windows (pre-Vista) were vulnerable to these types of attacks, which is why UAC introduced strict isolation.
+      </p>
+	  
+	  <h2>Why Administrative Privileges Are Required By RemotePC</h2>
+
+<p>
+  Accessing system temperature sensors requires administrative privileges because these sensors are part of protected hardware interfaces. Standard user processes do not have permission to read from or interact with these low-level system resources, ensuring that critical hardware data cannot be tampered with or accessed by untrusted applications.
+</p>
+
+<p>
+  Running the application as an administrator allows it to safely query sensor data directly from the system, providing accurate readings while maintaining Windows security boundaries.
+</p>
+
+<p>
+  We are currently evaluating whether allowing the application to run as a non-administrative process—controlled via a toggle in the settings—would be a viable option for users. Running in this mode would enable features like drag-and-drop but would disable access to hardware temperature sensors. As a result, temperature readings would not be available in the Android app.
+</p>
+
+      
+
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="lightbulb"></i>
+          Key Takeaway
+        </div>
+        <p style="margin: 0; color: var(--muted);">
+          Drag and drop is blocked not because of a bug, but because Windows treats it as a cross-process data injection mechanism — which is restricted across integrity boundaries.
+        </p>
+      </div>
+
+    </div>
+    
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© 2026 RemotePC — Built with privacy in mind</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+  });
+</script>
+
+</body>
+</html>
