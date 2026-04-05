@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="page-title">RemotePC – Support Article</title>
+  <meta id="page-desc" name="description" content="RemotePC support article">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ── Reset & Base ── */
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+
+    /* ── Design Tokens ── */
+    :root {
+      --bg: #0b0d12;
+      --surface: #111523;
+      --text: #e7ecf7;
+      --muted: #9fb0d1;
+      --brand: #6ea8ff;
+      --brand-2: #82ffd8;
+      --accent: #ffaa80;
+    }
+
+    body {
+      background:
+        radial-gradient(1200px 800px at 80% -10%, rgba(110,168,255,.12), transparent 50%),
+        radial-gradient(1000px 700px at -10% 10%, rgba(130,255,216,.10), transparent 50%),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.7 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.05;
+      mix-blend-mode: soft-light;
+      z-index: -1;
+    }
+
+    a { color: var(--brand); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17,21,35,0.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      padding: 0 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .logo svg { width: 18px; height: 18px; color: white; }
+
+    .cta-primary {
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform 0.15s ease;
+    }
+    .cta-primary:hover { transform: translateY(-1px); text-decoration: none; }
+
+    /* ── Article Container ── */
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      flex: 1;
+    }
+
+    /* ── Article Header ── */
+    .article-header { margin-bottom: 60px; text-align: center; }
+
+    .article-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(110,168,255,0.1);
+      color: var(--brand);
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      border: 1px solid rgba(110,168,255,0.2);
+    }
+
+    .article-title {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 40px 0;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .meta-item { display: flex; align-items: center; gap: 8px; }
+    .meta-item svg { width: 16px; height: 16px; }
+
+    /* ── Featured Image ── */
+    .article-featured-image {
+      width: 100%;
+      height: 400px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      margin-bottom: 60px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .article-featured-image::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(110,168,255,0.3), transparent);
+    }
+
+    .article-featured-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    /* ── Article Content ── */
+    .article-content { color: var(--muted); font-size: 18px; line-height: 1.8; }
+
+    .article-content h1 {
+      color: var(--text);
+      font-size: 38px;
+      margin: 60px 0 24px 0;
+      line-height: 1.2;
+    }
+
+    .article-content h2 {
+      color: var(--text);
+      font-size: 32px;
+      margin: 60px 0 24px 0;
+      line-height: 1.2;
+    }
+
+    .article-content h3 {
+      color: var(--text);
+      font-size: 24px;
+      margin: 40px 0 20px 0;
+      line-height: 1.3;
+    }
+
+    .article-content p { margin: 0 0 24px 0; }
+
+    .article-content ul,
+    .article-content ol { margin: 24px 0; padding-left: 28px; }
+
+    .article-content li { margin-bottom: 12px; }
+
+    .article-content strong { color: var(--text); font-weight: 600; }
+
+    .article-content em { font-style: italic; }
+
+    .article-content a {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(110,168,255,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+    }
+    .article-content a:hover { text-decoration-color: var(--brand); }
+
+    .article-content blockquote {
+      margin: 40px 0;
+      padding: 24px 32px;
+      background: rgba(110,168,255,0.05);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .article-content code {
+      background: rgba(255,255,255,0.05);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--brand-2);
+    }
+
+    .article-content pre {
+      background: rgba(13,17,26,0.8);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 24px;
+      overflow-x: auto;
+      margin: 32px 0;
+    }
+
+    .article-content pre code {
+      background: none; padding: 0;
+      color: var(--brand-2);
+      font-size: 14px; line-height: 1.6;
+    }
+
+    /* ── Callout Box ── */
+    .callout {
+      background: rgba(130,255,216,0.05);
+      border: 1px solid rgba(130,255,216,0.2);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+
+    .callout-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--brand-2);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .callout-header svg { width: 20px; height: 20px; }
+
+    /* ── Diagram helpers (art3, art4) ── */
+    .diagram {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 220px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+      text-align: center;
+    }
+
+    .box.low    { border-color: #3b82f6; }
+    .box.medium { border-color: #10b981; }
+    .box.high   { border-color: #ef4444; }
+
+    .arrow { text-align: center; font-size: 24px; margin: 10px 0; color: #888; }
+    .blocked { color: #ef4444; font-weight: bold; }
+    .allowed { color: #10b981; font-weight: bold; }
+
+    /* ── Not Found ── */
+    .not-found {
+      text-align: center;
+      padding: 120px 24px;
+    }
+
+    .not-found h1 { font-size: 48px; margin: 0 0 16px; }
+    .not-found p { color: var(--muted); font-size: 18px; margin: 0 0 32px; }
+
+    /* ── Footer ── */
+    .site-footer {
+      margin-top: auto;
+      padding: 60px 0 40px;
+      background: linear-gradient(to bottom, transparent, rgba(110,168,255,0.02));
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .article-container { padding: 40px 16px 80px; }
+      .article-title { font-size: 32px; }
+      .article-subtitle { font-size: 18px; }
+      .article-meta { flex-direction: column; gap: 12px; }
+      .article-featured-image { height: 250px; }
+      .article-content { font-size: 16px; }
+      .article-content h2 { font-size: 26px; }
+      .article-content h3 { font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <span class="logo">
+        <i data-lucide="monitor-smartphone"></i>
+      </span>
+      <span>RemotePC</span>
+    </a>
+    <div class="nav-actions">
+      <a class="cta-primary" href="support.html">Back to Support</a>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <!-- Rendered by JS -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>© 2026 RemotePC — Built with privacy in mind</p>
+  </div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+//  ARTICLE DATABASE
+//  To add a new article: add an entry below.
+//  Link to it with: article.html?id=your-id
+// ─────────────────────────────────────────────
+const ARTICLES = {
+
+  'vpn': {
+    title:    'Why do VPNs interfere with <span class="text-gradient">RemotePC</span>',
+    subtitle: 'Well, they don\'t — you can still use all remote functionalities but with some caveats. Here\'s the full explanation.',
+    category: { icon: 'rocket', label: 'Article: VPN Interference' },
+    meta: { date: 'January 20, 2026', readTime: '5 min read', author: 'RemotePC Team' },
+    image: { src: 'vpn.png', alt: 'VPN interference with RemotePC' },
+    content: `
+      <p>
+        When you connect to a VPN, the VPN client may modify your machine's network routing table. This reroutes traffic destined for the internet to pass through the VPN tunnel instead of using your local network directly. However, the way routing is configured can also affect local traffic, even if that traffic is not intended to go through the VPN.
+      </p>
+      <p>
+        Specifically, VPNs may add or modify routes that reroute traffic intended for your LAN (Local Area Network). This can occur when the VPN overrides or misconfigures your machine's routing table, potentially preventing direct access to local network services.
+      </p>
+      <h2>How this causes problems with RemotePC.</h2>
+      <p>
+        NAT (Network Address Translation) is commonly used by VPN providers to allow multiple clients to share a single public IP address. When you connect to a VPN, your machine is typically assigned a private internal IP address within the VPN's virtual subnet (for example, 10.2.0.10). Depending on the VPN configuration, most or all internet-bound traffic may be routed through the VPN server, while local network traffic may or may not be routed through the tunnel.
+      </p>
+      <p>
+        VPNs often introduce a NAT boundary and routing separation between your local network and the VPN tunnel. If traffic that would normally remain on the local network is routed through the VPN, this can cause issues such as:<br><br>
+        <b>Connection failures:</b> Local services that expect traffic from LAN IP ranges (for example, 192.168.x.x) may reject connections arriving from the VPN's internal address space.<br><br>
+        <b>UDP issues:</b> NAT performed by the VPN may alter source IPs or ports, and short NAT timeouts can disrupt UDP-based applications that rely on consistent addressing.<br><br>
+        <b>TCP issues:</b> Existing TCP connections may be interrupted if routing changes, NAT state is reset, or firewall rules associated with the VPN block or reroute traffic.
+      </p>
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="lightbulb"></i>
+          Pro Tip
+        </div>
+        <p style="margin:0;color:var(--muted)">
+          Temporarily disabling your VPN until the application has connected will, in many cases, allow the app to function normally even after the VPN is re-enabled.
+        </p>
+      </div>
+      <h3>TCP and UDP Behavior</h3>
+      <ul>
+        <li><b>UDP:</b> UDP is a connectionless protocol that sends packets to a specific destination address and port. If a VPN reroutes traffic or performs NAT that alters the source IP or port, the receiving service may drop the packets because they appear to originate from an unexpected address (for example, a VPN-assigned address instead of a local 192.168.x.x address).</li>
+        <li><b>TCP:</b> TCP is connection-oriented and requires a successful handshake between client and server. If a VPN changes routing in a way that prevents traffic from reaching the local network, connections to services bound to local interfaces may fail.</li>
+      </ul>
+      <blockquote>
+        RemotePC uses both the UDP and TCP protocols, but it is for the most part TCP based.
+      </blockquote>
+    `
+  },
+
+  'windows-defender': {
+    title:    'Why does Windows Defender &amp; SmartScreen flag <span class="text-gradient">RemotePC</span>?',
+    subtitle: 'A full breakdown of why this warning appears, what it actually means, how code signing works, and exactly how to safely proceed.',
+    category: { icon: 'shield-alert', label: 'Article: Windows Defender &amp; SmartScreen' },
+    meta: { date: 'January 22, 2026 | Rev. March 20, 2026', readTime: '8 min read', author: 'RemotePC Team' },
+    image: { src: 'example.jpg', alt: 'SmartScreen Example' },
+    content: `
+      <h2>How RemotePC actually works</h2>
+      <p>Before diving into the warning itself, it helps to understand what RemotePC does under the hood — because this context is exactly what makes Windows suspicious.</p>
+      <p>RemotePC is split into two components that talk to each other over your local network (or the internet, if configured):</p>
+      <ul>
+        <li><strong>The Android app</strong> acts as the controller. It sends commands (e.g. Shutdown, Sleep, Lock) or requests data streams (e.g. live screenshots, hardware stats, real-time screen mirroring) to the Windows host.</li>
+        <li><strong>The Windows app</strong> acts as the host agent. It listens for authenticated instructions and executes them by calling native Windows APIs — things like <code>SetSuspendState()</code>, <code>LockWorkStation()</code>, or the Graphics Device Interface (GDI) for screen capture.</li>
+      </ul>
+      <p>In short: an executable sits on your PC, listens on a network port, and runs system-level calls when commanded. From Windows' perspective, that description fits a lot of remote access trojans (RATs) — which is precisely why Defender raises an eyebrow.</p>
+
+      <h2>What SmartScreen actually is</h2>
+      <p>Windows SmartScreen is a cloud-based reputation system built into Windows Defender and Microsoft Edge. Every time you run a downloaded executable, Windows sends a hash (a unique fingerprint) of that file to Microsoft's servers. Microsoft looks up that hash against a database of known software and checks two things:</p>
+      <ul>
+        <li><strong>Is it signed?</strong> — Does it have a valid digital certificate from a trusted Certificate Authority (CA)?</li>
+        <li><strong>Does it have reputation?</strong> — Have enough users downloaded and run this exact file without reporting it as malicious?</li>
+      </ul>
+      <p>If either check fails, SmartScreen shows the blue "Windows protected your PC" warning. It does <em>not</em> mean the file is malicious — it means the file is unknown or unverified. There is an important difference.</p>
+
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="info"></i>
+          What the warning actually says
+        </div>
+        <p style="margin:0;color:var(--muted)">
+          "Windows protected your PC — Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk." The key word is <strong style="color:var(--text)">unrecognized</strong>, not <em>dangerous</em>. SmartScreen is flagging a lack of history, not a detected threat.
+        </p>
+      </div>
+
+      <h2>Why RemotePC is unsigned</h2>
+      <p>Digital code signing requires purchasing an Authenticode certificate from a Certificate Authority such as DigiCert, Sectigo, or GlobalSign. There are two tiers:</p>
+      <ul>
+        <li><strong>Standard (OV) certificates</strong> — Organization Validation. Costs roughly $200–$400 per year. Removes the "unknown publisher" label but does not immediately grant SmartScreen reputation — that still builds over time based on download volume.</li>
+        <li><strong>Extended Validation (EV) certificates</strong> — Requires a full legal identity audit and costs $300–$700+ per year. Grants <em>instant</em> SmartScreen reputation, bypassing the warning from the very first download.</li>
+      </ul>
+      <p>RemotePC is a free, non-monetized tool. There are no ads, no in-app purchases, and no subscription fees. Our only ongoing costs are domain registration and hosting — and even those are already a stretch for a passion project. Spending $300–$700 per year purely to eliminate a dismissible warning is simply not financially viable at this stage.</p>
+      <blockquote>We made a deliberate choice: keep RemotePC free and transparent rather than charge users or inject ads just to fund a certificate. We believe that's the right trade-off, and we want you to understand exactly why.</blockquote>
+
+      <h2>Does "unsigned" mean unsafe?</h2>
+      <p>No. Code signing is a trust mechanism, not a malware scanner. A signed application simply means a certificate authority has verified the <em>identity</em> of the publisher — it says nothing about what the code actually does. There have been documented cases of malware signed with legitimate, stolen certificates. Conversely, countless safe, open-source, and independent tools ship unsigned.</p>
+      <p>What actually determines whether software is safe is its code — and RemotePC's source behavior can be independently verified:</p>
+      <ul>
+        <li>All network communication happens on a port you configure, and only responds to authenticated sessions.</li>
+        <li>No data is routed through external servers. Everything stays on your local network unless you explicitly set up remote access.</li>
+        <li>The app does not run at startup unless you enable that option manually.</li>
+        <li>No telemetry, usage data, or personal information is collected or transmitted to us.</li>
+      </ul>
+
+      <h2>How to run RemotePC despite the warning</h2>
+      <p>If you downloaded RemotePC from <strong>remotepc.tech</strong> and see the SmartScreen warning, here is how to proceed safely:</p>
+      <ol>
+        <li>When the blue SmartScreen dialog appears, click <strong>"More info"</strong> (the small link below the main message).</li>
+        <li>A second screen will appear showing the app name and publisher. Click <strong>"Run anyway"</strong>.</li>
+        <li>Windows will remember your choice for this specific file. You won't be asked again for the same executable.</li>
+      </ol>
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="shield-check"></i>
+          Always verify your download source
+        </div>
+        <p style="margin:0;color:var(--muted)">
+          Before clicking "Run anyway" on <em>any</em> application, confirm you downloaded it directly from the official website — <strong style="color:var(--text)">remotepc.tech</strong>. If you received the file via a link in an email, a third-party download site, or a message from someone you don't know, do not run it. The official site is the only trusted source.
+        </p>
+      </div>
+
+      <h2>Windows Defender antivirus vs. SmartScreen</h2>
+      <p>It's worth distinguishing between two separate Windows security systems that both fall under the "Windows Defender" umbrella:</p>
+      <ul>
+        <li><strong>Windows Defender Antivirus</strong> — Scans files for known malware signatures and suspicious behavior patterns. If this flags a file, that is a stronger signal of a genuine threat.</li>
+        <li><strong>SmartScreen</strong> — The reputation-based warning system described above. This is what triggers for RemotePC. It is a softer warning based on unfamiliarity, not a malware detection.</li>
+      </ul>
+      <p>RemotePC does not trigger Windows Defender Antivirus. Only SmartScreen flags it, and only because of the missing certificate and low download volume relative to mainstream software.</p>
+
+      <h2>Our commitment to your privacy &amp; security</h2>
+      <ul>
+        <li>RemotePC will never exfiltrate your data to any external server.</li>
+        <li>We will never bundle adware, toolbars, or any third-party software with the installer.</li>
+        <li>If a signing certificate becomes financially feasible in the future, we will obtain one and eliminate this warning entirely.</li>
+        <li>If you ever have concerns about the app's behavior, you are encouraged to inspect network traffic using a tool like Wireshark — everything it does is on your own network.</li>
+      </ul>
+      <blockquote>RemotePC will never compromise your privacy or security. The SmartScreen warning is a reflection of our budget, not our intentions.</blockquote>
+    `
+  },
+
+  'drag-drop': {
+    title:    'Why Windows blocks <span class="text-gradient">drag and drop</span> between privilege levels',
+    subtitle: 'This behavior is enforced by User Account Control (UAC) and Mandatory Integrity Control (MIC) to prevent privilege escalation.',
+    category: { icon: 'shield', label: 'Article: Windows Security Model' },
+    meta: null,
+    image: null,
+    content: `
+      <h2>Integrity Level Separation</h2>
+      <p>Windows assigns an integrity level to every process. This level determines what other processes it can interact with. The key rule enforced by the system is:</p>
+      <blockquote>Lower integrity processes cannot send data to higher integrity processes ("no write up").</blockquote>
+      <div class="diagram">
+        <div class="box medium">Standard App<br><small>(Medium Integrity)</small></div>
+        <div class="box high">Admin App<br><small>(High Integrity)</small></div>
+      </div>
+      <div class="arrow blocked">🚫 Drag &amp; Drop Blocked</div>
+      <p>Even though both applications belong to the same user, Windows treats them as different trust boundaries.</p>
+
+      <h2>What actually gets blocked</h2>
+      <p>Drag and drop is not just a UI feature — it relies on multiple IPC mechanisms:</p>
+      <ul>
+        <li><b>Window messages</b> (e.g. <code>WM_DROPFILES</code>)</li>
+        <li><b>OLE drag-and-drop</b> via <code>IDropTarget</code></li>
+        <li><b>COM data transfer</b> between processes</li>
+      </ul>
+      <p>These mechanisms require one process to send structured data into another process's context. When integrity levels differ, Windows blocks this interaction at the kernel and user32 boundary.</p>
+
+      <h2>Relevant Windows APIs</h2>
+      <p>There are APIs that relate to message filtering, but they do not bypass integrity isolation:</p>
+      <ul>
+        <li><code>ChangeWindowMessageFilterEx</code> – allows specific messages through, but only within limits</li>
+        <li><code>AllowSetForegroundWindow</code> – unrelated to drag/drop but often confused</li>
+        <li><code>CoInitializeSecurity</code> – controls COM security boundaries</li>
+      </ul>
+      <p>Importantly, <code>ChangeWindowMessageFilterEx</code> cannot override MIC restrictions for drag-and-drop data transfer.</p>
+      <p>We are currently looking for ways to make it work, however due to the described security lockdowns, a solution will be delayed for the future, or indefinitely.</p>
+
+      <h2>Why Microsoft enforces this</h2>
+      <p>If drag and drop were allowed freely across privilege levels, it would enable:</p>
+      <ul>
+        <li><b>Shatter attacks</b> via crafted window messages</li>
+        <li><b>Data injection</b> into elevated processes</li>
+        <li><b>Privilege escalation chains</b></li>
+      </ul>
+      <p>Historically, older versions of Windows (pre-Vista) were vulnerable to these types of attacks, which is why UAC introduced strict isolation.</p>
+
+      <h2>Why Administrative Privileges Are Required By RemotePC</h2>
+      <p>Accessing system temperature sensors requires administrative privileges because these sensors are part of protected hardware interfaces. Standard user processes do not have permission to read from or interact with these low-level system resources, ensuring that critical hardware data cannot be tampered with or accessed by untrusted applications.</p>
+      <p>Running the application as an administrator allows it to safely query sensor data directly from the system, providing accurate readings while maintaining Windows security boundaries.</p>
+      <p>We are currently evaluating whether allowing the application to run as a non-administrative process — controlled via a toggle in the settings — would be a viable option for users. Running in this mode would enable features like drag-and-drop but would disable access to hardware temperature sensors. As a result, temperature readings would not be available in the Android app.</p>
+
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="lightbulb"></i>
+          Key Takeaway
+        </div>
+        <p style="margin:0;color:var(--muted)">
+          Drag and drop is blocked not because of a bug, but because Windows treats it as a cross-process data injection mechanism — which is restricted across integrity boundaries.
+        </p>
+      </div>
+    `
+  },
+
+  'android-permissions': {
+    title:    'Android app <span class="text-gradient">permissions and services</span> explained',
+    subtitle: 'Understanding Android Permissions in RemotePC.',
+    category: { icon: 'shield', label: 'Article: Android Permissions' },
+    meta: null,
+    image: null,
+    content: `
+      <h2>1. Internet Access</h2>
+      <p><code>android.permission.INTERNET</code> is essential for RemotePC to connect devices remotely. All communication between client and server — including remote desktop sessions, data synchronization, and file transfers — relies on network access.</p>
+
+      <h2>2. Vibrate</h2>
+      <p><code>android.permission.VIBRATE</code> allows the app to provide haptic feedback for notifications. For example, it can signal the start or completion of a file transfer.</p>
+
+      <h2>3. Post Notifications</h2>
+      <p><code>android.permission.POST_NOTIFICATIONS</code> is required for foreground services to display persistent notifications. On Android, a foreground service must show a notification; this ensures that long-running tasks like file transfers remain active even if the app is closed by the user.</p>
+
+      <h2>4. Foreground Service Permissions</h2>
+      <ul>
+        <li><code>android.permission.FOREGROUND_SERVICE</code> – Required for all services that run in the foreground.</li>
+        <li><code>android.permission.FOREGROUND_SERVICE_DATA_SYNC</code> – Specifically needed by <code>FileReceiveService</code>, which handles ongoing file synchronization. This type ensures the service is treated with higher priority by the system.</li>
+      </ul>
+
+      <h2>5. Write External Storage (Legacy)</h2>
+      <p><code>android.permission.WRITE_EXTERNAL_STORAGE</code> is only effective on Android API 28 and below. It allows the app to write files to shared storage. On Android 10 (API 29) and higher, the app uses the scoped storage system (<code>MediaStore</code> or app-specific directories), so this permission is no longer required.</p>
+
+      <h2>6. FileProvider</h2>
+      <p>The <code>FileProvider</code> enables secure sharing of files with other apps via content URIs. It requires:</p>
+      <ul>
+        <li><code>grantUriPermissions="true"</code> – Grants temporary access to external apps without exposing the entire filesystem.</li>
+        <li><code>android:exported="false"</code> – Ensures that the provider cannot be accessed by apps outside your package unless explicitly allowed.</li>
+      </ul>
+
+      <h2>7. Why Each Service Needs Permissions</h2>
+      <ul>
+        <li><strong>ConnectionService</strong> – A bound service that never enters the foreground. It does not require foreground service permissions.</li>
+        <li><strong>FileReceiveService</strong> – A foreground service performing active file synchronization. Requires both <code>FOREGROUND_SERVICE</code> and <code>FOREGROUND_SERVICE_DATA_SYNC</code>, along with notification permission (<code>POST_NOTIFICATIONS</code>) to stay active when the app is closed.</li>
+      </ul>
+
+      <h2>Summary</h2>
+      <p>Each permission in RemotePC is chosen to maximize functionality while respecting Android's security model:</p>
+      <ul>
+        <li>Network access for remote connectivity (<code>INTERNET</code>)</li>
+        <li>User notifications and foreground service persistence (<code>VIBRATE</code>, <code>POST_NOTIFICATIONS</code>)</li>
+        <li>Reliable foreground operation for file transfers (<code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code>)</li>
+        <li>Legacy storage access where applicable (<code>WRITE_EXTERNAL_STORAGE</code>)</li>
+        <li>Secure file sharing (<code>FileProvider</code>)</li>
+      </ul>
+      <p>This combination ensures that RemotePC provides reliable, secure, and uninterrupted functionality while adhering to Android's modern security and background execution policies.</p>
+
+      <div class="callout">
+        <div class="callout-header">
+          <i data-lucide="lightbulb"></i>
+          Key Takeaway
+        </div>
+        <p style="margin:0;color:var(--muted)">
+          Every permission RemotePC requests has a specific, documented purpose. Nothing is requested speculatively — each one directly enables a feature you use.
+        </p>
+      </div>
+    `
+  }
+
+}; // end ARTICLES
+
+
+// ─────────────────────────────────────────────
+//  RENDERER
+// ─────────────────────────────────────────────
+function render() {
+  const id = new URLSearchParams(window.location.search).get('id');
+  const article = id ? ARTICLES[id] : null;
+  const main = document.getElementById('main-content');
+
+  if (!article) {
+    main.innerHTML = `
+      <div class="not-found">
+        <h1>Article not found</h1>
+        <p>The article you're looking for doesn't exist or the link is broken.</p>
+        <a class="cta-primary" href="support.html">Back to Support</a>
+      </div>`;
+    return;
+  }
+
+  // Update <title> and meta description
+  const plainTitle = article.title.replace(/<[^>]+>/g, '');
+  document.getElementById('page-title').textContent = `RemotePC – ${plainTitle}`;
+  document.getElementById('page-desc').setAttribute('content', article.subtitle);
+
+  // Build meta row (optional)
+  const metaHTML = article.meta ? `
+    <div class="article-meta">
+      <div class="meta-item">
+        <i data-lucide="calendar"></i>
+        <span>${article.meta.date}</span>
+      </div>
+      <div class="meta-item">
+        <i data-lucide="clock"></i>
+        <span>${article.meta.readTime}</span>
+      </div>
+      <div class="meta-item">
+        <i data-lucide="user"></i>
+        <span>${article.meta.author}</span>
+      </div>
+    </div>` : '';
+
+  // Build featured image (optional)
+  const imageHTML = article.image ? `
+    <div class="article-featured-image">
+      <img src="${article.image.src}" alt="${article.image.alt}" class="featured-image">
+    </div>` : '';
+
+  main.innerHTML = `
+    <article class="article-container">
+      <header class="article-header">
+        <div class="article-category">
+          <i data-lucide="${article.category.icon}"></i>
+          ${article.category.label}
+        </div>
+        <h1 class="article-title">${article.title}</h1>
+        <p class="article-subtitle">${article.subtitle}</p>
+        ${metaHTML}
+      </header>
+      ${imageHTML}
+      <div class="article-content">${article.content}</div>
+    </article>`;
+
+  // Re-init Lucide icons for newly injected HTML
+  lucide.createIcons();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons(); // header icons
+  render();
+});
+</script>
+
+</body>
+</html>
