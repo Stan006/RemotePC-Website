@@ -232,6 +232,29 @@
         </p>
       </div>
 
+      <div style="
+        background: #7f1d1d;
+        border: 1.5px solid #ef4444;
+        border-radius: 10px;
+        padding: 1.1rem 1.4rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        color: #fff;
+        font-size: 0.95rem;
+        line-height: 1.55;
+      " role="alert" aria-live="assertive">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <strong style="color:#ef4444;display:block;margin-bottom:0.3rem;font-size:1rem;">⚠ Known Issue — Version 1.0.0.14 Fails to Start</strong>
+          We are aware of issues causing the latest release <strong>1.0.0.14</strong> to fail to start. A fix is on its way.
+          Until then, please download the previous release <strong>1.0.0.13</strong> from
+          <a href="https://github.com/Stan006/RemotePC/releases/tag/v1.0.0.13" target="_blank" rel="noopener noreferrer" style="color:#fca5a5;text-decoration:underline;font-weight:600;">here</a>,
+          then update from within the app to version 1.0.0.14 once available. We apologise for the inconvenience.
+        </div>
+      </div>
+
       <div class="download-grid">
         <article class="download-card">
           <div class="platform-icon" aria-hidden="true">
@@ -247,7 +270,7 @@
             <li>~40MB Download</li>
           </ul>
 
-          <a href="#" id="download-btn" class="btn btn-primary">
+          <a href="#" id="download-btn" class="btn btn-primary" aria-disabled="true" title="Temporarily unavailable — see warning above" style="pointer-events:none;opacity:0.45;cursor:not-allowed;filter:grayscale(0.4);">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
   Download for Windows
 </a>
