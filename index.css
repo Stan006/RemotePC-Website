@@ -942,3 +942,100 @@
   cursor: not-allowed;
   filter: grayscale(0.4);
 }
+
+/* ===== ROADMAP PANEL ===== */
+.roadmap-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  max-width: 860px;
+  margin: 2rem auto 0;
+  padding: 1.1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.06));
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(6px);
+}
+
+.roadmap-panel-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.roadmap-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(6,182,212,0.14));
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: var(--radius-md);
+  color: var(--brand-cyan);
+}
+
+.roadmap-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.roadmap-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.roadmap-sub {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roadmap-link-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-cyan);
+  background: rgba(6,182,212,0.08);
+  border: 1px solid rgba(6,182,212,0.3);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.roadmap-link-btn:hover {
+  background: rgba(6,182,212,0.16);
+  border-color: rgba(6,182,212,0.55);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .roadmap-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .roadmap-sub {
+    white-space: normal;
+  }
+
+  .roadmap-link-btn {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
