@@ -609,10 +609,10 @@ const ARTICLES = {
       <p><code>android.permission.POST_NOTIFICATIONS</code> is required for foreground services to display persistent notifications. On Android, a foreground service must show a notification; this ensures that long-running tasks like file transfers remain active even if the app is closed by the user.</p>
 
       <h2>4. Foreground Service Permissions</h2>
-      <ul>
-        <li><code>android.permission.FOREGROUND_SERVICE</code> – Required for all services that run in the foreground.</li>
-        <li><code>android.permission.FOREGROUND_SERVICE_DATA_SYNC</code> – Specifically needed by <code>FileReceiveService</code>, which handles ongoing file synchronization. This type ensures the service is treated with higher priority by the system.</li>
-      </ul>
+<ul>
+  <li><code>android.permission.FOREGROUND_SERVICE</code> – Required for all services that run in the foreground.</li>
+  <li><code>android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE</code> – Specifically needed by <code>FileReceiveService</code>, which handles ongoing file transfers to connected devices. This type ensures the service is treated with higher priority by the system.</li>
+</ul>
 
       <h2>5. Write External Storage (Legacy)</h2>
       <p><code>android.permission.WRITE_EXTERNAL_STORAGE</code> is only effective on Android API 28 and below. It allows the app to write files to shared storage. On Android 10 (API 29) and higher, the app uses the scoped storage system (<code>MediaStore</code> or app-specific directories), so this permission is no longer required.</p>
