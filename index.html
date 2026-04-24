@@ -549,7 +549,6 @@
             <li>The listener is entirely dormant until you launch it—there are no background processes or startup entries</li>
             <li>No telemetry, analytics, or hidden data collection of any kind</li>
             <li>No cloud communication—all traffic is confined to your local network</li>
-            <li>The source code is publicly available on GitHub for independent review</li>
           </ul>
           <p>To proceed past the SmartScreen warning, click <strong>More info → Run anyway</strong>. You can also verify the installer independently via the linked VirusTotal scan report.</p>
           <p class="release-note">
@@ -587,25 +586,6 @@
           <p>No. RemotePC collects no personal data, usage metrics, crash telemetry, or device information. There are no accounts to create, no registration required, and no third-party analytics or tracking SDKs embedded in the application.</p>
           <p>All communication occurs directly between your Android device and your Windows PC over your local network. Nothing is routed through external servers—there are no external servers.</p>
           <p>Privacy is not an opt-in feature. It is the default and only mode of operation.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Is the source code available for review?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>Yes. The RemotePC source code is publicly available on GitHub. You are welcome to review, audit, or build it yourself to independently verify the application's behaviour.</p>
-          <p>The installer can also be submitted to VirusTotal or any other scanning service of your choice. A publicly available VirusTotal scan report is linked on the download page for your convenience.</p>
-          <p class="release-note">
-            <a href="https://github.com/Stan006/RemotePC" class="release-link" target="_blank" rel="noopener noreferrer">
-              View on GitHub
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
         </div>
       </div>
     </article>
@@ -674,8 +654,8 @@
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>Drag and drop involves a persistent press-and-hold gesture followed by a precise movement, which is difficult to implement reliably across the wide variety of Android hardware and screen sensitivities.</p>
-          <p>Rather than ship an unreliable experience, drag and drop is currently disabled. It is a known limitation and is tracked for future improvement.</p>
+          <p>This is a Windows security restriction, not a RemotePC design choice. Because the RemotePC listener runs with administrator privileges, Windows prevents it from participating in drag and drop operations initiated by non-elevated processes—such as File Explorer, which runs at standard user level.</p>
+          <p>Windows deliberately blocks drag and drop across processes with different privilege levels as a security measure. There is no straightforward workaround that preserves RemotePC's required level of system access, so drag and drop remains unsupported for the time being.</p>
           <p class="release-note">
             <a href="https://remotepc.tech/article/?id=drag-drop" class="release-link" target="_blank" rel="noopener noreferrer">
               Read more about this limitation
@@ -694,7 +674,7 @@
       <div class="faq-answer">
         <div class="faq-answer-content">
           <p>The RemotePC Android app currently supports <strong>10 languages</strong>, with additional languages planned for future releases.</p>
-          <p>Language preference is typically detected automatically from your device's system settings. If you would like to see a specific language added, you are welcome to submit a request via the public feature tracker on Trello or through the GitHub issue tracker.</p>
+          <p>Language preference is typically detected automatically from your device's system settings. If you would like to see a specific language added, you are welcome to submit a request via the GitHub issue tracker or by contacting support directly.</p>
         </div>
       </div>
     </article>
@@ -721,20 +701,15 @@
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>There are two ways to get involved:</p>
+          <p>There are a couple of ways to get in touch:</p>
           <ul>
-            <li><strong>GitHub Issues:</strong> The preferred channel for bug reports. Providing reproduction steps, your Android version, and a description of the expected vs actual behaviour helps resolve issues faster.</li>
-            <li><strong>Trello board:</strong> The public roadmap and feature pool where you can see what is planned, in progress, or under consideration—and add your own suggestions.</li>
+            <li><strong>GitHub Issues:</strong> The preferred channel for both bug reports and feature requests. Providing reproduction steps, your Android version, and a description of the expected vs actual behaviour helps resolve issues faster.</li>
+            <li><strong>Contact form / email:</strong> Reach the team directly via the <a href="https://remotepc.tech/contact/" target="_blank" rel="noopener noreferrer">contact form</a> or at <a href="mailto:support@remotepc.tech">support@remotepc.tech</a>.</li>
           </ul>
-          <p>You can also reach the team directly via the <a href="https://remotepc.tech/contact/" target="_blank" rel="noopener noreferrer">contact form</a> or by emailing <a href="mailto:support@remotepc.tech">support@remotepc.tech</a>.</p>
+          <p>You can also view the public <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" target="_blank" rel="noopener noreferrer">Trello roadmap</a> to see what is planned or currently in progress.</p>
           <p class="release-note">
             <a href="https://github.com/Stan006/RemotePC/issues" class="release-link" target="_blank" rel="noopener noreferrer">
               Open a GitHub issue
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-            &nbsp;&nbsp;
-            <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" class="release-link" target="_blank" rel="noopener noreferrer">
-              View Trello roadmap
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
           </p>
