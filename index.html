@@ -473,11 +473,43 @@
       Common <span class="gradient-text">Questions</span>
     </h2>
     <p class="section-subtitle">
-      Everything you need to know about privacy, security, and setup
+      Everything you need to know about privacy, security, compatibility, and setup
     </p>
   </div>
 
   <div class="faq-list">
+
+    <!-- ── SETUP & COMPATIBILITY ─────────────────────────────────────── -->
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>What are the system requirements?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p><strong>Windows host (PC):</strong> Windows 10 or Windows 11. The listener application is approximately 40 MB and runs only when you launch it—it does not install background services or startup entries.</p>
+          <p><strong>Android client:</strong> Android 8.0 (Oreo) or later, a minimum of 2 GB RAM, and an active Wi-Fi connection. The app is available on Google Play and Uptodown.</p>
+          <p>Both devices must be connected to the same local network (Wi-Fi or LAN) for a successful connection.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>How do I find my PC's local IP address?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>Your PC's local IP address is displayed directly in the RemotePC Windows listener once it is running—no manual lookup is required in most cases.</p>
+          <p>If you need to find it manually, open a Command Prompt and run <code>ipconfig</code>. Look for the <strong>IPv4 Address</strong> listed under your active network adapter (typically beginning with <code>192.168.</code> or <code>10.</code>).</p>
+          <p>Alternatively, you can navigate to <strong>Settings → Network &amp; Internet → Wi-Fi → Hardware properties</strong> on Windows 11 to view the IP address without using the command line.</p>
+          <p>The Android app also supports automatic device discovery, which can detect the PC on your network without requiring manual IP entry.</p>
+        </div>
+      </div>
+    </article>
+
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
         <span>What permissions does the Android app use, and why?</span>
@@ -485,39 +517,44 @@
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>The app only requests the minimum permissions required to function—nothing more.</p>
-          <p><strong>Network access:</strong> Used to securely connect to your PC over your local Wi-Fi network and transmit commands in real time. No data is sent to external servers.</p>
-          <p><strong>Storage access:</strong> Only used when you explicitly choose to transfer files. The app never scans, indexes, or accesses your files without your action.</p>
-          <p>You stay fully in control of what the app can access at all times.</p>
+          <p>The app requests only the minimum permissions necessary to operate. No permissions are requested speculatively or for future use.</p>
+          <p><strong>Network access:</strong> Required to establish a direct connection to your PC over your local Wi-Fi network and transmit input commands in real time. No data is sent to external servers.</p>
+          <p><strong>Storage access:</strong> Only invoked when you explicitly initiate a file transfer. The app never scans, indexes, or reads your files autonomously.</p>
+          <p>You remain in full control of what the app can access at all times. Permissions can be reviewed or revoked through your device's standard app settings.</p>
           <p class="release-note">
-            For more information
+            For a full breakdown of each permission,
             <a href="https://remotepc.tech/supportarticles/art4/art4.html" class="release-link" target="_blank" rel="noopener noreferrer">
-              Read this article
+              read this article
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
+          </p>
         </div>
       </div>
     </article>
 
+    <!-- ── SECURITY & PRIVACY ─────────────────────────────────────────── -->
+
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
-        <span>Why does Windows Defender flag the listener?</span>
+        <span>Why does Windows Defender or SmartScreen flag the listener?</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>This is a common false positive triggered by how remote-control software works.</p>
-          <p>Apps like RemotePC simulate keyboard and mouse input, capture the screen, and communicate over the network—behaviors that can resemble malware to automated security systems.</p>
-          <p><strong>Key differences:</strong></p>
+          <p>This is an expected false positive, not an indication that anything is wrong with the application.</p>
+          <p>Remote control software by nature performs actions—simulating input, capturing the screen, communicating over the network—that automated security heuristics associate with malware. Windows Defender and SmartScreen flag these behaviors regardless of intent.</p>
+          <p>Additionally, the installer is not code-signed. Code signing certificates cost up to <strong>$350 per year</strong>, which is not viable for a free, zero-monetisation application. Skipping code signing keeps RemotePC free for everyone.</p>
+          <p>Key facts that distinguish RemotePC from malware:</p>
           <ul>
-            <li>No background activity—it only runs when you launch it</li>
-            <li>No telemetry or hidden data collection</li>
-            <li>No cloud communication—everything stays on your local network</li>
+            <li>The listener is entirely dormant until you launch it—there are no background processes or startup entries</li>
+            <li>No telemetry, analytics, or hidden data collection of any kind</li>
+            <li>No cloud communication—all traffic is confined to your local network</li>
+            <li>The source code is publicly available on GitHub for independent review</li>
           </ul>
+          <p>To proceed past the SmartScreen warning, click <strong>More info → Run anyway</strong>. You can also verify the installer independently via the linked VirusTotal scan report.</p>
           <p class="release-note">
-            Learn more about why this happens:
             <a href="https://remotepc.tech/supportarticles/art2/art2.html" class="release-link" target="_blank" rel="noopener noreferrer">
-              Read explanation
+              Read the full explanation
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
           </p>
@@ -527,33 +564,184 @@
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
-        <span>Can anyone else access my PC?</span>
+        <span>Can anyone else access my PC through RemotePC?</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>No, access is limited by design.</p>
-          <p>Only devices connected to your local network (Wi-Fi/LAN) can attempt to connect, and they must know your specific IP address and port, plus the desktop app has features to block even local devices from connecting.</p>
-          <p>By default, the app is <strong>not exposed to the internet</strong>, meaning external devices cannot reach your PC unless you explicitly configure advanced networking (such as port forwarding).</p>
-          <p>This local first approach significantly reduces security risks.</p>
+          <p>No. Access is constrained by design at multiple levels.</p>
+          <p>Only devices on your local network (Wi-Fi or LAN) can attempt a connection at all. Even then, a connecting device must know your PC's specific IP address and port. The Windows listener also includes explicit controls to block individual local devices from connecting.</p>
+          <p>By default, RemotePC is <strong>not exposed to the internet</strong>. No external device can reach your PC unless you deliberately configure advanced networking, such as port forwarding on your router—something that requires intentional action on your part.</p>
+          <p>This local-first architecture is a deliberate security choice, not a limitation. It eliminates an entire class of remote attack vectors that cloud-based solutions must actively defend against.</p>
         </div>
       </div>
     </article>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
-        <span>Does the app track me or collect data?</span>
+        <span>Does the app collect any data or track usage?</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>No tracking, no accounts, and no hidden analytics.</p>
-          <p>The app does not collect personal data, usage metrics, or device information. There are no third-party trackers or background services.</p>
-          <p>All communication happens directly between your devices over your local network and nothing is routed through external servers.</p>
-          <p>Your privacy is not just a feature, it’s the default.</p>
+          <p>No. RemotePC collects no personal data, usage metrics, crash telemetry, or device information. There are no accounts to create, no registration required, and no third-party analytics or tracking SDKs embedded in the application.</p>
+          <p>All communication occurs directly between your Android device and your Windows PC over your local network. Nothing is routed through external servers—there are no external servers.</p>
+          <p>Privacy is not an opt-in feature. It is the default and only mode of operation.</p>
         </div>
       </div>
     </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>Is the source code available for review?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>Yes. The RemotePC source code is publicly available on GitHub. You are welcome to review, audit, or build it yourself to independently verify the application's behaviour.</p>
+          <p>The installer can also be submitted to VirusTotal or any other scanning service of your choice. A publicly available VirusTotal scan report is linked on the download page for your convenience.</p>
+          <p class="release-note">
+            <a href="https://github.com/Stan006/RemotePC" class="release-link" target="_blank" rel="noopener noreferrer">
+              View on GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CONNECTIVITY & PERFORMANCE ────────────────────────────────── -->
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>Does RemotePC work over the internet or away from home?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>RemotePC is designed for <strong>local network use only</strong>. Both devices must be on the same Wi-Fi or LAN segment for a connection to be established.</p>
+          <p>Internet access is not required and is not used. This is an intentional architectural decision—it eliminates latency introduced by cloud relay servers, removes any dependency on external infrastructure, and ensures your data never leaves your home network.</p>
+          <p>Remote access over the internet is technically possible through advanced router configuration (such as port forwarding or a personal VPN tunnel), but this is outside the scope of RemotePC's supported setup and introduces additional security considerations that you should research independently.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>Why does a VPN interfere with the connection?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>RemotePC communicates directly between your devices over the local network. A VPN, when active on either device, can redirect or intercept network traffic in a way that breaks this direct local connection.</p>
+          <p>VPN clients often route all traffic through a remote server, effectively taking your device off the local network from a connectivity standpoint. This prevents RemotePC from locating or reaching the other device.</p>
+          <p>If you experience connection issues, try disabling any active VPN on both your Android device and your Windows PC, then attempt to reconnect.</p>
+          <p class="release-note">
+            <a href="https://remotepc.tech/article/?id=vpn" class="release-link" target="_blank" rel="noopener noreferrer">
+              Read full explanation
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>The connection is slow or laggy—what should I check?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>Performance is primarily determined by the quality of your local network. A few things to check:</p>
+          <ul>
+            <li><strong>Wi-Fi signal strength:</strong> Both devices should have a strong, stable connection to the router. Distance, walls, and interference all affect performance. If possible, position devices closer to the router or use a 5 GHz band.</li>
+            <li><strong>Network congestion:</strong> Heavy simultaneous use of the network (streaming, downloads, video calls) can reduce available bandwidth and increase latency.</li>
+            <li><strong>VPN interference:</strong> An active VPN on either device can significantly degrade local network performance. Disable it and test again.</li>
+            <li><strong>PC performance:</strong> Screen streaming is resource-intensive. Ensure the Windows host is not under heavy CPU or GPU load from other applications.</li>
+          </ul>
+          <p>For most home networks, input control (trackpad, keyboard, media keys) operates with effectively zero perceptible latency. Screen streaming performance varies more with network conditions.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── FEATURES ───────────────────────────────────────────────────── -->
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>Why is drag and drop not supported?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>Drag and drop involves a persistent press-and-hold gesture followed by a precise movement, which is difficult to implement reliably across the wide variety of Android hardware and screen sensitivities.</p>
+          <p>Rather than ship an unreliable experience, drag and drop is currently disabled. It is a known limitation and is tracked for future improvement.</p>
+          <p class="release-note">
+            <a href="https://remotepc.tech/article/?id=drag-drop" class="release-link" target="_blank" rel="noopener noreferrer">
+              Read more about this limitation
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>What languages does the app support?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>The RemotePC Android app currently supports <strong>10 languages</strong>, with additional languages planned for future releases.</p>
+          <p>Language preference is typically detected automatically from your device's system settings. If you would like to see a specific language added, you are welcome to submit a request via the public feature tracker on Trello or through the GitHub issue tracker.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── GENERAL ─────────────────────────────────────────────────────── -->
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>Is RemotePC free? Are there any paid plans or subscriptions?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>RemotePC is completely free. There are no paid tiers, no premium features gated behind a subscription, and no in-app purchases.</p>
+          <p>The application has no monetisation model. It does not display advertisements, sell data, or offer upgrades. The full feature set is available to every user at no cost.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        <span>How do I report a bug or request a feature?</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p>There are two ways to get involved:</p>
+          <ul>
+            <li><strong>GitHub Issues:</strong> The preferred channel for bug reports. Providing reproduction steps, your Android version, and a description of the expected vs actual behaviour helps resolve issues faster.</li>
+            <li><strong>Trello board:</strong> The public roadmap and feature pool where you can see what is planned, in progress, or under consideration—and add your own suggestions.</li>
+          </ul>
+          <p>You can also reach the team directly via the <a href="https://remotepc.tech/contact/" target="_blank" rel="noopener noreferrer">contact form</a> or by emailing <a href="mailto:support@remotepc.tech">support@remotepc.tech</a>.</p>
+          <p class="release-note">
+            <a href="https://github.com/Stan006/RemotePC/issues" class="release-link" target="_blank" rel="noopener noreferrer">
+              Open a GitHub issue
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+            &nbsp;&nbsp;
+            <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" class="release-link" target="_blank" rel="noopener noreferrer">
+              View Trello roadmap
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
   </main>
