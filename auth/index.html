@@ -384,6 +384,52 @@
       background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
       margin: 28px 0;
     }
+
+    /* ── Typewriter ── */
+    .typewriter-line {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-align: center;
+      min-height: 1.6em;
+      opacity: 0.8;
+    }
+    .typewriter-line .cursor {
+      display: inline-block;
+      width: 1ch;
+      background: var(--accent);
+      color: transparent;
+      border-radius: 1px;
+      animation: blink 1.1s step-end infinite;
+      margin-left: 1px;
+      vertical-align: middle;
+      height: 0.9em;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ── Staggered form entrance ── */
+    @keyframes staggerIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #view-reset .stagger {
+      opacity: 0;
+    }
+    #view-reset.revealed .stagger {
+      animation: staggerIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    #view-reset.revealed .stagger:nth-child(1) { animation-delay: 0.00s; }
+    #view-reset.revealed .stagger:nth-child(2) { animation-delay: 0.06s; }
+    #view-reset.revealed .stagger:nth-child(3) { animation-delay: 0.12s; }
+    #view-reset.revealed .stagger:nth-child(4) { animation-delay: 0.18s; }
+    #view-reset.revealed .stagger:nth-child(5) { animation-delay: 0.24s; }
+    #view-reset.revealed .stagger:nth-child(6) { animation-delay: 0.28s; }
+    #view-reset.revealed .stagger:nth-child(7) { animation-delay: 0.32s; }
+    #view-reset.revealed .stagger:nth-child(8) { animation-delay: 0.36s; }
   </style>
 </head>
 <body>
@@ -392,24 +438,24 @@
 <div class="corner-br"></div>
 
 <div class="card">
-  <div class="logo"><span class="logo-dot"></span>RemotePC - Account Management</div>
+  <div class="logo"><span class="logo-dot"></span>RemotePC</div>
 
   <!-- LOADING -->
   <div class="view active" id="view-loading">
     <div class="spinner-wrap">
       <div class="spinner"></div>
-      <p class="subtitle" style="text-align:center; margin-bottom:0">Verifying your request…</p>
+      <p class="typewriter-line"><span id="tw-text"></span><span class="cursor">&nbsp;</span></p>
     </div>
   </div>
 
   <!-- RESET PASSWORD FORM -->
   <div class="view" id="view-reset">
-    <h1>Set new password</h1>
-    <p class="subtitle">Choose a strong password for your account.</p>
+    <h1 class="stagger">Set new password</h1>
+    <p class="subtitle stagger">Choose a strong password for your account.</p>
 
-    <div class="alert error" id="reset-error"></div>
+    <div class="alert error stagger" id="reset-error"></div>
 
-    <div class="input-wrap">
+    <div class="input-wrap stagger">
       <label for="pw1">New password</label>
       <input type="password" id="pw1" placeholder="••••••••••••" autocomplete="new-password" oninput="checkStrength()">
       <button class="toggle-eye" type="button" onclick="togglePw('pw1',this)" aria-label="Show password">
@@ -417,12 +463,12 @@
       </button>
     </div>
 
-    <div class="strength-bar" id="strength-bar">
+    <div class="strength-bar stagger" id="strength-bar">
       <span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span>
     </div>
-    <div class="strength-label" id="strength-label">—</div>
+    <div class="strength-label stagger" id="strength-label">—</div>
 
-    <div class="input-wrap">
+    <div class="input-wrap stagger">
       <label for="pw2">Confirm password</label>
       <input type="password" id="pw2" placeholder="••••••••••••" autocomplete="new-password">
       <button class="toggle-eye" type="button" onclick="togglePw('pw2',this)" aria-label="Show password">
@@ -430,7 +476,7 @@
       </button>
     </div>
 
-    <button class="primary" id="reset-btn" onclick="doReset()">Set New Password</button>
+    <button class="primary stagger" id="reset-btn" onclick="doReset()">Set New Password</button>
   </div>
 
   <!-- SUCCESS -->
@@ -567,6 +613,43 @@
 </script>
 
 <script>
+  /* ── Typewriter ── */
+  (function () {
+    const phrases = [
+      "Verifying your request",
+      "Checking token validity",
+      "Almost there",
+    ];
+    const el = document.getElementById("tw-text");
+    if (!el) return;
+    let pi = 0, ci = 0, deleting = false, pauseTick = 0;
+    const PAUSE = 18; // ticks to hold after full phrase
+
+    function tick() {
+      const phrase = phrases[pi];
+      if (pauseTick > 0) { pauseTick--; setTimeout(tick, 80); return; }
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) { pauseTick = PAUSE; deleting = true; }
+        setTimeout(tick, 65);
+      } else {
+        el.textContent = phrase.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+        setTimeout(tick, 38);
+      }
+    }
+    tick();
+  })();
+
+  /* ── Stagger: trigger .revealed when view-reset becomes active ── */
+  const resetView = document.getElementById("view-reset");
+  new MutationObserver(() => {
+    if (resetView.classList.contains("active")) {
+      // one rAF so the display:block has painted before we animate
+      requestAnimationFrame(() => resetView.classList.add("revealed"));
+    }
+  }).observe(resetView, { attributes: true, attributeFilter: ["class"] });
+
   function checkStrength() {
     const pw    = document.getElementById("pw1").value;
     const bars  = [document.getElementById("s1"), document.getElementById("s2"),
