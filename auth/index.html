@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RemotePC · Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0c10;
+      --surface: #111318;
+      --border: #1e2128;
+      --accent: #00c8ff;
+      --accent-dim: rgba(0, 200, 255, 0.12);
+      --accent-glow: rgba(0, 200, 255, 0.25);
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --error: #ff4d6a;
+      --success: #00e5a0;
+      --input-bg: #0d0f14;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    /* background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* top glow orb */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(0,200,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px;
+      padding: 40px 36px;
+      box-shadow: 0 0 0 1px rgba(0,200,255,0.05), 0 24px 48px rgba(0,0,0,0.4);
+      animation: fadeUp 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent); }
+      50%       { opacity: 0.5; box-shadow: 0 0 4px var(--accent); }
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      padding: 12px 44px 12px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    .toggle-eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .toggle-eye:hover { color: var(--accent); }
+
+    .strength-bar {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .strength-bar span {
+      flex: 1;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--border);
+      transition: background 0.3s;
+    }
+
+    .strength-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    button.primary {
+      width: 100%;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 4px;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    button.primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    button.primary:active { transform: translateY(0); }
+    button.primary:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+    .alert {
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.error {
+      background: rgba(255,77,106,0.1);
+      border: 1px solid rgba(255,77,106,0.3);
+      color: #ff8fa3;
+    }
+
+    .alert.success {
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.25);
+      color: var(--success);
+    }
+
+    .alert.show { display: block; animation: fadeUp 0.25s ease both; }
+
+    /* state views */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .icon-wrap.ok  { background: rgba(0,229,160,0.1); }
+    .icon-wrap.err { background: rgba(255,77,106,0.1); }
+
+    .spinner {
+      width: 36px; height: 36px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="logo"><span class="logo-dot"></span>RemotePC</div>
+
+  <!-- LOADING -->
+  <div class="view active" id="view-loading">
+    <div class="spinner"></div>
+    <p class="subtitle" style="text-align:center">Verifying your request…</p>
+  </div>
+
+  <!-- RESET PASSWORD FORM -->
+  <div class="view" id="view-reset">
+    <h1>New Password</h1>
+    <p class="subtitle">Choose a strong password for your account.</p>
+
+    <div class="alert error" id="reset-error"></div>
+
+    <div class="input-wrap">
+      <label for="pw1">New password</label>
+      <input type="password" id="pw1" placeholder="••••••••••••" autocomplete="new-password" oninput="checkStrength()">
+      <button class="toggle-eye" type="button" onclick="togglePw('pw1',this)" aria-label="Show password">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+
+    <div class="strength-bar" id="strength-bar">
+      <span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span>
+    </div>
+    <div class="strength-label" id="strength-label">—</div>
+
+    <div class="input-wrap">
+      <label for="pw2">Confirm password</label>
+      <input type="password" id="pw2" placeholder="••••••••••••" autocomplete="new-password">
+      <button class="toggle-eye" type="button" onclick="togglePw('pw2',this)" aria-label="Show password">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+
+    <button class="primary" id="reset-btn" onclick="doReset()">Set New Password</button>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="view" id="view-success">
+    <div class="icon-wrap ok">
+      <svg width="24" height="24" fill="none" stroke="#00e5a0" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <h1 id="success-title">Done!</h1>
+    <p class="subtitle" id="success-msg"></p>
+    <a class="back-link" href="/">← Back to app</a>
+  </div>
+
+  <!-- ERROR -->
+  <div class="view" id="view-error">
+    <div class="icon-wrap err">
+      <svg width="24" height="24" fill="none" stroke="#ff4d6a" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <h1>Link Invalid</h1>
+    <p class="subtitle" id="error-msg">This link has expired or already been used. Please request a new one.</p>
+    <a class="back-link" href="/">← Back to app</a>
+  </div>
+</div>
+
+<!-- ─── Firebase via CDN (no build step needed) ─── -->
+<script type="module">
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 🔧 PASTE YOUR FIREBASE CONFIG HERE
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const firebaseConfig = {
+  apiKey: "AIzaSyBPJIGtF1X_P3B_7Ir_zmNRRSqqve5xqs0",
+  authDomain: "remotepc-admin-console.firebaseapp.com",
+  databaseURL: "https://remotepc-admin-console-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "remotepc-admin-console",
+  storageBucket: "remotepc-admin-console.firebasestorage.app",
+  messagingSenderId: "5553110565",
+  appId: "1:5553110565:web:a719883bac45afdf3c89cc"
+};
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  import { initializeApp }                        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, applyActionCode, confirmPasswordReset, verifyPasswordResetCode }
+                                                  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const params  = new URLSearchParams(window.location.search);
+  const mode    = params.get("mode");
+  const oobCode = params.get("oobCode");
+
+  // expose for inline handlers
+  window._auth    = auth;
+  window._oobCode = oobCode;
+
+  function show(id) {
+    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  function showSuccess(title, msg) {
+    document.getElementById("success-title").textContent = title;
+    document.getElementById("success-msg").textContent   = msg;
+    show("view-success");
+  }
+
+  function showError(msg) {
+    document.getElementById("error-msg").textContent = msg || "This link has expired or already been used.";
+    show("view-error");
+  }
+
+  if (!oobCode || !mode) {
+    showError("No action code found in this URL.");
+  } else if (mode === "resetPassword") {
+    // Verify the code is still valid before showing the form
+    verifyPasswordResetCode(auth, oobCode)
+      .then(() => show("view-reset"))
+      .catch(() => showError("This password reset link has expired or already been used."));
+
+  } else if (mode === "verifyEmail") {
+    applyActionCode(auth, oobCode)
+      .then(() => showSuccess("Email Verified", "Your email address has been verified. You can now sign in."))
+      .catch(e => showError(friendlyError(e)));
+
+  } else if (mode === "recoverEmail") {
+    applyActionCode(auth, oobCode)
+      .then(() => showSuccess("Email Recovered", "Your email address has been restored. Check your inbox for further instructions."))
+      .catch(e => showError(friendlyError(e)));
+
+  } else {
+    showError("Unknown action. Please check the link and try again.");
+  }
+
+  function friendlyError(e) {
+    const map = {
+      "auth/expired-action-code":  "This link has expired. Please request a new one.",
+      "auth/invalid-action-code":  "This link is invalid or has already been used.",
+      "auth/user-disabled":        "This account has been disabled.",
+      "auth/user-not-found":       "No account found for this link.",
+    };
+    return map[e.code] || "Something went wrong. Please try again.";
+  }
+
+  // Password reset submit
+  window.doReset = async function () {
+    const pw1 = document.getElementById("pw1").value;
+    const pw2 = document.getElementById("pw2").value;
+    const err = document.getElementById("reset-error");
+    const btn = document.getElementById("reset-btn");
+
+    err.classList.remove("show");
+
+    if (pw1.length < 8) {
+      err.textContent = "Password must be at least 8 characters.";
+      return err.classList.add("show");
+    }
+    if (pw1 !== pw2) {
+      err.textContent = "Passwords do not match.";
+      return err.classList.add("show");
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+
+    try {
+      await confirmPasswordReset(window._auth, window._oobCode, pw1);
+      showSuccess("Password Updated", "Your password has been changed. You can now sign in with your new password.");
+    } catch (e) {
+      err.textContent = friendlyError(e);
+      err.classList.add("show");
+      btn.disabled = false;
+      btn.textContent = "Set New Password";
+    }
+  };
+</script>
+
+<script>
+  // Strength meter + eye toggle live in plain script (no module needed)
+  function checkStrength() {
+    const pw    = document.getElementById("pw1").value;
+    const bars  = [document.getElementById("s1"), document.getElementById("s2"),
+                   document.getElementById("s3"), document.getElementById("s4")];
+    const label = document.getElementById("strength-label");
+
+    let score = 0;
+    if (pw.length >= 8)               score++;
+    if (/[A-Z]/.test(pw))             score++;
+    if (/[0-9]/.test(pw))             score++;
+    if (/[^A-Za-z0-9]/.test(pw))      score++;
+
+    const colors = ["#ff4d6a","#ff9f43","#f7c948","#00e5a0"];
+    const labels = ["Weak","Fair","Good","Strong"];
+
+    bars.forEach((b, i) => b.style.background = i < score ? colors[score - 1] : "");
+    label.textContent = pw ? labels[score - 1] || "Weak" : "—";
+    label.style.color = pw ? colors[score - 1] : "";
+  }
+
+  function togglePw(id, btn) {
+    const input = document.getElementById(id);
+    const isText = input.type === "text";
+    input.type = isText ? "password" : "text";
+    btn.innerHTML = isText
+      ? `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>`
+      : `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+  }
+</script>
+</body>
+</html>
