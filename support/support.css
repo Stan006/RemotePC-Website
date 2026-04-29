@@ -249,19 +249,27 @@
     }
 
     .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-2xl);
-    }
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
 
-    .category-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg);
-      transition: all var(--transition-base);
-    }
+  /* optional polish */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-card {
+  min-width: 280px;
+  flex: 0 0 auto;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+}
 
     .category-card:hover {
       transform: translateY(-4px);
