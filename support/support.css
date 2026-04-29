@@ -186,7 +186,7 @@ main, header, footer {
 }
 
 .hero h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Lucida Console', sans-serif;
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.15;
