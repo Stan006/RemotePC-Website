@@ -18,6 +18,70 @@ document.querySelectorAll('.faq-question').forEach(button => {
   });
 });
 
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+
+if (mobileMenuBtn && navMenu) {
+  const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+  const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+  const closeMobileMenu = () => {
+    navMenu.classList.remove('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+    mobileMenuBtn.innerHTML = menuIcon;
+  };
+
+  const openMobileMenu = () => {
+    navMenu.classList.add('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    mobileMenuBtn.setAttribute('aria-label', 'Close menu');
+    mobileMenuBtn.innerHTML = closeIcon;
+  };
+
+  mobileMenuBtn.addEventListener('click', () => {
+    if (navMenu.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  // Close the menu when any link inside it is tapped
+  navMenu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close it if the viewport grows back past the mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 968 && navMenu.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close on outside tap/click
+  document.addEventListener('click', (e) => {
+    if (
+      navMenu.classList.contains('open') &&
+      !navMenu.contains(e.target) &&
+      !mobileMenuBtn.contains(e.target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      closeMobileMenu();
+      mobileMenuBtn.focus();
+    }
+  });
+}
+
 // Feature card mouse tracking
 document.querySelectorAll('.feature-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
@@ -30,18 +94,20 @@ document.querySelectorAll('.feature-card').forEach(card => {
 });
 
 // Smooth scroll with offset for fixed header
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// (":not([href=\"#\"])" excludes bare "#" links like the logo and the
+// download buttons, which already have their own click handlers and would
+// otherwise throw on document.querySelector('#'))
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const offset = 72; // Header height
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
+    if (!target) return; // no matching element for this hash, let default behavior happen
+    e.preventDefault();
+    const offset = 72; // Header height
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
   });
 });
 
@@ -94,12 +160,16 @@ if (contactForm) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
   // Suspicious patterns to detect
+  // Note: no 'g' flag here — these are only ever used with .test(), and a
+  // global regex keeps a lastIndex between calls, which makes repeated
+  // .test() calls on the same pattern unreliable (a match can be skipped
+  // or falsely reported depending on where the previous call left off).
   const suspiciousPatterns = [
     /script/i,
-    /<[^>]*>/g,  // HTML tags
+    /<[^>]*>/,  // HTML tags
     /javascript:/i,
     /on\w+=/i,  // Event handlers
-    /\{[^}]*\}/g,  // Template strings
+    /\{[^}]*\}/,  // Template strings
     /viagra|cialis|casino|lottery/i  // Common spam words
   ];
 
@@ -195,6 +265,15 @@ if (contactForm) {
     }
 
     // Check reCAPTCHA
+    // Guard against the reCAPTCHA script failing to load (ad blockers, offline
+    // testing, network issues) — otherwise grecaptcha is undefined here and
+    // this throws before the button/message state is ever updated.
+    if (typeof grecaptcha === 'undefined') {
+      formMessage.className = 'form-message error';
+      formMessage.textContent = 'Verification failed to load. Please refresh the page and try again.';
+      return;
+    }
+
     const recaptchaResponse = grecaptcha.getResponse();
     if (!recaptchaResponse) {
       formMessage.className = 'form-message error';
