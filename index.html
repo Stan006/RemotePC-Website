@@ -92,19 +92,20 @@
       align-items: center;
       gap: .6rem;
       padding: var(--space-lg) var(--space-md);
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       text-decoration: none;
       color: var(--text-primary);
-      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
       position: relative;
       overflow: hidden;
     }
     .support-onetime-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(59,130,246,.35);
-      box-shadow: 0 16px 36px rgba(59,130,246,.13);
+      transform: translateY(-5px);
+      background: var(--surface-2);
+      border-color: rgba(91,124,250,.4);
+      box-shadow: 0 20px 40px -12px rgba(91,124,250,.25);
     }
     .support-onetime-emoji { font-size: 1.75rem; }
     .support-onetime-amount {
@@ -139,21 +140,21 @@
       display: flex;
       flex-direction: column;
       padding: var(--space-lg);
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xl);
       text-decoration: none;
       color: var(--text-primary);
-      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
       position: relative;
       overflow: hidden;
     }
-    .support-membership-card:hover { transform: translateY(-5px); }
-    .sm-supporter { --sm-color: #06b6d4; --sm-glow: rgba(6,182,212,.15); }
-    .sm-backer    { --sm-color: #3b82f6; --sm-glow: rgba(59,130,246,.18); }
+    .support-membership-card:hover { transform: translateY(-6px); background: var(--surface-2); }
+    .sm-supporter { --sm-color: #22d3ee; --sm-glow: rgba(34,211,238,.15); }
+    .sm-backer    { --sm-color: #5b7cfa; --sm-glow: rgba(91,124,250,.18); }
     .sm-champion  { --sm-color: #8b5cf6; --sm-glow: rgba(139,92,246,.18); }
-    .sm-supporter:hover { border-color: rgba(6,182,212,.4);   box-shadow: 0 20px 50px var(--sm-glow); }
-    .sm-backer:hover    { border-color: rgba(59,130,246,.4);  box-shadow: 0 20px 50px var(--sm-glow); }
+    .sm-supporter:hover { border-color: rgba(34,211,238,.4);   box-shadow: 0 20px 50px var(--sm-glow); }
+    .sm-backer:hover    { border-color: rgba(91,124,250,.4);  box-shadow: 0 20px 50px var(--sm-glow); }
     .sm-champion:hover  { border-color: rgba(139,92,246,.4);  box-shadow: 0 20px 50px var(--sm-glow); }
     .support-membership-card::after {
       content: '';
@@ -171,8 +172,8 @@
       top: var(--space-md);
       right: var(--space-md);
       padding: .2rem .65rem;
-      background: rgba(59,130,246,.15);
-      border: 1px solid rgba(59,130,246,.3);
+      background: rgba(91,124,250,.15);
+      border: 1px solid rgba(91,124,250,.3);
       border-radius: 999px;
       font-size: .68rem;
       font-weight: 700;
@@ -187,11 +188,11 @@
       border-radius: var(--radius-md);
       display: flex; align-items: center; justify-content: center;
       margin-bottom: var(--space-md);
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.035);
     }
-    .sm-supporter .sm-icon { background: rgba(6,182,212,.1);   border-color: rgba(6,182,212,.2); }
-    .sm-backer    .sm-icon { background: rgba(59,130,246,.1);  border-color: rgba(59,130,246,.2); }
+    .sm-supporter .sm-icon { background: rgba(34,211,238,.1);   border-color: rgba(34,211,238,.2); }
+    .sm-backer    .sm-icon { background: rgba(91,124,250,.1);  border-color: rgba(91,124,250,.2); }
     .sm-champion  .sm-icon { background: rgba(139,92,246,.1);  border-color: rgba(139,92,246,.2); }
 
     .sm-name {
@@ -240,17 +241,17 @@
       padding: .7rem 1rem;
       border-radius: var(--radius-md);
       font-weight: 600; font-size: .9rem;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.09);
       background: rgba(255,255,255,.04);
       color: var(--text-primary);
       transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
       cursor: pointer;
     }
-    .sm-supporter .sm-btn { border-color: rgba(6,182,212,.3);  color: #06b6d4; background: rgba(6,182,212,.07); }
-    .sm-backer    .sm-btn { border-color: rgba(59,130,246,.3); color: #3b82f6; background: rgba(59,130,246,.07); }
+    .sm-supporter .sm-btn { border-color: rgba(34,211,238,.3);  color: #22d3ee; background: rgba(34,211,238,.07); }
+    .sm-backer    .sm-btn { border-color: rgba(91,124,250,.3); color: #5b7cfa; background: rgba(91,124,250,.07); }
     .sm-champion  .sm-btn { border-color: rgba(139,92,246,.3); color: #8b5cf6; background: rgba(139,92,246,.07); }
-    .sm-supporter .sm-btn:hover { background: rgba(6,182,212,.15);  border-color: rgba(6,182,212,.6);  color: #fff; }
-    .sm-backer    .sm-btn:hover { background: rgba(59,130,246,.15); border-color: rgba(59,130,246,.6); color: #fff; }
+    .sm-supporter .sm-btn:hover { background: rgba(34,211,238,.15);  border-color: rgba(34,211,238,.6);  color: #fff; }
+    .sm-backer    .sm-btn:hover { background: rgba(91,124,250,.15); border-color: rgba(91,124,250,.6); color: #fff; }
     .sm-champion  .sm-btn:hover { background: rgba(139,92,246,.15); border-color: rgba(139,92,246,.6); color: #fff; }
 
     .support-note {
@@ -267,7 +268,7 @@
       color: var(--brand-cyan) !important;
     }
     .nav-link-support::after {
-      background: linear-gradient(135deg, #06b6d4, #8b5cf6) !important;
+      background: linear-gradient(135deg, #22d3ee, #8b5cf6) !important;
     }
 
     /* Responsive */
@@ -281,6 +282,30 @@
   </style>
 </head>
 <body>
+  <!-- ── Scroll-follow trail: a wavy line that fills in and a dot that travels down it as the page scrolls ── -->
+  <div class="scroll-follow" aria-hidden="true">
+    <svg id="scrollFollowSvg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="scrollGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5b7cfa"/>
+          <stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient>
+      </defs>
+      <path class="scroll-follow-track" id="scrollTrackPath" d=""></path>
+      <path class="scroll-follow-progress" id="scrollProgressPath" d=""></path>
+    </svg>
+    <div class="scroll-follow-dot" id="scrollFollowDot"></div>
+    <div class="scroll-follow-burst" id="scrollFollowBurst" aria-hidden="true"></div>
+  </div>
+
+  <!-- ── Back to top: fades in once you're well down the page ── -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5"/>
+      <path d="m5 12 7-7 7 7"/>
+    </svg>
+  </button>
+
   <header class="header" role="banner">
     <nav class="nav-container" aria-label="Main navigation">
       <a href="#" class="logo">
@@ -290,25 +315,27 @@
         <span>RemotePC</span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#features" class="nav-link">Features</a></li>
-        <li><a href="#how-it-works" class="nav-link">How it works</a></li>
-        <li><a href="#download" class="nav-link">Download</a></li>
-        <li><a href="releases/" class="nav-link">Releases</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
-        <li><a href="support/" class="nav-link">Support</a></li>
-        <li><a href="contact/" class="nav-link">Contact Us</a></li>
-        <li><a href="#support" class="nav-link nav-link-support">☕ Support Us</a></li>
-      </ul>
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#how-it-works" class="nav-link">How it works</a></li>
+          <li><a href="#download" class="nav-link">Download</a></li>
+          <li><a href="releases/" class="nav-link">Releases</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="support/" class="nav-link">Support</a></li>
+          <li><a href="contact/" class="nav-link">Contact Us</a></li>
+          <li><a href="#support" class="nav-link nav-link-support">☕ Support Us</a></li>
+        </ul>
 
-      <div class="nav-actions">
-        <a href="#download" class="nav-cta">
-          Get Started
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+        <div class="nav-actions">
+          <a href="#download" class="nav-cta">
+            Get Started
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
-      <button class="mobile-menu-btn" aria-label="Open menu">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </nav>
@@ -347,7 +374,7 @@
             <span class="stat-label">Cloud Latency</span>
           </div>
           <div class="stat">
-            <span class="stat-value">40MB</span>
+            <span class="stat-value">100MB</span>
             <span class="stat-label">Ultra Light</span>
           </div>
           <div class="stat">
@@ -420,7 +447,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
           </div>
           <h3>Secure File Transfer</h3>
-          <p>Pick a file on Android and send it directly to your PC over TCP local tunnels. No cloud involved. (PC to Android Coming soon.)</p>
+          <p>Send files between your devices over TCP local tunnels. No cloud involved.</p>
         </article>
 
         <article class="feature-card">
@@ -516,7 +543,7 @@
             <li>Windows 10/11</li>
             <li>Installer (.exe)</li>
             <li>Local Network Only</li>
-            <li>~40MB Download</li>
+            <li>~100MB Download</li>
           </ul>
 
           <a href="#" id="download-btn" class="btn btn-primary">
@@ -690,8 +717,8 @@
           <p>The controller for your phone or tablet</p>
 
           <ul class="requirements-list">
-            <li>Android 8.0+</li>
-            <li>2GB RAM minimum</li>
+            <li>Android 10.0+</li>
+            <li>3GB RAM minimum</li>
             <li>Wi-Fi Required</li>
             <li>Free Download</li>
           </ul>
@@ -881,6 +908,8 @@
   <div class="faq-list">
 
     <!-- ── SETUP & COMPATIBILITY ─────────────────────────────────────── -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Setup &amp; Compatibility</h3>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -933,7 +962,11 @@
       </div>
     </article>
 
+    </div>
+
     <!-- ── SECURITY & PRIVACY ─────────────────────────────────────────── -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Security &amp; Privacy</h3>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -944,7 +977,7 @@
         <div class="faq-answer-content">
           <p>This is an expected false positive, not an indication that anything is wrong with the application.</p>
           <p>Remote control software by nature performs actions—simulating input, capturing the screen, communicating over the network—that automated security heuristics associate with malware. Windows Defender and SmartScreen flag these behaviors regardless of intent.</p>
-          <p>Additionally, the installer is not code-signed. Code signing certificates cost up to <strong>$350 per year</strong>, which is not viable for a free, zero-monetisation application. Skipping code signing keeps RemotePC free for everyone.</p>
+          <p>Additionally, the installer is not code-signed. Code signing certificates typically run anywhere from <strong>$200 to $500+ per year</strong> depending on the certificate authority and validation level, which is not viable for a free, zero-monetisation application. Skipping code signing keeps RemotePC free for everyone.</p>
           <p>Key facts that distinguish RemotePC from malware:</p>
           <ul>
             <li>The listener is entirely dormant until you launch it—there are no background processes or startup entries</li>
@@ -991,7 +1024,11 @@
       </div>
     </article>
 
+    </div>
+
     <!-- ── CONNECTIVITY & PERFORMANCE ────────────────────────────────── -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Connectivity &amp; Performance</h3>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -1015,7 +1052,7 @@
       <div class="faq-answer">
         <div class="faq-answer-content">
           <p>RemotePC communicates directly between your devices over the local network. A VPN, when active on either device, can redirect or intercept network traffic in a way that breaks this direct local connection.</p>
-          <p>VPN clients often route all traffic through a remote server, effectively taking your device off the local network from a connectivity standpoint. This prevents RemotePC from locating or reaching the other device.</p>
+          <p>Most VPN clients route all device traffic through a remote server by default, which effectively takes your device off the local network from a connectivity standpoint. This prevents RemotePC from locating or reaching the other device. Some VPN apps offer a <strong>split-tunneling</strong> or "local network access" setting that excludes LAN traffic from the tunnel—if your VPN supports this, enabling it may let RemotePC keep working while the VPN stays on.</p>
           <p>If you experience connection issues, try disabling any active VPN on both your Android device and your Windows PC, then attempt to reconnect.</p>
           <p class="release-note">
             <a href="https://remotepc.tech/article/?id=vpn" class="release-link" target="_blank" rel="noopener noreferrer">
@@ -1046,7 +1083,11 @@
       </div>
     </article>
 
+    </div>
+
     <!-- ── FEATURES ───────────────────────────────────────────────────── -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Features</h3>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -1055,8 +1096,8 @@
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          <p>This is a Windows security restriction, not a RemotePC design choice. Because the RemotePC listener runs with administrator privileges, Windows prevents it from participating in drag and drop operations initiated by non-elevated processes—such as File Explorer, which runs at standard user level.</p>
-          <p>Windows deliberately blocks drag and drop across processes with different privilege levels as a security measure. There is no straightforward workaround that preserves RemotePC's required level of system access, so drag and drop remains unsupported for the time being.</p>
+          <p>This is most likely a Windows security restriction rather than a RemotePC design choice. Windows enforces something called <strong>UIPI (User Interface Privilege Isolation)</strong>, which blocks lower-privilege processes—such as File Explorer, which runs at standard user level—from sending input messages like drag-and-drop events to a higher-privilege process. Because the RemotePC listener runs with administrator privileges, it falls on the wrong side of that boundary.</p>
+          <p>There is no straightforward workaround that preserves RemotePC's required level of system access, so drag and drop remains unsupported for now.</p>
           <p class="release-note">
             <a href="https://remotepc.tech/article/?id=drag-drop" class="release-link" target="_blank" rel="noopener noreferrer">
               Read more about this limitation
@@ -1080,7 +1121,11 @@
       </div>
     </article>
 
+    </div>
+
     <!-- ── GENERAL ─────────────────────────────────────────────────────── -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">General</h3>
 
     <article class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -1118,6 +1163,8 @@
       </div>
     </article>
 
+    </div>
+
   </div>
 </section>
   </main>
@@ -1134,6 +1181,11 @@
         <p class="footer-description">
           Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.
         </p>
+        <div class="footer-social">
+          <a href="https://github.com/Stan006/RemotePC" class="footer-social-link" aria-label="RemotePC on GitHub" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="footer-section">
@@ -1161,16 +1213,191 @@
         <ul class="footer-links">
           <li><a href="privacy/" class="footer-link">Privacy Policy</a></li>
           <li><a href="terms/" class="footer-link">Terms of Service</a></li>
-          <li><a href="#support" class="footer-link" style="color:var(--brand-cyan);">☕ Support Us</a></li>
+          <li><a href="#support" class="footer-link footer-link-support">☕ Support Us</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="container">
-        <p>© 2026 RemotePC - Breadworks. Created for privacy.</p>
-      </div>
+      <p>© 2026 RemotePC - Breadworks. Created for privacy.</p>
+      <p class="footer-tagline">No accounts. No cloud. No tracking.</p>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var wrap = document.querySelector('.scroll-follow');
+    if (!wrap) return;
+
+    var svg = document.getElementById('scrollFollowSvg');
+    var trackPath = document.getElementById('scrollTrackPath');
+    var progressPath = document.getElementById('scrollProgressPath');
+    var dot = document.getElementById('scrollFollowDot');
+    var burstLayer = document.getElementById('scrollFollowBurst');
+    var backToTopBtn = document.getElementById('backToTop');
+
+    var WIDTH = 46;      // matches CSS width of .scroll-follow
+    var AMPLITUDE = 14;  // how far the wave swings side to side
+    var WAVELENGTH = 170; // vertical distance per half-wave
+
+    var totalLength = 0;
+    var height = 0;
+    var hasExploded = false;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function explode(x, y) {
+      if (!('animate' in Element.prototype)) return;
+
+      var colors = ['#5b7cfa', '#22d3ee', '#8b5cf6'];
+
+      // shockwave ring
+      var ring = document.createElement('span');
+      ring.className = 'burst-ring';
+      ring.style.left = x + 'px';
+      ring.style.top = y + 'px';
+      burstLayer.appendChild(ring);
+      ring.animate(
+        [
+          { transform: 'translate(-50%, -50%) scale(0.4)', opacity: 0.85 },
+          { transform: 'translate(-50%, -50%) scale(2.6)', opacity: 0 }
+        ],
+        { duration: 700, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+      setTimeout(function () { ring.remove(); }, 720);
+
+      // a brief flash on the dot itself
+      dot.classList.add('dot-flash');
+      setTimeout(function () { dot.classList.remove('dot-flash'); }, 500);
+
+      // fan of small particles
+      var count = 10;
+      for (var i = 0; i < count; i++) {
+        var angle = (Math.PI * 2 * i) / count + (Math.random() * 0.35 - 0.175);
+        var dist = 20 + Math.random() * 18;
+        var dx = Math.cos(angle) * dist;
+        var dy = Math.sin(angle) * dist;
+
+        var p = document.createElement('span');
+        p.className = 'burst-particle';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.background = colors[i % colors.length];
+        burstLayer.appendChild(p);
+
+        (function (particle, dx, dy) {
+          var anim = particle.animate(
+            [
+              { transform: 'translate(-50%, -50%) translate(0px, 0px) scale(1)', opacity: 1 },
+              { transform: 'translate(-50%, -50%) translate(' + dx + 'px, ' + dy + 'px) scale(0.2)', opacity: 0 }
+            ],
+            { duration: 550 + Math.random() * 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', delay: Math.random() * 40 }
+          );
+          anim.onfinish = function () { particle.remove(); };
+        })(p, dx, dy);
+      }
+    }
+
+    function buildWavePath(h) {
+      var cx = WIDTH / 2;
+      var d = 'M ' + cx + ' 0';
+      var y = 0;
+      var dir = 1;
+      while (y < h) {
+        var next = Math.min(y + WAVELENGTH, h);
+        var midY = (y + next) / 2;
+        var cpX = cx + dir * AMPLITUDE;
+        d += ' Q ' + cpX + ' ' + midY + ' ' + cx + ' ' + next;
+        y = next;
+        dir *= -1;
+      }
+      return d;
+    }
+
+    function layout() {
+      height = window.innerHeight;
+      svg.setAttribute('viewBox', '0 0 ' + WIDTH + ' ' + height);
+      svg.setAttribute('width', WIDTH);
+      svg.setAttribute('height', height);
+
+      var d = buildWavePath(height);
+      trackPath.setAttribute('d', d);
+      progressPath.setAttribute('d', d);
+
+      totalLength = progressPath.getTotalLength();
+      progressPath.style.strokeDasharray = totalLength;
+      update();
+    }
+
+    function update() {
+      if (!totalLength) return;
+      var doc = document.documentElement;
+      var scrollTop = window.scrollY || doc.scrollTop;
+      var maxScroll = doc.scrollHeight - window.innerHeight;
+      var fraction = maxScroll > 0 ? Math.min(Math.max(scrollTop / maxScroll, 0), 1) : 0;
+
+      progressPath.style.strokeDashoffset = totalLength * (1 - fraction);
+
+      var point = progressPath.getPointAtLength(totalLength * fraction);
+      dot.style.transform = 'translate(' + (point.x - 5) + 'px, ' + (point.y - 5) + 'px)';
+      dot.style.opacity = fraction > 0.002 ? '1' : '0';
+
+      if (fraction >= 0.999 && !hasExploded) {
+        hasExploded = true;
+        if (!reduceMotion) explode(point.x, point.y);
+      } else if (fraction < 0.98) {
+        hasExploded = false;
+      }
+
+      if (backToTopBtn) {
+        backToTopBtn.classList.toggle('visible', fraction > 0.5);
+      }
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          update();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', layout);
+    layout();
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    }
+  })();
+
+  // Header: switch to a more solid, compact state once the page is scrolled
+  (function () {
+    var header = document.querySelector('.header');
+    if (!header) return;
+
+    var THRESHOLD = 12;
+    var ticking = false;
+
+    function apply() {
+      header.classList.toggle('scrolled', window.scrollY > THRESHOLD);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(apply);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    apply();
+  })();
+  </script>
 </body>
 </html>
