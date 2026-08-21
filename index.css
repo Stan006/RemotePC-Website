@@ -506,6 +506,72 @@ body::after {
   font-weight: 600;
 }
 
+/* ── Play Store stats strip ─────────────────────────────── */
+.playstore-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  width: fit-content;
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.playstore-stats:hover {
+  background: var(--surface-2);
+  border-color: rgba(91, 124, 250, .3);
+}
+
+.ps-stat {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.ps-stat-icon {
+  color: var(--brand-cyan);
+  flex-shrink: 0;
+}
+
+.ps-stat-icon.ps-star {
+  color: #facc15;
+}
+
+.ps-stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.ps-stat-label {
+  font-size: .8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ps-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .playstore-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+  .ps-stat-label {
+    display: none;
+  }
+}
+
 .hero-visual {
   position: relative;
   display: flex;
