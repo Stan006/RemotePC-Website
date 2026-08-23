@@ -38,16 +38,81 @@
   /* ── Helpers ───────────────────────────────────── */
 
   /**
-   * Classify a semver string as major / minor / patch.
-   * Strips leading 'v' before parsing.
+   * Classify a version string as major / minor / patch.
+   * Strips a leading 'v' and works with any number of dot-separated
+   * segments (e.g. two-part "1.0", three-part "1.0.0", or a four-part
+   * build number like "1.0.0.15") — not just classic three-part semver.
+   *
+   * Rule: look at the right-most segment (after the first) that is
+   * non-zero. If none exist, only the leading number changed → major.
+   * If the right-most changed segment is the 2nd position → minor.
+   * Anything changing in the 3rd position or later → patch.
    */
   function classify(tagName) {
-    const v = tagName.replace(/^v/i, '');
-    const parts = v.split('.').map(Number);
-    if (isNaN(parts[0])) return 'patch';
-    if (parts[0] > 0 && (parts[1] === 0 || isNaN(parts[1])) && (parts[2] === 0 || isNaN(parts[2]))) return 'major';
-    if (!isNaN(parts[1]) && parts[1] > 0 && (parts[2] === 0 || isNaN(parts[2]))) return 'minor';
+    const parts = tagName
+      .replace(/^v/i, '')
+      .split('.')
+      .map(Number)
+      .filter((n) => !isNaN(n));
+
+    if (!parts.length) return 'patch';
+
+    let lastNonZero = 0;
+    for (let idx = 1; idx < parts.length; idx++) {
+      if (parts[idx] > 0) lastNonZero = idx;
+    }
+
+    if (lastNonZero === 0) return parts[0] > 0 ? 'major' : 'patch';
+    if (lastNonZero === 1) return 'minor';
     return 'patch';
+  }
+
+  /**
+   * Look for a manual override marker line anywhere in the release body, e.g.:
+   *   RELEASE: v1.0.0.15M      → major
+   *   RELEASE: v1.0.0.15Mn     → minor
+   *   RELEASE: v1.0.0.15P      → patch
+   *
+   * The version text in the marker itself is ignored — only the trailing
+   * letter code (M / Mn / P) matters. The matched line is stripped out of
+   * the notes before they're rendered, since it's a control marker for
+   * this page, not something readers need to see.
+   *
+   * Returns { type: 'major'|'minor'|'patch'|null, notes: string }
+   * `type` is null when no marker line is found, so callers can fall
+   * back to automatic classify().
+   */
+  function extractTypeOverride(notes) {
+    if (!notes) return { type: null, notes: notes || '' };
+
+    // Looks for RELEASE: v<version><letter code> ANYWHERE in the line —
+    // no longer cares what markdown/punctuation surrounds it (bold **, a
+    // trailing comma, a heading #, etc). Just grabs the 1-2 letters right
+    // after the version number and maps them to a type.
+    const markerRegex = /RELEASE\s*:?\s*v?[0-9]+(?:\.[0-9]+)*\s*([A-Za-z]{1,2})/i;
+    const codeToType = { m: 'major', mn: 'minor', p: 'patch' };
+
+    const lines = notes.split('\n');
+    let type = null;
+    const kept = [];
+
+    for (const line of lines) {
+      if (type === null) {
+        const match = line.match(markerRegex);
+        const mapped = match ? codeToType[match[1].toLowerCase()] : undefined;
+        if (mapped) {
+          type = mapped;
+          continue; // drop the whole line the marker was found on
+        }
+      }
+      kept.push(line);
+    }
+
+    // Trim stray blank lines left behind where the marker used to be
+    while (kept.length && !kept[0].trim()) kept.shift();
+    while (kept.length && !kept[kept.length - 1].trim()) kept.pop();
+
+    return { type, notes: kept.join('\n') };
   }
 
   /** Format an ISO date string into a human-readable form. */
@@ -75,43 +140,175 @@
     return `${years} year${years > 1 ? 's' : ''} ago`;
   }
 
-  /** Minimal Markdown → safe HTML converter (no external lib needed). */
-  function markdownToHtml(md) {
-    if (!md) return '';
-
-    // Escape HTML first
-    let html = md
+  /** Escape raw text for safe HTML embedding. */
+  function escapeHtml(str) {
+    return String(str)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
+  }
 
-    // Headings (## and ###)
-    html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^##\s+(.+)$/gm,  '<h2>$1</h2>');
-    html = html.replace(/^#\s+(.+)$/gm,   '<h2>$1</h2>');
+  /**
+   * Apply inline Markdown formatting (code, links, bold, italic, strikethrough)
+   * to a single line/run of text. Code spans are extracted first so their
+   * contents are never mangled by the other patterns.
+   */
+  function inlineMarkdown(text) {
+    let t = escapeHtml(text);
 
-    // Bold / italic
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.+?)\*/g,     '<em>$1</em>');
-
-    // Inline code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-    // Bullet lists — group consecutive lines
-    html = html.replace(/((?:^[-*+] .+\n?)+)/gm, (block) => {
-      const items = block.trim().split('\n').map(l => {
-        const text = l.replace(/^[-*+] /, '');
-        return `<li>${text}</li>`;
-      }).join('');
-      return `<ul>${items}</ul>`;
+    // Protect inline code spans with placeholders
+    const codeStash = [];
+    t = t.replace(/`([^`]+)`/g, (_, code) => {
+      codeStash.push(code);
+      return `\u0000${codeStash.length - 1}\u0000`;
     });
 
-    // Paragraphs — wrap non-tagged lines
-    html = html.replace(/^(?!<[a-z])(.+)$/gm, '<p>$1</p>');
+    // Links: [text](url)
+    t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
-    // Clean up empty paragraphs
-    html = html.replace(/<p>\s*<\/p>/g, '');
+    // Bold
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/__([^_]+)__/g, '<strong>$1</strong>');
 
+    // Strikethrough
+    t = t.replace(/~~([^~]+)~~/g, '<del>$1</del>');
+
+    // Italic (single * or _, avoid eating list markers already handled upstream)
+    t = t.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
+    t = t.replace(/(^|[^_])_([^_\n]+)_(?!_)/g, '$1<em>$2</em>');
+
+    // Restore code spans
+    t = t.replace(/\u0000(\d+)\u0000/g, (_, idx) => `<code>${codeStash[+idx]}</code>`);
+
+    return t;
+  }
+
+  /**
+   * Full block-level Markdown → HTML converter for release notes.
+   * Supports: headings, paragraphs, nested bullet/numbered lists,
+   * blockquotes, fenced code blocks, and horizontal rules.
+   */
+  function markdownToHtml(md) {
+    if (!md) return '';
+
+    const lines = md.replace(/\r\n?/g, '\n').split('\n');
+    const listStack = []; // { type: 'ul'|'ol', indent: number }
+    let html = '';
+    let i = 0;
+
+    function closeListsTo(indent) {
+      while (listStack.length && listStack[listStack.length - 1].indent >= indent) {
+        html += listStack.pop().type === 'ol' ? '</ol>' : '</ul>';
+      }
+    }
+
+    while (i < lines.length) {
+      const line = lines[i];
+
+      // Fenced code block
+      const fence = line.match(/^\s*```/);
+      if (fence) {
+        closeListsTo(0);
+        const codeLines = [];
+        i++;
+        while (i < lines.length && !/^\s*```/.test(lines[i])) {
+          codeLines.push(lines[i]);
+          i++;
+        }
+        i++; // skip closing fence
+        html += `<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`;
+        continue;
+      }
+
+      // Blank line — ends any open list run
+      if (!line.trim()) {
+        closeListsTo(0);
+        i++;
+        continue;
+      }
+
+      // Headings
+      const heading = line.match(/^(#{1,6})\s+(.+)$/);
+      if (heading) {
+        closeListsTo(0);
+        const tag = heading[1].length <= 2 ? 'h2' : 'h3';
+        html += `<${tag}>${inlineMarkdown(heading[2].trim())}</${tag}>`;
+        i++;
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^\s*([-*_])\s*(\1\s*){2,}$/.test(line)) {
+        closeListsTo(0);
+        html += '<hr>';
+        i++;
+        continue;
+      }
+
+      // Blockquote (consume consecutive quoted lines)
+      if (/^\s*>\s?/.test(line)) {
+        closeListsTo(0);
+        const quoted = [];
+        while (i < lines.length && /^\s*>\s?/.test(lines[i])) {
+          quoted.push(lines[i].replace(/^\s*>\s?/, ''));
+          i++;
+        }
+        html += `<blockquote>${inlineMarkdown(quoted.join(' '))}</blockquote>`;
+        continue;
+      }
+
+      // List items (unordered or ordered), with basic nesting by indent
+      const ulItem = line.match(/^(\s*)[-*+]\s+(.*)$/);
+      const olItem = line.match(/^(\s*)\d+[.)]\s+(.*)$/);
+      if (ulItem || olItem) {
+        const match  = ulItem || olItem;
+        const indent = match[1].replace(/\t/g, '    ').length;
+        const type   = ulItem ? 'ul' : 'ol';
+        const content = match[2];
+
+        // Close any lists nested deeper than (or mismatched with) this indent
+        while (
+          listStack.length &&
+          (listStack[listStack.length - 1].indent > indent ||
+            (listStack[listStack.length - 1].indent === indent &&
+              listStack[listStack.length - 1].type !== type))
+        ) {
+          html += listStack.pop().type === 'ol' ? '</ol>' : '</ul>';
+        }
+
+        // Open a new list if none open at this depth yet
+        if (!listStack.length || listStack[listStack.length - 1].indent < indent) {
+          html += type === 'ol' ? '<ol>' : '<ul>';
+          listStack.push({ type, indent });
+        }
+
+        html += `<li>${inlineMarkdown(content)}</li>`;
+        i++;
+        continue;
+      }
+
+      // Paragraph — merge consecutive plain-text lines into one block
+      closeListsTo(0);
+      const para = [line];
+      i++;
+      while (
+        i < lines.length &&
+        lines[i].trim() &&
+        !/^\s*```/.test(lines[i]) &&
+        !/^#{1,6}\s/.test(lines[i]) &&
+        !/^\s*>\s?/.test(lines[i]) &&
+        !/^\s*[-*+]\s+/.test(lines[i]) &&
+        !/^\s*\d+[.)]\s+/.test(lines[i]) &&
+        !/^\s*([-*_])\s*(\1\s*){2,}$/.test(lines[i])
+      ) {
+        para.push(lines[i]);
+        i++;
+      }
+      html += `<p>${inlineMarkdown(para.join(' ').trim())}</p>`;
+    }
+
+    closeListsTo(0);
     return html;
   }
 
@@ -140,16 +337,18 @@
 
     // Merge
     const merged = tags.map((tag) => {
-      const rel  = relMap[tag.name] || {};
+      const rel = relMap[tag.name] || {};
+      const { type: overrideType, notes: cleanedNotes } = extractTypeOverride(rel.body || '');
       return {
-        tag      : tag.name,
-        version  : tag.name,
-        type     : classify(tag.name),
-        date     : rel.published_at || rel.created_at || null,
-        notes    : rel.body || '',
-        name     : rel.name || tag.name,
-        sha      : tag.commit ? tag.commit.sha.slice(0, 7) : '',
-        url      : rel.html_url || `https://github.com/${REPO}/releases/tag/${tag.name}`,
+        tag       : tag.name,
+        version   : tag.name,
+        type      : overrideType || classify(tag.name),
+        manualType: !!overrideType,
+        date      : rel.published_at || rel.created_at || null,
+        notes     : cleanedNotes,
+        name      : rel.name || tag.name,
+        sha       : tag.commit ? tag.commit.sha.slice(0, 7) : '',
+        url       : rel.html_url || `https://github.com/${REPO}/releases/tag/${tag.name}`,
         prerelease: rel.prerelease || false,
       };
     });
@@ -170,6 +369,7 @@
   function buildCard(data, index, isLatest) {
     const card = document.createElement('article');
     card.className = `release-card${isLatest ? ' is-latest' : ''}`;
+    card.dataset.type = data.type;
     card.setAttribute('aria-label', `Release ${data.version}`);
     card.style.animationDelay = `${index * 55}ms`;
 
@@ -182,7 +382,7 @@
     card.innerHTML = `
       <div class="release-card-header" role="button" tabindex="0" aria-expanded="false">
         <div class="release-card-left">
-          <span class="release-tag-pill ${typeCls}">${typeLabel}</span>
+          <span class="release-tag-pill ${typeCls}"${data.manualType ? ' title="Manually set in release notes"' : ''}>${typeLabel}</span>
           <span class="release-version">${escHtml(data.version)}</span>
           ${title ? `<span class="release-title">${escHtml(title)}</span>` : ''}
         </div>
