@@ -88,10 +88,12 @@
             aria-label="Filter releases"
           >
         </div>
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="major">Major</button>
-        <button class="filter-btn" data-filter="minor">Minor</button>
-        <button class="filter-btn" data-filter="patch">Patch</button>
+        <div class="filter-scroll">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="major">Major</button>
+          <button class="filter-btn" data-filter="minor">Minor</button>
+          <button class="filter-btn" data-filter="patch">Patch</button>
+        </div>
       </div>
     </section>
 
@@ -204,6 +206,6 @@
     </div>
   </footer>
 
-  <script src="releases.js"></script>
+  <script src="releases.js?v=2"></script>
 </body>
 </html>
