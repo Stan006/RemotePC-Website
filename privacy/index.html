@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — RemotePC</title>
 
-  <meta name="description" content="Privacy Policy for RemotePC. Local-first remote control with minimal, anonymous analytics." />
+  <meta name="description" content="Privacy Policy for RemotePC by Breadworks — how the Android App, Windows Listener, and website handle information, including the exact device permissions the Android App requests and why." />
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
 
   <link rel="stylesheet" href="privacy.css" />
@@ -39,13 +39,17 @@
 
   <header class="legal-header">
     <div class="breadcrumb">Legal / Privacy Policy</div>
+    <p class="legal-updated">Last Updated: August 28, 2026</p>
 
     <h1>
       Privacy <span class="text-gradient">By Design</span>
     </h1>
 
     <p class="lead">
-      RemotePC is built to work locally without accounts or cloud relays.
+      RemotePC is built to work locally without accounts or cloud relays. This Policy explains, in
+      the same level of detail as our <a href="../terms/">Terms of Service</a>, exactly what
+      information is involved in making that possible — including every permission the Android App
+      requests and why it's there.
     </p>
 
     <div class="summary-grid">
@@ -64,7 +68,7 @@
       <div class="summary-card">
         <i data-lucide="bar-chart-3"></i>
         <strong>No Analytics</strong>
-        <span>Your data remains private</span>
+        <span>No tracking or profiling, ever</span>
       </div>
     </div>
   </header>
@@ -74,13 +78,69 @@
     <aside class="legal-toc">
       <div class="toc-sticky">
         <span class="toc-title">Contents</span>
-        <nav>
-          <a href="#overview">Overview</a>
-          <a href="#data">Data Collection</a>
-          <a href="#permissions">Permissions</a>
-          <a href="#website">Website</a>
-          <a href="#contact">Contact</a>
+        <nav aria-label="Table of Contents">
+
+          <div class="toc-group">
+            <span class="toc-group-label">Getting Started</span>
+            <ul class="toc-list">
+              <li><a href="#overview"><span>01</span> Overview</a></li>
+              <li><a href="#definitions"><span>02</span> Definitions</a></li>
+              <li><a href="#controller"><span>03</span> Who We Are</a></li>
+              <li><a href="#scope"><span>04</span> Scope</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Data We Process</span>
+            <ul class="toc-list">
+              <li><a href="#data"><span>05</span> Data We Don't Collect</a></li>
+              <li><a href="#processing"><span>06</span> Local Processing</a></li>
+              <li><a href="#legal-basis"><span>07</span> Legal Basis (GDPR)</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">App &amp; Security</span>
+            <ul class="toc-list">
+              <li><a href="#permissions"><span>08</span> Android Permissions</a></li>
+              <li><a href="#security"><span>09</span> Windows Listener Security</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Sharing &amp; Retention</span>
+            <ul class="toc-list">
+              <li><a href="#sharing"><span>10</span> Third-Party Services</a></li>
+              <li><a href="#transfers"><span>11</span> International Transfers</a></li>
+              <li><a href="#retention"><span>12</span> Data Retention</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Your Rights</span>
+            <ul class="toc-list">
+              <li><a href="#rights-eu"><span>13</span> EEA / UK Rights</a></li>
+              <li><a href="#rights-us"><span>14</span> California Rights</a></li>
+              <li><a href="#children"><span>15</span> Children's Privacy</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Legal</span>
+            <ul class="toc-list">
+              <li><a href="#website"><span>16</span> Website</a></li>
+              <li><a href="#changes"><span>17</span> Changes to This Policy</a></li>
+              <li><a href="#law"><span>18</span> Governing Law</a></li>
+              <li><a href="#contact"><span>19</span> Contact</a></li>
+            </ul>
+          </div>
+
         </nav>
+
+        <div class="toc-support-card">
+          <p>Questions about your data?</p>
+          <a href="mailto:legal@remotepc.tech">Email Us</a>
+        </div>
       </div>
     </aside>
 
@@ -89,27 +149,82 @@
   <article class="card" id="overview">
     <h2>1. Overview</h2>
     <p>
-      This Privacy Policy explains how RemotePC (“the Application”, “we”, “our”) handles information
-      when you use the Android app, Windows listener, and this website.
+      This Privacy Policy explains how RemotePC by Breadworks (“RemotePC,” “the Software,” “we,”
+      “us,” or “our”) handles information in connection with the Android App, the Windows Listener,
+      and the website at remotepc.tech.
     </p>
     <p>
-      RemotePC is designed as a <strong>local-first remote control solution</strong>. All remote control
-      communication occurs directly between your devices over your local network (LAN) and is not routed
-      through external servers.
+      RemotePC is designed as a <strong>local-first remote control solution</strong>. All remote
+      control communication occurs directly between your devices over your local network (LAN) and
+      is not routed through external servers that we operate.
     </p>
     <p>
-      By using RemotePC, you agree to the practices described in this policy.
+      By downloading, installing, accessing, or using any part of RemotePC, you acknowledge this
+      Privacy Policy. It should be read together with our <a href="../terms/">Terms of Service</a>,
+      which govern your use of RemotePC generally and which this Policy is incorporated into by
+      reference.
+    </p>
+  </article>
+
+  <article class="card" id="definitions">
+    <h2>2. Definitions</h2>
+    <dl class="definitions">
+      <div>
+        <dt>Software</dt>
+        <dd>The Android App, the Windows Listener, related documentation and updates, and the Website.</dd>
+      </div>
+      <div>
+        <dt>Local Network / LAN</dt>
+        <dd>A private network not exposed to the public internet by default.</dd>
+      </div>
+      <div>
+        <dt>You / User</dt>
+        <dd>The person or entity using the Software.</dd>
+      </div>
+      <div>
+        <dt>Personal Data</dt>
+        <dd>Any information relating to an identified or identifiable natural person, as defined under Article 4(1) of the GDPR and analogous provisions of other applicable data protection laws.</dd>
+      </div>
+    </dl>
+  </article>
+
+  <article class="card" id="controller">
+    <h2>3. Who We Are (Data Controller)</h2>
+    <p>
+      RemotePC by Breadworks is an independent, non-commercial project developed and made available
+      by an individual developer operating under the name “Breadworks” (based in Athens, Greece).
+      “Breadworks” is a project name used for RemotePC only — it is <strong>not</strong> a registered
+      company, corporation, or other formal legal entity.
+    </p>
+    <p>
+      For the purposes of the GDPR and other applicable data protection laws, the individual
+      developer behind RemotePC is the data controller for any personal data processed in connection
+      with your use of the Software. You can reach us using the details in
+      <a href="#contact">Section 19</a>.
+    </p>
+  </article>
+
+  <article class="card" id="scope">
+    <h2>4. Scope of This Policy</h2>
+    <p>This Policy applies to:</p>
+    <ul>
+      <li>The RemotePC by Breadworks <strong>Android App</strong></li>
+      <li>The RemotePC <strong>Windows Listener</strong> software</li>
+      <li>The <strong>website</strong> at remotepc.tech</li>
+    </ul>
+    <p>
+      It does not apply to third-party services you choose to use alongside RemotePC — such as the
+      Google Play Store or GitHub — which process data under their own privacy policies. See
+      <a href="#sharing">Section 10</a>.
     </p>
   </article>
 
   <article class="card" id="data">
-    <h2>2. Data Collection & Processing</h2>
+    <h2>5. Data We Do Not Collect</h2>
     <p>
-      RemotePC is built to minimize data processing. We do <strong>not collect, store, or transmit personal data</strong>
-      to external servers.
+      RemotePC is built to minimize data processing. We do <strong>not collect, store, or transmit
+      personal data</strong> to external servers.
     </p>
-
-    <h3>What we do NOT collect</h3>
     <ul>
       <li>No personal information (e.g. name, email, location)</li>
       <li>No account data (no account system exists)</li>
@@ -117,11 +232,13 @@
       <li>No usage analytics or behavioral tracking</li>
       <li>No remote session data leaves your local network</li>
     </ul>
+  </article>
 
-    <h3>Local data processing</h3>
+  <article class="card" id="processing">
+    <h2>6. Local Data Processing</h2>
     <p>
-      RemotePC processes data <strong>locally on your devices only</strong> for functionality purposes,
-      including:
+      RemotePC processes data <strong>locally on your devices only</strong>, for functionality
+      purposes, including:
     </p>
     <ul>
       <li>Network communication between your devices</li>
@@ -129,89 +246,274 @@
       <li>Screen streaming within your local network</li>
       <li>File transfers initiated by the user</li>
     </ul>
-
     <p>
-      This processing does not involve RemotePC servers and is not accessible to us.
+      This processing does not involve servers operated by us and is not accessible to us. The
+      current version of the Windows Listener also does not create or keep local logs of
+      remote-control sessions.
     </p>
+  </article>
 
-    <h3>Legal basis (GDPR)</h3>
+  <article class="card" id="legal-basis">
+    <h2>7. Legal Basis for Processing (GDPR)</h2>
     <p>
-      Where applicable under the <strong>General Data Protection Regulation (GDPR)</strong>, any minimal
-      processing required for functionality is based on <strong>legitimate interest</strong> (Article 6(1)(f)),
-      as it is strictly necessary for the core operation of the application and does not override user rights.
+      Where applicable under the <strong>General Data Protection Regulation (GDPR)</strong>, the
+      minimal, on-device processing described in <a href="#processing">Section 6</a> and
+      <a href="#permissions">Section 8</a> is carried out on one or both of the following bases:
+    </p>
+    <ul>
+      <li><strong>Performance of a contract (Article 6(1)(b)):</strong> processing that's strictly necessary to provide the remote-control functionality you've asked for by installing and using RemotePC.</li>
+      <li><strong>Legitimate interest (Article 6(1)(f)):</strong> where processing supports the core operation, stability, or security of the Software and doesn't override your rights and freedoms.</li>
+    </ul>
+    <p>
+      We don't rely on consent as a legal basis for this on-device processing because we don't
+      collect the personal data in question in the first place — it never leaves your device or
+      your local network. Where any narrow exception to that applies (for example, the GitHub update
+      check described in <a href="#sharing">Section 10</a>), the relevant basis is noted there.
     </p>
   </article>
 
   <article class="card" id="permissions">
-    <h2>3. Permissions (Android)</h2>
+    <h2>8. Android App Permissions</h2>
+    <div class="badge-row">
+      <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App</span>
+    </div>
     <p>
-      The Android app requests only the permissions required for core functionality:
+      The Android App requests the following device permissions. Each is scoped to what's required
+      for RemotePC's core local-network remote-control functionality — none is used for location
+      tracking, advertising, profiling, or analytics of any kind.
     </p>
-    <ul>
-      <li><strong>INTERNET</strong> — Enables communication with your PC over your local network</li>
-      <li><strong>ACCESS_WIFI_STATE</strong> — Detects network connectivity status</li>
-      <li><strong>READ/WRITE STORAGE (optional)</strong> — Used only when you explicitly initiate file transfers</li>
-      <li><strong>FOREGROUND_SERVICE_DATA_SYNC</strong> — Enables background data synchronization, allowing the Android app to receive files from the user's computer.</li>
-    </ul>
+
+    <h3>Network &amp; connectivity</h3>
+    <dl class="definitions permission-list">
+      <div>
+        <dt><code>INTERNET</code></dt>
+        <dd>Allows the app to open network sockets so it can communicate with your remote PC over the network.</dd>
+      </div>
+      <div>
+        <dt><code>ACCESS_NETWORK_STATE</code></dt>
+        <dd>Required for <code>ConnectivityManager</code> queries (<code>allNetworks</code>, <code>getNetworkCapabilities</code>, <code>getLinkProperties</code>) used by <code>ServerDiscovery</code>'s VPN-aware channel selection.</dd>
+      </div>
+      <div>
+        <dt><code>ACCESS_WIFI_STATE</code></dt>
+        <dd>Required for reliable Wi-Fi state queries and for the multicast fallback strategy in <code>ServerDiscovery</code> (<code>WifiManager.MulticastLock</code> needs this to prevent the Wi-Fi radio from filtering multicast frames).</dd>
+      </div>
+      <div>
+        <dt><code>CHANGE_WIFI_STATE</code></dt>
+        <dd>Allows the app to modify Wi-Fi connectivity states when necessary for establishing or managing direct local network connections.</dd>
+      </div>
+      <div>
+        <dt><code>CHANGE_WIFI_MULTICAST_STATE</code></dt>
+        <dd>Works alongside <code>ACCESS_WIFI_STATE</code> to allow the app to acquire a multicast lock, ensuring incoming network discovery broadcasts are received.</dd>
+      </div>
+      <div>
+        <dt><code>ACCESS_LOCAL_NETWORK</code> <span class="permission-scope">Android 17+ (SDK 37+)</span></dt>
+        <dd>Required for Android 17 (SDK 37+) Local Network Protections. Local network access (broadcast, multicast, unicast UDP/TCP to LAN addresses in both directions) is blocked by default and requires this permission.</dd>
+      </div>
+    </dl>
+
+    <h3>Background operation &amp; notifications</h3>
+    <dl class="definitions permission-list">
+      <div>
+        <dt><code>FOREGROUND_SERVICE</code></dt>
+        <dd>Required for running any background tasks as a foreground service with a visible notification (such as active connection or file transfer states).</dd>
+      </div>
+      <div>
+        <dt><code>FOREGROUND_SERVICE_CONNECTED_DEVICE</code></dt>
+        <dd>Specifically required by <code>FileReceiveService</code> using the <code>connectedDevice</code> foreground service type.</dd>
+      </div>
+      <div>
+        <dt><code>WAKE_LOCK</code></dt>
+        <dd>Required by <code>FileReceiveService</code> to hold a <code>PARTIAL_WAKE_LOCK</code> for its entire lifetime so Doze mode cannot suspend the CPU mid-transfer and stall or corrupt incoming file data.</dd>
+      </div>
+      <div>
+        <dt><code>POST_NOTIFICATIONS</code> <span class="permission-scope">Android 13+ (API 33+)</span></dt>
+        <dd>Required on Android 13+ (API 33+) to post notifications, such as status updates during file transfers or connection states.</dd>
+      </div>
+    </dl>
+
+    <h3>Storage &amp; interface</h3>
+    <dl class="definitions permission-list">
+      <div>
+        <dt><code>WRITE_EXTERNAL_STORAGE</code> <span class="permission-scope">maxSdkVersion 28</span></dt>
+        <dd>Used to save downloaded files. Marked with <code>android:maxSdkVersion="28"</code> because it only takes effect on Android 9 and below; MediaStore APIs handle storage writes on Android 10+ (API 29+).</dd>
+      </div>
+      <div>
+        <dt><code>VIBRATE</code></dt>
+        <dd>Gives access to the device vibrator for haptic feedback when interacting with controls or actions.</dd>
+      </div>
+    </dl>
+
+    <div class="callout callout--info">
+      <span class="callout-icon"><i data-lucide="info"></i></span>
+      <div class="callout-body">
+        <strong class="callout-title">Permissions can change between versions</strong>
+        <p>As RemotePC evolves, the specific permissions requested by the Android App may change. The authoritative, up-to-date list is always shown by your device at install time and under Android Settings → Apps → RemotePC → Permissions. Material changes to this list are reflected here per <a href="#changes">Section 17</a>.</p>
+      </div>
+    </div>
+
     <p>
-      Permissions are never used for background data collection, tracking, or profiling.
+      None of these permissions is used to collect analytics, build an advertising profile, or
+      transmit data to us or to third parties. All network communication they enable occurs directly
+      between your Android device and your Windows PC over your local network, consistent with
+      <a href="#processing">Section 6</a>.
     </p>
   </article>
 
   <article class="card" id="security">
-    <h2>4. Security</h2>
+    <h2>9. Windows Listener Security Features</h2>
+    <div class="badge-row">
+      <span class="platform-badge badge-windows"><i data-lucide="monitor" style="width:13px;height:13px;"></i> Windows Listener</span>
+    </div>
     <p>
-      RemotePC is designed with a <strong>local-first security model</strong>:
+      RemotePC is designed with a <strong>local-first security model</strong>. The Windows Listener,
+      as the side accepting incoming connections, includes the following features to help protect
+      data in transit:
     </p>
-    <ul>
-      <li>Connections are limited to your local network by default</li>
-      <li>No cloud relay or third-party servers are used</li>
-      <li>The application does not expose services to the internet unless explicitly configured by the user</li>
-    </ul>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="list-checks"></i><span>IP Whitelisting</span></div>
+        <p>Restrict which IP addresses are permitted to connect to the Windows Listener.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="ban"></i><span>IP Banning</span></div>
+        <p>Block specific local IP addresses from connecting.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="lock"></i><span>Encryption</span></div>
+        <p>Certain data in transit, including clipboard content, is encrypted.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="users"></i><span>Connection Limit</span></div>
+        <p>Restricts how many clients may connect to the Windows Listener at once.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--warn">
+      <span class="callout-icon"><i data-lucide="wifi-off"></i></span>
+      <div class="callout-body">
+        <strong class="callout-title">A secure network is required, not optional</strong>
+        <p>Only run and connect to RemotePC over a network you control and trust. Using RemotePC over public Wi-Fi, shared networks, or any network you don't control significantly increases the risk that data in transit is intercepted, and is done entirely at your own risk.</p>
+      </div>
+    </div>
+
     <p>
-      You are responsible for securing your local network and any advanced configurations
-      (e.g. port forwarding).
+      These features are designed to reduce the risk of unauthorized access to data in transit, but
+      they don't guarantee it in every case — for example if a feature is bypassed, misconfigured, or
+      fails. Full disclaimers and liability limits for these features are set out in Sections 7, 12,
+      and 13 of our <a href="../terms/">Terms of Service</a>.
     </p>
   </article>
 
   <article class="card" id="sharing">
-    <h2>5. Data Sharing & Third Parties</h2>
+    <h2>10. Data Sharing &amp; Third-Party Services</h2>
     <p>
-      We do <strong>not sell, rent, or share any user data</strong> with third parties.
+      We do <strong>not sell, rent, or share any user data</strong> with third parties, and RemotePC
+      does not integrate with third-party analytics, advertising networks, or cloud services — with
+      the one limited exception below.
+    </p>
+    <ul>
+      <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
+      <li><strong>Google Play Store:</strong> if you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's own terms and privacy practices, which we don't control.</li>
+    </ul>
+  </article>
+
+  <article class="card" id="transfers">
+    <h2>11. International Data Transfers</h2>
+    <p>
+      The only data leaving your device through your use of RemotePC is the request described in
+      <a href="#sharing">Section 10</a> that your Android App or Windows Listener may make to
+      GitHub's API to check for updates, and any data you choose to submit through the Google Play
+      Store. Both GitHub and Google are US-based companies that process data under their own privacy
+      policies and applicable international-transfer safeguards.
     </p>
     <p>
-      RemotePC does not integrate with third-party analytics, advertising networks, or cloud services.
+      We do not receive, store, or control this data, and we do not operate any servers of our own
+      outside your local network to which your data could be transferred.
     </p>
   </article>
 
   <article class="card" id="retention">
-    <h2>6. Data Retention</h2>
+    <h2>12. Data Retention</h2>
     <p>
-      Since RemotePC does not collect or store personal data, we do not retain user data.
+      Since RemotePC does not collect or store personal data on servers we operate, we do not retain
+      user data. Any data processed during use remains temporarily on your own devices and is
+      controlled entirely by you.
     </p>
     <p>
-      Any data processed during use remains temporarily on your own devices and is controlled entirely by you.
+      Basic technical data (such as server logs for this website) may be temporarily retained by our
+      hosting provider under its own retention practices, for security and operational purposes. See
+      <a href="#website">Section 16</a>.
     </p>
   </article>
 
-  <article class="card" id="rights">
-    <h2>7. Your Rights</h2>
+  <article class="card" id="rights-eu">
+    <h2>13. Your Rights (EEA / UK / GDPR)</h2>
+    <div class="region-block">
+      <h4>European Union / EEA / United Kingdom</h4>
+      <p>
+        If you're in the EEA or UK, you generally have the following rights over your personal data
+        under the GDPR (Regulation (EU) 2016/679) or UK GDPR:
+      </p>
+      <ul>
+        <li>The right to access your data</li>
+        <li>The right to rectification</li>
+        <li>The right to erasure</li>
+        <li>The right to restrict or object to processing</li>
+        <li>The right to data portability</li>
+        <li>The right to lodge a complaint with your local data protection authority</li>
+      </ul>
+      <p>
+        Because RemotePC doesn't collect or store personal data on servers we operate, most of these
+        rights have limited practical application in the ordinary course of using the Software — but
+        if you believe we hold any information about you (for example, in an email you've sent us),
+        contact us using the details in <a href="#contact">Section 19</a> and we'll respond.
+      </p>
+    </div>
+  </article>
+
+  <article class="card" id="rights-us">
+    <h2>14. California Privacy Rights (CCPA/CPRA)</h2>
+    <div class="region-block">
+      <h4>United States — California</h4>
+      <p>
+        <strong>California disclosure (Cal. Civ. Code § 1789.3):</strong> current charges for
+        RemotePC: none. RemotePC is provided entirely free of charge, with no in-app purchases,
+        subscriptions, or other charges of any kind. California residents may direct complaints to
+        the Complaint Assistance Unit, Division of Consumer Services, California Department of
+        Consumer Affairs, 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, (800) 952-5210.
+      </p>
+      <p>
+        <strong>CCPA/CPRA:</strong> you may have rights under the California Consumer Privacy Act, as
+        amended by the CPRA, over personal information we or our service providers process —
+        including the right to know what's collected, the right to delete it, the right to correct
+        it, and the right to opt out of certain sharing. Because we don't operate servers that
+        collect personal information from RemotePC's use, there is generally little or no such
+        information for us to act on, but you can still submit a request using the details in
+        <a href="#contact">Section 19</a> and we'll respond as required by law.
+      </p>
+    </div>
+  </article>
+
+  <article class="card" id="children">
+    <h2>15. Children's Privacy</h2>
     <p>
-      Under applicable data protection laws (such as GDPR), you may have rights including:
+      RemotePC is not directed at children under the age of 13 (or the equivalent minimum age in
+      your jurisdiction), and we don't knowingly collect personal data from children.
     </p>
-    <ul>
-      <li>The right to access your data</li>
-      <li>The right to rectification</li>
-      <li>The right to erasure</li>
-      <li>The right to restrict or object to processing</li>
-    </ul>
     <p>
-      However, since RemotePC does not collect or store personal data, these rights generally do not apply in practice.
+      If you're using RemotePC on behalf of, or in the presence of, a minor, our Terms of Service
+      require that you be their parent or legal guardian, or otherwise legally authorized, and that
+      you accept both the Terms and this Policy on their behalf.
+    </p>
+    <p>
+      If you believe a child has given us personal information, contact us using the details in
+      <a href="#contact">Section 19</a> and we'll take appropriate steps to address it.
     </p>
   </article>
 
   <article class="card" id="website">
-    <h2>8. Website</h2>
+    <h2>16. Website</h2>
     <p>
       This website does not use analytics, tracking cookies, or advertising technologies.
     </p>
@@ -221,31 +523,37 @@
     </p>
   </article>
 
-  <article class="card" id="children">
-    <h2>9. Children’s Privacy</h2>
+  <article class="card" id="changes">
+    <h2>17. Changes to This Policy</h2>
     <p>
-      RemotePC is not directed at children under the age of 13 (or the equivalent minimum age in your jurisdiction).
+      We may update this Privacy Policy periodically to reflect changes in functionality, legal
+      requirements, or improvements to the service — including changes to the permissions listed in
+      <a href="#permissions">Section 8</a>.
     </p>
     <p>
-      We do not knowingly collect personal data from children.
+      Material changes will update the “Last Updated” date above and, where practical, be flagged in
+      the app or on the Website. Continuing to use RemotePC after changes take effect means you
+      accept them, to the extent the law allows; where the law requires your affirmative consent,
+      we'll ask for it.
     </p>
   </article>
 
-  <article class="card" id="changes">
-    <h2>10. Changes to This Policy</h2>
+  <article class="card" id="law">
+    <h2>18. Governing Law</h2>
     <p>
-      We may update this Privacy Policy from time to time to reflect changes in functionality,
-      legal requirements, or improvements to the service.
-    </p>
-    <p>
-      Updates will be posted on this page with a revised effective date.
+      This Policy is governed by the laws of Greece (the Hellenic Republic), the developer's country
+      of residence, consistent with Section 19 of our <a href="../terms/">Terms of Service</a>. If
+      you're a consumer habitually resident in the EU, EEA, or UK, this doesn't take away the
+      protection of mandatory consumer-protection or data-protection rules in your country of
+      residence.
     </p>
   </article>
 
   <article class="card" id="contact">
-    <h2>11. Contact</h2>
+    <h2>19. Contact</h2>
     <p>
-      If you have any questions about this Privacy Policy or data handling practices, you can contact:
+      If you have any questions about this Privacy Policy, the permissions RemotePC requests, or our
+      data handling practices, you can contact:
     </p>
     <p>
       <a href="mailto:legal@remotepc.tech">legal@remotepc.tech</a>
