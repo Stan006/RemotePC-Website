@@ -104,6 +104,7 @@
       </div>
       <p>Runs on the PC you want to access remotely. It listens for incoming connections from the Android App and holds the security controls that decide who's allowed to connect.</p>
       <p class="platform-note"><strong>Carries:</strong> the local security features below — IP whitelisting, IP banning, a client connection limit, and encryption of certain data such as clipboard content.</p>
+      <p class="platform-note"><strong>Also connects to:</strong> Google Firebase, for exactly two always-on, fully anonymous purposes — receiving broadcast messages from us and sending an anonymous "how many people are using RemotePC right now" ping. Neither can be turned off. See <a href="#privacy">Section 9</a>.</p>
     </div>
   </section>
 
@@ -284,6 +285,7 @@
 
     <p>This describes how the Software is designed to work. It isn't a guarantee against bugs, misconfiguration, or third-party interference, and is subject to the disclaimers in Sections 12 and 13.</p>
     <p>If you nonetheless attempt to expose the Windows Listener to the internet or another network — for example through port forwarding, a VPN, or tunneling tools — you're doing so entirely outside RemotePC's supported use case, and entirely at your own risk. You're solely responsible for that configuration and everything that follows from it, including unauthorized access.</p>
+    <p>Separately from this — and not something you can disable — the Windows Listener also maintains two limited, one-way connections to Google Firebase: a broadcast channel for messages from us, and an anonymous ping so we know how many people are using RemotePC at a given time. Neither connection relays, routes, or otherwise facilitates a remote-control session, and neither gives us access to your screen, input, clipboard, files, or any other session content. See <a href="#privacy">Section 9</a>.</p>
   </section>
 
   <section class="card" id="security" data-animate>
@@ -341,16 +343,20 @@
     <ul>
       <li><strong>Session data:</strong> the current version of the Windows Listener doesn't create or keep local logs of remote-control sessions.</li>
       <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
+      <li><strong>Broadcast channel (Firebase):</strong> the Windows Listener keeps a persistent, one-way connection to Google Firebase so we can push broadcast messages — announcements, security notices, and similar updates — to users. This is a fixed part of how the Windows Listener is built; there's no in-app or config-file setting to turn it off.</li>
+      <li><strong>Anonymous usage ping (Firebase):</strong> the Windows Listener also sends a periodic ping to us via Firebase so we can see how many people are using RemotePC at a given time. The ping is fully anonymous — it isn't linked to an account, name, email, or anything else that could identify you, your device, or your network — and, like the broadcast channel, it can't be turned off.</li>
     </ul>
-    <p>Full details live in our standalone <a href="../privacy/">Privacy Policy</a>. If you're in the EEA/UK, you generally have rights to access, correct, delete, or restrict use of your personal data, and to complain to your local data protection authority. If you're a California resident, you may have rights under the CCPA, as amended — see <a href="#region">Section 20</a> and our Privacy Policy.</p>
+    <p>Other than the GitHub update check and these two Firebase connections, RemotePC makes no other connection to us. Full details — including our legal basis for the Firebase connections and your right to object — live in our standalone <a href="../privacy/">Privacy Policy</a>. If you're in the EEA/UK, you generally have rights to access, correct, delete, or restrict use of your personal data, and to complain to your local data protection authority. If you're a California resident, you may have rights under the CCPA, as amended — see <a href="#region">Section 20</a> and our Privacy Policy.</p>
   </section>
 
   <section class="card" id="third-party" data-animate>
     <h2>10. Third-Party Services</h2>
     <div class="badge-row">
       <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App</span>
+      <span class="platform-badge badge-windows"><i data-lucide="monitor" style="width:13px;height:13px;"></i> Windows Listener</span>
     </div>
     <p>The update-check feature interacts with GitHub, which has its own terms and privacy statement that we don't control.</p>
+    <p>The Windows Listener connects to Google Firebase for exactly two purposes: delivering broadcast messages from us to users, and sending us an anonymous ping so we can see how many people are using RemotePC at a given time. Both are fully anonymous, both are a fixed part of how the Windows Listener is built, and neither can be turned off. Neither connection relays, routes, or facilitates a remote-control session, and RemotePC makes no other connection to us beyond these two and the GitHub update check. See <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for details, including Firebase's role as a processor.</p>
     <p>If you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's terms.</p>
   </section>
 
