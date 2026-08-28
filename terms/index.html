@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms of Service — RemotePC</title>
-  <meta name="description" content="Terms of Service for RemotePC. Simple, clear terms for using the Android app, Windows listener, and website.">
+  <meta name="description" content="Terms of Service for RemotePC — the local-network remote control tool for the Android App and Windows Listener. Local-only by design, closed source, no spying.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="terms.css">
   <script defer src="../app.js"></script>
@@ -42,7 +42,7 @@
     <div class="breadcrumb">Legal / Terms of Service</div>
     <h1>Usage <span class="text-gradient">Agreement</span></h1>
     <p class="lead">
-      Clear, honest rules for using our ecosystem. No hidden fine print—just a focus on local-only security and user responsibility.
+      Clear, honest rules for using the RemotePC Android App and Windows Listener — built around one idea: this runs on your local network, under your control, and we're upfront about what it does and doesn't protect you from.
     </p>
 
     <div class="legal-summary-grid">
@@ -57,22 +57,55 @@
 
       <div class="summary-item">
         <span class="summary-icon">
+          <i data-lucide="wifi"></i>
+        </span>
+        <strong>LAN-Only</strong>
+        <span>No cross-network use</span>
+      </div>
+
+      <div class="summary-item">
+        <span class="summary-icon">
+          <i data-lucide="shield-off"></i>
+        </span>
+        <strong>No Spying</strong>
+        <span>Consent is mandatory</span>
+      </div>
+
+      <div class="summary-item">
+        <span class="summary-icon">
           <i data-lucide="scale"></i>
         </span>
         <strong>"As Is" Basis</strong>
         <span>Provided without warranty</span>
       </div>
 
-      <div class="summary-item">
-        <span class="summary-icon">
-          <i data-lucide="shield"></i>
-        </span>
-        <strong>Your Network</strong>
-        <span>You secure your own Wi-Fi</span>
-      </div>
-
     </div>
   </header>
+
+  <section class="platform-overview" data-animate aria-label="Platform overview: Android App and Windows Listener">
+    <div class="platform-card">
+      <div class="platform-card-head">
+        <span class="platform-icon"><i data-lucide="smartphone"></i></span>
+        <div>
+          <h3>Android App</h3>
+          <span class="platform-tag">Client · Controller</span>
+        </div>
+      </div>
+      <p>The app you install on your phone or tablet. It finds and connects to a Windows Listener on the same local network so you can view and control that PC.</p>
+      <p class="platform-note"><strong>Requires:</strong> local network access (Wi-Fi/LAN) to discover and connect to nearby devices. If you downloaded it from Google Play, your use of that store is also governed by Google Play's own terms.</p>
+    </div>
+    <div class="platform-card">
+      <div class="platform-card-head">
+        <span class="platform-icon"><i data-lucide="monitor"></i></span>
+        <div>
+          <h3>Windows Listener</h3>
+          <span class="platform-tag">Host</span>
+        </div>
+      </div>
+      <p>Runs on the PC you want to access remotely. It listens for incoming connections from the Android App and holds the security controls that decide who's allowed to connect.</p>
+      <p class="platform-note"><strong>Carries:</strong> the local security features below — IP whitelisting, IP banning, a client connection limit, and encryption of certain data such as clipboard content.</p>
+    </div>
+  </section>
 
   <div class="legal-layout">
 
@@ -81,20 +114,70 @@
         <div class="legal-toc-title">Terms Navigation</div>
 
         <nav aria-label="Table of Contents">
-          <ul class="toc-list">
-            <li><a href="#intro" class="active"><span>01</span> Introduction</a></li>
-            <li><a href="#license"><span>02</span> License & Usage</a></li>
-            <li><a href="#local"><span>03</span> Local Design</a></li>
-            <li><a href="#responsibility"><span>04</span> Responsibilities</a></li>
-            <li><a href="#security"><span>05</span> Security Disclaimer</a></li>
-            <li><a href="#warranty"><span>06</span> No Warranty</a></li>
-            <li><a href="#contact"><span>07</span> Contact</a></li>
-          </ul>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Getting Started</span>
+            <ul class="toc-list">
+              <li><a href="#intro" class="active"><span>01</span> Introduction</a></li>
+              <li><a href="#definitions"><span>02</span> Definitions</a></li>
+              <li><a href="#eligibility"><span>03</span> Eligibility</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Using RemotePC</span>
+            <ul class="toc-list">
+              <li><a href="#license"><span>04</span> License & Usage</a></li>
+              <li><a href="#acceptable-use"><span>05</span> Acceptable Use</a></li>
+              <li><a href="#local"><span>06</span> Local-Only Design</a></li>
+              <li><a href="#security"><span>07</span> Security</a></li>
+              <li><a href="#responsibility"><span>08</span> Responsibilities</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Data & Third Parties</span>
+            <ul class="toc-list">
+              <li><a href="#privacy"><span>09</span> Privacy</a></li>
+              <li><a href="#third-party"><span>10</span> Third-Party Services</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Legal Terms</span>
+            <ul class="toc-list">
+              <li><a href="#ip"><span>11</span> IP & Source Code</a></li>
+              <li><a href="#warranty"><span>12</span> No Warranty</a></li>
+              <li><a href="#liability"><span>13</span> Liability</a></li>
+              <li><a href="#indemnification"><span>14</span> Indemnification</a></li>
+              <li><a href="#export"><span>15</span> Export Control</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Account & Changes</span>
+            <ul class="toc-list">
+              <li><a href="#termination"><span>16</span> Term & Termination</a></li>
+              <li><a href="#updates"><span>17</span> Updates</a></li>
+              <li><a href="#changes"><span>18</span> Changes to Terms</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-label">Jurisdiction & Contact</span>
+            <ul class="toc-list">
+              <li><a href="#law"><span>19</span> Governing Law</a></li>
+              <li><a href="#region"><span>20</span> Region-Specific</a></li>
+              <li><a href="#general"><span>21</span> General Provisions</a></li>
+              <li><a href="#contact"><span>22</span> Contact</a></li>
+            </ul>
+          </div>
+
         </nav>
 
         <div class="toc-support-card">
           <p>Questions about our terms?</p>
-          <a href="mailto:stanwheat00@gmail.com">Email Developer</a>
+          <a href="mailto:contact@remotepc.tech">Email Us</a>
         </div>
       </div>
     </aside>
@@ -102,147 +185,272 @@
     <div class="legal-content">
 
   <section class="card" id="intro" data-animate>
-    <h2>1. Introduction</h2>
-    <p>
-      These Terms of Service (“Terms”) govern your use of the RemotePC Android application,
-      Windows listener software, and the remotepc.tech website (collectively, the “Service”).
-    </p>
-    <p>
-      By downloading, installing, or using the Service, you agree to be bound by these Terms.
-      If you do not agree, you must not use the Service.
-    </p>
+    <h2>1. Introduction and Acceptance</h2>
+    <p>RemotePC by Breadworks is an independent, non-commercial project. It's developed and made available by an individual developer operating under the name "Breadworks" (based in Athens, Greece) — <strong>not</strong> a registered company or other formal legal entity. These Terms are a direct agreement between you and that developer, personally.</p>
+    <p>RemotePC is provided entirely free of charge: no purchases, subscriptions, license fees, ads, or other monetization of any kind.</p>
+    <p>These Terms govern your access to and use of:</p>
+    <ul>
+      <li>The RemotePC by Breadworks <strong>Android App</strong></li>
+      <li>The RemotePC <strong>Windows Listener</strong> software</li>
+      <li>The website at remotepc.tech</li>
+    </ul>
+    <p>By downloading, installing, accessing, or using any part of RemotePC, you agree to these Terms and to our <a href="../privacy/">Privacy Policy</a>. If you don't agree, don't download, install, or use RemotePC.</p>
+    <p>If you're using RemotePC on behalf of a company or other organization, you confirm you have authority to bind that organization, and "you" refers to it.</p>
+  </section>
+
+  <section class="card" id="definitions" data-animate>
+    <h2>2. Definitions</h2>
+    <dl class="definitions">
+      <div>
+        <dt>Software</dt>
+        <dd>The Android App, the Windows Listener, related documentation and updates, and the Website.</dd>
+      </div>
+      <div>
+        <dt>Local Network / LAN</dt>
+        <dd>A private network not exposed to the public internet by default.</dd>
+      </div>
+      <div>
+        <dt>You / User</dt>
+        <dd>The person or entity using the Software.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="card" id="eligibility" data-animate>
+    <h2>3. Eligibility</h2>
+    <p>You must be at least 18, or the age of legal majority where you live, to accept these Terms yourself. If you're using RemotePC on behalf of, or in the presence of, a minor, you confirm you're their parent or legal guardian, or otherwise legally authorized, and you accept these Terms on their behalf.</p>
+    <p>RemotePC isn't directed at children, and we don't knowingly collect personal information from children under 13 (or the relevant age under your local law). If you believe a child has given us personal information, contact us using the details in <a href="#contact">Section 22</a>.</p>
   </section>
 
   <section class="card" id="license" data-animate>
-    <h2>2. License & Permitted Use</h2>
-    <p>
-      We grant you a limited, non-exclusive, non-transferable, revocable license to use
-      RemotePC for personal or internal use on devices you own or control.
-    </p>
-    <p>You agree not to:</p>
+    <h2>4. License & Permitted Use</h2>
+    <div class="badge-row">
+      <span class="platform-badge badge-both"><i data-lucide="check-circle-2" style="width:13px;height:13px;"></i> Applies to Android App & Windows Listener</span>
+    </div>
+    <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use RemotePC on devices you own or control, for personal or internal business use.</p>
+    <p>Except where applicable law gives you a right despite this restriction (for example, interoperability rights under the EU Software Directive 2009/24/EC or an equivalent local law), you agree not to:</p>
     <ul>
-      <li>Reverse engineer, decompile, or attempt to extract source code</li>
-      <li>Modify or redistribute the software under the RemotePC name without permission</li>
-      <li>Use the Service for unlawful, harmful, or abusive purposes</li>
-      <li>Use the Service to access systems without authorization</li>
+      <li>Misrepresent the Software as your own product, or remove or alter proprietary notices</li>
+      <li>Redistribute modified builds under the "RemotePC by Breadworks" name, logo, or branding without our prior written permission</li>
+      <li>Sell, rent, lease, sublicense, or otherwise commercially exploit the Software without our prior written permission</li>
+      <li>Reverse-engineer, decompile, or disassemble the Software beyond what applicable law allows</li>
     </ul>
+    <p>RemotePC's source code is closed and proprietary — see <a href="#ip">Section 11</a> for details. We reserve all rights not expressly granted here.</p>
+  </section>
+
+  <section class="card" id="acceptable-use" data-animate>
+    <h2>5. Acceptable Use</h2>
+    <p>You agree not to use RemotePC to:</p>
+    <ul>
+      <li>Access, monitor, or control any device or network without the explicit authorization of its owner or administrator</li>
+      <li>Surveil, track, or spy on any person without the consent required by applicable law</li>
+      <li>Violate any applicable law or regulation, including computer-misuse and data-protection laws</li>
+      <li>Infringe anyone else's intellectual property, privacy, or other rights</li>
+      <li>Introduce malware or attempt to compromise the security of any system</li>
+    </ul>
+
+    <div class="callout callout--danger">
+      <span class="callout-icon"><i data-lucide="shield-alert"></i></span>
+      <div class="callout-body">
+        <strong class="callout-title">No covert monitoring, ever</strong>
+        <p>Installing or using RemotePC on a device to covertly monitor, record, or control that device without the explicit, informed consent of its owner — including on a partner's, family member's, employee's, or any other person's device — is strictly prohibited.</p>
+        <p>This applies regardless of your relationship to that person or your reason for wanting access, and such use may violate computer-misuse, wiretapping, and anti-stalking laws in your jurisdiction.</p>
+      </div>
+    </div>
+
+    <p>We may suspend or terminate your license if we reasonably believe you've violated this Section.</p>
   </section>
 
   <section class="card" id="local" data-animate>
-    <h2>3. Local-Only Architecture</h2>
-    <p>
-      RemotePC is designed to operate over a <strong>local network (LAN)</strong>.
-      The Service does not provide cloud relays or automatic external access.
-    </p>
-    <p>
-      Any configuration that exposes your device to the internet (including port forwarding,
-      VPNs, or tunneling) is performed at your own discretion and risk.
-    </p>
-  </section>
-
-  <section class="card" id="responsibility" data-animate>
-    <h2>4. User Responsibilities</h2>
-    <p>You are solely responsible for your use of the Service. This includes:</p>
+    <h2>6. Local-Only Design; No Built-In Cloud Relay</h2>
+    <div class="badge-row">
+      <span class="platform-badge badge-windows"><i data-lucide="monitor" style="width:13px;height:13px;"></i> Windows Listener hosts the connection</span>
+      <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App connects locally</span>
+    </div>
+    <p>RemotePC by Breadworks is a <strong>local-network (LAN) tool only</strong>. It's designed and intended to be used exclusively between devices on the same local network:</p>
     <ul>
-      <li>Ensuring you have explicit authorization to access and control any device</li>
-      <li>Maintaining the security of your network, router, and connected devices</li>
-      <li>Protecting access credentials, IP addresses, and connection details</li>
-      <li>Complying with all applicable laws and regulations</li>
+      <li>No built-in cloud relay</li>
+      <li>No external servers operated by us to facilitate remote control</li>
+      <li>No automatic exposure to the public internet</li>
     </ul>
-    <p>
-      Unauthorized surveillance, monitoring, or access to third-party systems is strictly prohibited.
-    </p>
+
+    <div class="callout callout--warn">
+      <span class="callout-icon"><i data-lucide="wifi-off"></i></span>
+      <div class="callout-body">
+        <strong class="callout-title">You can't use this across different networks</strong>
+        <p>Connecting from a different Wi-Fi network, over the public internet, or between two separate LANs isn't a supported use case. This is a hard limitation on RemotePC's intended use, not just a description of a default setting.</p>
+      </div>
+    </div>
+
+    <p>This describes how the Software is designed to work. It isn't a guarantee against bugs, misconfiguration, or third-party interference, and is subject to the disclaimers in Sections 12 and 13.</p>
+    <p>If you nonetheless attempt to expose the Windows Listener to the internet or another network — for example through port forwarding, a VPN, or tunneling tools — you're doing so entirely outside RemotePC's supported use case, and entirely at your own risk. You're solely responsible for that configuration and everything that follows from it, including unauthorized access.</p>
   </section>
 
   <section class="card" id="security" data-animate>
-    <h2>5. Security Disclaimer</h2>
-    <p>
-      RemotePC is a remote control tool and does not function as a security product.
-      We do not guarantee protection against unauthorized access, malware, or network attacks.
-    </p>
-    <p>
-      Security depends on your environment, including network configuration,
-      device security, and access controls.
-    </p>
+    <h2>7. Security</h2>
+    <p>RemotePC takes a local-first approach to reduce attack surface, but it doesn't replace proper network security practices.</p>
+    <p>RemotePC includes security features intended to help prevent unauthorized access and reduce exposure. These live on the <strong>Windows Listener</strong>, since it's the side that accepts incoming connections from the Android App:</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="list-checks"></i><span>IP Whitelisting</span></div>
+        <p>Restrict which IP addresses are permitted to connect to the Windows Listener.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="ban"></i><span>IP Banning</span></div>
+        <p>Block specific local IP addresses from connecting.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="lock"></i><span>Encryption</span></div>
+        <p>Certain data in transit, including clipboard content, is encrypted.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-head"><i data-lucide="users"></i><span>Connection Limit</span></div>
+        <p>Restricts how many clients may connect to the Windows Listener at once.</p>
+      </div>
+    </div>
+
+    <p>These features are tools to help reduce risk, not a guarantee — you're responsible for configuring and using them correctly.</p>
+
+    <div class="callout callout--info">
+      <span class="callout-icon"><i data-lucide="wifi"></i></span>
+      <div class="callout-body">
+        <strong class="callout-title">A secure network is required, not optional</strong>
+        <p>You must only run and connect to RemotePC over a network you control and trust — a private home or office LAN behind a properly configured router. Using RemotePC over public Wi-Fi, shared networks, or any network you don't control significantly increases the risk of interception or unauthorized access, and is done entirely at your own risk.</p>
+      </div>
+    </div>
+
+    <p>We don't guarantee protection against every attack, vulnerability, or misconfiguration — including cases where security features such as IP whitelisting are bypassed, misconfigured, or fail. You're responsible for your firewall rules, router settings, and keeping your systems updated. Any connection made with RemotePC is only as secure as your Wi-Fi network and devices.</p>
+    <p>Despite these features, RemotePC — including any of its security features — is provided <strong>"as is."</strong> We don't warrant that it, or any security feature, will prevent unauthorized access in every case; see Sections 12 and 13.</p>
   </section>
 
-  <section class="card" id="availability" data-animate>
-    <h2>6. Availability & Updates</h2>
-    <p>
-      We may modify, update, or discontinue the Service at any time without notice.
-    </p>
-    <p>
-      We are not obligated to provide maintenance, updates, or support, although we may do so voluntarily.
-    </p>
-  </section>
-
-  <section class="card" id="termination" data-animate>
-    <h2>7. Termination</h2>
-    <p>
-      This license is effective until terminated. We may suspend or terminate your access
-      to the Service at any time if you violate these Terms.
-    </p>
-    <p>
-      Upon termination, you must stop using the Service and delete all copies in your possession.
-    </p>
-  </section>
-
-  <section class="card" id="warranty" data-animate>
-    <h2>8. Disclaimer of Warranties</h2>
-    <p>
-      THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND,
-      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A
-      PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
-    </p>
-    <p>
-      We do not guarantee that the Service will be uninterrupted, error-free, or secure.
-    </p>
-  </section>
-
-  <section class="card" id="liability" data-animate>
-    <h2>9. Limitation of Liability</h2>
-    <p>
-      TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE DEVELOPERS SHALL NOT BE LIABLE FOR ANY
-      INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING BUT
-      NOT LIMITED TO LOSS OF DATA, LOSS OF PROFITS, OR UNAUTHORIZED ACCESS.
-    </p>
-    <p>
-      YOUR USE OF THE SERVICE IS AT YOUR OWN RISK.
-    </p>
+  <section class="card" id="responsibility" data-animate>
+    <h2>8. Your Responsibilities</h2>
+    <p>You are solely responsible for your use of the Service, including:</p>
+    <ul>
+      <li>Ensuring you have explicit authorization to access and control any device</li>
+      <li>Maintaining reasonable security on your network and devices</li>
+      <li>Protecting your access credentials, IP addresses, and connection details</li>
+      <li>Complying with all applicable laws</li>
+    </ul>
   </section>
 
   <section class="card" id="privacy" data-animate>
-    <h2>10. Privacy</h2>
-    <p>
-      Your use of the Service is also governed by our
-      <a href="../privacy/">Privacy Policy</a>, which explains how data is handled.
-    </p>
+    <h2>9. Privacy & Data Collection</h2>
+    <p>We try to collect as little as possible.</p>
+    <ul>
+      <li><strong>Session data:</strong> the current version of the Windows Listener doesn't create or keep local logs of remote-control sessions.</li>
+      <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
+    </ul>
+    <p>Full details live in our standalone <a href="../privacy/">Privacy Policy</a>. If you're in the EEA/UK, you generally have rights to access, correct, delete, or restrict use of your personal data, and to complain to your local data protection authority. If you're a California resident, you may have rights under the CCPA, as amended — see <a href="#region">Section 20</a> and our Privacy Policy.</p>
   </section>
 
-  <section class="card" id="law" data-animate>
-    <h2>11. Governing Law</h2>
+  <section class="card" id="third-party" data-animate>
+    <h2>10. Third-Party Services</h2>
+    <div class="badge-row">
+      <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App</span>
+    </div>
+    <p>The update-check feature interacts with GitHub, which has its own terms and privacy statement that we don't control.</p>
+    <p>If you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's terms.</p>
+  </section>
+
+  <section class="card" id="ip" data-animate>
+    <h2>11. Intellectual Property</h2>
+    <p>RemotePC by Breadworks is <strong>closed-source software</strong>: its source code is proprietary and is not published, disclosed, or otherwise made available to the public.</p>
+    <p>RemotePC by Breadworks — including its source code, name, and logo — belongs to us (that is, to the developer personally, since "Breadworks" is a project name and not a separate legal entity) or our licensors, and is protected by copyright, trademark, and other laws.</p>
+    <p>Other than the limited license in <a href="#license">Section 4</a>, nothing here transfers any rights to you, and no license to view, access, or copy the source code is granted.</p>
+  </section>
+
+  <section class="card" id="warranty" data-animate>
+    <h2>12. Disclaimer of Warranties</h2>
     <p>
-      These Terms shall be governed by and interpreted in accordance with the laws
-      of your jurisdiction, without regard to conflict of law principles.
+      TO THE FULLEST EXTENT THE LAW ALLOWS, REMOTEPC IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY — INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DON'T WARRANT THAT REMOTEPC WILL BE ERROR-FREE, SECURE, UNINTERRUPTED, OR THAT ALL BUGS WILL BE FIXED. THIS INCLUDES ANY SECURITY FEATURES (SUCH AS IP WHITELISTING, IP BANNING, ENCRYPTION, OR CLIENT CONNECTION LIMITS) — WE DON'T WARRANT THAT THEY WILL PREVENT UNAUTHORIZED ACCESS, PROTECT TRANSMITTED DATA IN EVERY CASE, OR OPERATE WITHOUT FLAWS.
     </p>
+    <p>Nothing here excludes any statutory guarantee or right that can't lawfully be excluded — including digital-content conformity guarantees available to EU consumers under Directive (EU) 2019/770, or other non-waivable rights under the law of your country of residence.</p>
+  </section>
+
+  <section class="card" id="liability" data-animate>
+    <h2>13. Limitation of Liability</h2>
+    <p>
+      TO THE FULLEST EXTENT THE LAW ALLOWS: WE ARE NOT LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES — INCLUDING LOST DATA, LOST PROFITS, OR HARDWARE/SOFTWARE DAMAGE — ARISING FROM YOUR USE OR INABILITY TO USE REMOTEPC, INCLUDING UNAUTHORIZED ACCESS RESULTING FROM MISCONFIGURATION OR WEAK NETWORK SECURITY.
+    </p>
+    <p>Nothing here excludes liability that can't be excluded under applicable law — including for death or personal injury caused by negligence, fraud, or, where local law forbids excluding it, gross negligence or willful misconduct.</p>
+  </section>
+
+  <section class="card" id="indemnification" data-animate>
+    <h2>14. Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold us harmless from claims, damages, and expenses (including reasonable legal fees) arising from:</p>
+    <ul>
+      <li>Your use of RemotePC in breach of these Terms or applicable law</li>
+      <li>Your violation of anyone else's rights</li>
+      <li>Unauthorized access to a device or network carried out using RemotePC through your action or negligence</li>
+    </ul>
+    <p>— except to the extent applicable consumer-protection law doesn't allow this.</p>
+  </section>
+
+  <section class="card" id="export" data-animate>
+    <h2>15. Export Control and Sanctions Compliance</h2>
+    <p>RemotePC may be subject to export-control and economic sanctions laws, including those of the United States and European Union. You confirm you're not located in, or a national or resident of, a country or region subject to comprehensive trade sanctions, and that you're not on any applicable restricted-party list. You agree not to export or use RemotePC in violation of these laws.</p>
+  </section>
+
+  <section class="card" id="termination" data-animate>
+    <h2>16. Term and Termination</h2>
+    <p>These Terms apply until terminated. We may suspend or terminate your license for material breach. You can stop using RemotePC and uninstall it any time.</p>
+    <p>Sections that should reasonably survive termination — including 11 through 15 and 19 — do.</p>
+  </section>
+
+  <section class="card" id="updates" data-animate>
+    <h2>17. Software Updates and Changes to the Service</h2>
+    <p>We may release updates — new features, bug fixes, security patches — from time to time. RemotePC may check GitHub's public API for new versions, as described in <a href="#privacy">Section 9</a>.</p>
+    <p>We may modify, suspend, or discontinue parts of RemotePC at any time, and will try to give reasonable notice of material changes where practical.</p>
   </section>
 
   <section class="card" id="changes" data-animate>
-    <h2>12. Changes to Terms</h2>
-    <p>
-      We may update these Terms from time to time. Continued use of the Service
-      after changes constitutes acceptance of the revised Terms.
-    </p>
+    <h2>18. Changes to These Terms</h2>
+    <p>We may update these Terms periodically. Material changes will update the "Last Updated" date above and, where practical, be flagged in the app or on the Website.</p>
+    <p>Continuing to use RemotePC after changes take effect means you accept them, to the extent the law allows; where the law requires your affirmative consent, we'll ask for it.</p>
+  </section>
+
+  <section class="card" id="law" data-animate>
+    <h2>19. Governing Law and Dispute Resolution</h2>
+    <p>These Terms are governed by the laws of Greece (the Hellenic Republic), the developer's country of residence, and the courts of Athens have jurisdiction over any dispute, subject to the paragraph below.</p>
+    <p>If you're a consumer habitually resident in the EU, EEA, or UK, this clause doesn't take away the protection of mandatory consumer-protection rules in your country of residence, and you keep the right to bring proceedings in your local courts under applicable law (including Regulation (EU) No 1215/2012 and Regulation (EC) No 593/2008, or their UK equivalents).</p>
+    <p>Contact us first (<a href="#contact">Section 22</a>) — we'd rather resolve a dispute directly than through a formal process.</p>
+  </section>
+
+  <section class="card" id="region" data-animate>
+    <h2>20. Region-Specific Terms</h2>
+
+    <div class="region-block">
+      <h4>European Union / EEA / United Kingdom</h4>
+      <p><strong>Who we are:</strong> An independent developer operating under the name "Breadworks," based in Athens, Greece. Breadworks is a project name, not a registered company. Contact: <a href="mailto:contact@remotepc.tech">contact@remotepc.tech</a>.</p>
+      <p><strong>Statutory rights:</strong> nothing here limits your non-waivable consumer rights, including digital-content conformity rights under Directive (EU) 2019/770 or UK equivalents.</p>
+      <p><strong>Data protection:</strong> see <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for your rights under the GDPR (Regulation (EU) 2016/679).</p>
+    </div>
+
+    <div class="region-block">
+      <h4>United States</h4>
+      <p><strong>California disclosure (Cal. Civ. Code § 1789.3):</strong> current charges for RemotePC: none. RemotePC is provided entirely free of charge, with no in-app purchases, subscriptions, or other charges of any kind. California residents may direct complaints to the Complaint Assistance Unit, Division of Consumer Services, California Department of Consumer Affairs, 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, (800) 952-5210.</p>
+      <p><strong>CCPA/CPRA:</strong> you may have rights under the California Consumer Privacy Act, as amended by the CPRA, over personal information we or our service providers process — see our Privacy Policy for how to exercise them.</p>
+      <p><strong>Warranty/liability carve-outs:</strong> some US states don't allow excluding certain implied warranties or limiting incidental/consequential damages, so parts of Sections 12–13 may not fully apply to you.</p>
+    </div>
+  </section>
+
+  <section class="card" id="general" data-animate>
+    <h2>21. General Provisions</h2>
+    <ul>
+      <li><strong>Severability:</strong> if any provision is found unenforceable, the rest stays in effect, and that provision is read narrowly enough to be enforceable.</li>
+      <li><strong>Entire Agreement:</strong> these Terms plus our Privacy Policy are the whole agreement between us about RemotePC, replacing any earlier agreements.</li>
+      <li><strong>No Waiver:</strong> not enforcing a provision once doesn't waive our right to enforce it later.</li>
+      <li><strong>Assignment:</strong> you can't assign these Terms without our written consent; we may assign them as part of a merger, acquisition, or asset sale.</li>
+      <li><strong>Notices:</strong> we may notify you via the app, the Website, or the email you've provided.</li>
+    </ul>
   </section>
 
   <section class="card" id="contact" data-animate>
-    <h2>13. Contact</h2>
-    <p>
-      For questions regarding these Terms, contact:
-    </p>
-    <p>
-      <a href="mailto:legal@remotepc.tech" class="cookie-link">legal@remotepc.tech</a>
-    </p>
+    <h2>22. Contact</h2>
+    <p>Questions about these Terms? Email:</p>
+    <p><a href="mailto:contact@remotepc.tech" class="cookie-link">contact@remotepc.tech</a></p>
   </section>
 
 </div>
