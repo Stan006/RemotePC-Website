@@ -49,7 +49,8 @@
       RemotePC is built to work locally without accounts or cloud relays. This Policy explains, in
       the same level of detail as our <a href="../terms/">Terms of Service</a>, exactly what
       information is involved in making that possible — including every permission the Android App
-      requests and why it's there.
+      requests and why it's there, and the two limited, Firebase-based connections maintained by the
+      Windows Listener (see <a href="#sharing">Section 10</a>).
     </p>
 
     <div class="summary-grid">
@@ -67,8 +68,8 @@
 
       <div class="summary-card">
         <i data-lucide="bar-chart-3"></i>
-        <strong>No Analytics</strong>
-        <span>No tracking or profiling, ever</span>
+        <strong>No Profiling, Ever</strong>
+        <span>One anonymous usage ping — never tied to you</span>
       </div>
     </div>
   </header>
@@ -222,14 +223,16 @@
   <article class="card" id="data">
     <h2>5. Data We Do Not Collect</h2>
     <p>
-      RemotePC is built to minimize data processing. We do <strong>not collect, store, or transmit
-      personal data</strong> to external servers.
+      RemotePC is built to minimize data processing. Other than the narrow exceptions described in
+      <a href="#sharing">Section 10</a> (a GitHub update check, and two Firebase-based connections
+      maintained by the Windows Listener), we do <strong>not collect, store, or transmit personal
+      data</strong> to external servers.
     </p>
     <ul>
       <li>No personal information (e.g. name, email, location)</li>
       <li>No account data (no account system exists)</li>
       <li>No device identifiers or advertising IDs</li>
-      <li>No usage analytics or behavioral tracking</li>
+      <li>No behavioral tracking, profiling, or advertising analytics — the only "usage" signal we receive is a single anonymous, aggregate ping described in <a href="#sharing">Section 10</a>, which does not identify you, your device, or your network</li>
       <li>No remote session data leaves your local network</li>
     </ul>
   </article>
@@ -251,6 +254,14 @@
       current version of the Windows Listener also does not create or keep local logs of
       remote-control sessions.
     </p>
+    <p>
+      The one exception to purely local, peer-to-peer processing is described in
+      <a href="#sharing">Section 10</a>: the Windows Listener maintains two limited, one-way
+      connections to Google's Firebase platform (a broadcast/notification channel and an anonymous
+      usage ping). Neither connection is used to relay, route, store, or otherwise facilitate a
+      remote-control session, and neither gives us access to your screen, input, clipboard, files,
+      or any other session content.
+    </p>
   </article>
 
   <article class="card" id="legal-basis">
@@ -268,7 +279,25 @@
       We don't rely on consent as a legal basis for this on-device processing because we don't
       collect the personal data in question in the first place — it never leaves your device or
       your local network. Where any narrow exception to that applies (for example, the GitHub update
-      check described in <a href="#sharing">Section 10</a>), the relevant basis is noted there.
+      check or the Firebase-based connections described in <a href="#sharing">Section 10</a>), the
+      relevant basis is noted there.
+    </p>
+    <p>
+      For the Windows Listener's Firebase-based broadcast/notification channel and anonymous usage
+      ping specifically, our legal basis is <strong>legitimate interest (Article 6(1)(f))</strong>:
+      keeping users informed of important announcements, and understanding how many people are
+      using RemotePC at any given time, are legitimate interests in operating and maintaining the
+      Software, and this
+      processing is limited to what's necessary for those purposes. Because the usage ping is
+      anonymous and aggregate, and the broadcast channel does not use any identifier to target or
+      profile a specific person, we don't consider either to involve personal data in the ordinary
+      case; to the extent any technical identifier involved (such as a push-messaging registration
+      token) is ever considered personal data under your local law, legitimate interest remains our
+      basis, and you retain the rights described in <a href="#rights-eu">Section 13</a>, including
+      the right to object. If you object to this processing, the only way to fully stop it is to
+      uninstall the Windows Listener, since — as disclosed in <a href="#sharing">Section 10</a> — the
+      broadcast channel is a fixed part of how that software is built and does not have an in-app
+      toggle.
     </p>
   </article>
 
@@ -403,32 +432,64 @@
       fails. Full disclaimers and liability limits for these features are set out in Sections 7, 12,
       and 13 of our <a href="../terms/">Terms of Service</a>.
     </p>
+    <p>
+      Separately from these security features, and separately from any remote-control session, the
+      Windows Listener also maintains two limited, one-way connections to Google's Firebase platform
+      — a broadcast/notification channel and an anonymous usage ping. These do not carry
+      remote-control session data and are not configurable through the security features above. They
+      are described in full, including their legal basis and your rights, in
+      <a href="#sharing">Section 10</a>.
+    </p>
   </article>
 
   <article class="card" id="sharing">
     <h2>10. Data Sharing &amp; Third-Party Services</h2>
     <p>
-      We do <strong>not sell, rent, or share any user data</strong> with third parties, and RemotePC
-      does not integrate with third-party analytics, advertising networks, or cloud services — with
-      the one limited exception below.
+      We do <strong>not sell, rent, or otherwise share any user data</strong> with third parties for
+      their own purposes, and RemotePC does not integrate with advertising networks, data brokers, or
+      third-party analytics SDKs. RemotePC does maintain the following limited, disclosed connections
+      to external, third-party-operated infrastructure, each described in full below:
     </p>
     <ul>
       <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
       <li><strong>Google Play Store:</strong> if you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's own terms and privacy practices, which we don't control.</li>
+      <li><strong>Broadcast/notification channel (Windows Listener, Firebase):</strong> the Windows Listener maintains a persistent, one-way connection to Google's Firebase platform (Firebase Cloud Messaging) so that we can push message notifications to the app — for example, announcements, security notices, or other important updates. This channel is a built-in, fixed part of how the Windows Listener is designed to operate, and — unlike the security features in <a href="#security">Section 9</a> — it does <strong>not</strong> have an in-app or configuration-file toggle to disable it. Maintaining the connection necessarily involves Firebase issuing a device-specific messaging token and processing ordinary connection metadata (such as your device's IP address at the time of connection) as part of delivering the message — this is inherent to how push-messaging infrastructure works, not something we separately request. We do not use this token or metadata to identify, profile, or track you, and we do not combine it with any other data we hold (we hold none).</li>
+      <li><strong>Anonymous usage ping (Windows Listener, Firebase):</strong> the Windows Listener also sends a periodic, anonymous ping to us via Firebase, solely so we can see how many people are using RemotePC at a given time. This is a live, aggregate count of concurrent usage, not a cumulative record of everyone who has ever used RemotePC. The ping is not linked to an account, name, email address, or any other identifier that could reasonably be used to identify you, your specific device, or your network, and we do not attempt to re-identify it.</li>
     </ul>
+    <p>
+      <strong>Firebase as a processor:</strong> Firebase is a platform operated by Google LLC / Google
+      Ireland Limited. For the broadcast channel and anonymous ping described above, Firebase acts as
+      an infrastructure processor / service provider that transmits and delivers this limited data on
+      our behalf, under Google's own privacy policy and, where applicable, its data processing terms
+      with us. We don't control Firebase's infrastructure and aren't responsible for its independent
+      obligations as a global platform provider, but we have configured our use of it to request the
+      minimum functionality needed for the two purposes described above.
+    </p>
+    <p>
+      Other than the GitHub update check, the Google Play Store, and the two Firebase-based
+      connections described above, the Windows Listener and Android App make <strong>no further
+      outside connection</strong> to us or to any other party. Nothing here is used for advertising,
+      cross-app tracking, or building a profile of you.
+    </p>
   </article>
 
   <article class="card" id="transfers">
     <h2>11. International Data Transfers</h2>
     <p>
-      The only data leaving your device through your use of RemotePC is the request described in
+      The only data leaving your device through your use of RemotePC is: (a) the request described in
       <a href="#sharing">Section 10</a> that your Android App or Windows Listener may make to
-      GitHub's API to check for updates, and any data you choose to submit through the Google Play
-      Store. Both GitHub and Google are US-based companies that process data under their own privacy
-      policies and applicable international-transfer safeguards.
+      GitHub's API to check for updates; (b) any data you choose to submit through the Google Play
+      Store; and (c) the two limited Firebase-based connections maintained by the Windows Listener
+      (the broadcast/notification channel and the anonymous usage ping), also described in
+      <a href="#sharing">Section 10</a>. GitHub and Google are both US-based companies that process
+      data under their own privacy policies and applicable international-transfer safeguards,
+      including — where relevant — self-certification under the EU-U.S. Data Privacy Framework, the
+      UK extension to that framework, and the Swiss-U.S. Data Privacy Framework, or Standard
+      Contractual Clauses, as maintained and updated by Google and GitHub respectively.
     </p>
     <p>
-      We do not receive, store, or control this data, and we do not operate any servers of our own
+      We do not receive, store, or control this data beyond the aggregate, anonymous usage count
+      described in <a href="#sharing">Section 10</a>, and we do not operate any servers of our own
       outside your local network to which your data could be transferred.
     </p>
   </article>
@@ -444,6 +505,15 @@
       Basic technical data (such as server logs for this website) may be temporarily retained by our
       hosting provider under its own retention practices, for security and operational purposes. See
       <a href="#website">Section 16</a>.
+    </p>
+    <p>
+      The anonymous usage ping described in <a href="#sharing">Section 10</a> is only ever retained
+      by us in aggregate, anonymized form (for example, as a live concurrent-usage count), never as
+      an individual record tied to a device or network, and never as a cumulative history of past
+      usage. Any connection-level data that necessarily passes through
+      Firebase to deliver the broadcast channel or the ping (such as a messaging token or IP address
+      at time of connection) is retained, if at all, by Google under Google's own retention practices
+      for Firebase, which we don't control.
     </p>
   </article>
 
@@ -469,6 +539,15 @@
         if you believe we hold any information about you (for example, in an email you've sent us),
         contact us using the details in <a href="#contact">Section 19</a> and we'll respond.
       </p>
+      <p>
+        <strong>Right to object (Firebase broadcast channel and usage ping):</strong> as explained in
+        <a href="#legal-basis">Section 7</a>, we rely on legitimate interest for the Windows
+        Listener's Firebase-based broadcast channel and anonymous usage ping. You can object to this
+        processing at any time by contacting us, but because the broadcast channel is a fixed part of
+        the Windows Listener's design with no in-app toggle, the only way to give effect to that
+        objection in practice is to uninstall the Windows Listener, which immediately and completely
+        stops both connections.
+      </p>
     </div>
   </article>
 
@@ -491,6 +570,14 @@
         collect personal information from RemotePC's use, there is generally little or no such
         information for us to act on, but you can still submit a request using the details in
         <a href="#contact">Section 19</a> and we'll respond as required by law.
+      </p>
+      <p>
+        <strong>Service providers:</strong> the only third parties that process any data in
+        connection with RemotePC are GitHub and Google (Firebase and Google Play), each acting as a
+        service provider for the narrow, disclosed purposes described in
+        <a href="#sharing">Section 10</a>. We do not sell personal information, and we do not "share"
+        personal information for cross-context behavioral advertising, as those terms are defined
+        under the CCPA/CPRA.
       </p>
     </div>
   </article>
@@ -528,7 +615,8 @@
     <p>
       We may update this Privacy Policy periodically to reflect changes in functionality, legal
       requirements, or improvements to the service — including changes to the permissions listed in
-      <a href="#permissions">Section 8</a>.
+      <a href="#permissions">Section 8</a> or the third-party connections listed in
+      <a href="#sharing">Section 10</a>.
     </p>
     <p>
       Material changes will update the “Last Updated” date above and, where practical, be flagged in
