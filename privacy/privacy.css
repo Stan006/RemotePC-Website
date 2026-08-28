@@ -676,3 +676,363 @@ a:hover {
   transform: translateY(0);
   transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease;
 }
+
+/* --------------------------------------------------------------------------
+   Last Updated line
+   -------------------------------------------------------------------------- */
+.legal-updated {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0.75;
+  margin: -8px 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   Grouped Table of Contents
+   -------------------------------------------------------------------------- */
+.toc-group {
+  margin-bottom: 18px;
+}
+
+.toc-group:last-child {
+  margin-bottom: 0;
+}
+
+.toc-group-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(159, 176, 209, 0.55);
+  padding: 0 12px;
+  margin-bottom: 6px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 4px;
+}
+
+.toc-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.toc-list a span {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.2s ease;
+}
+
+.toc-list a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+.toc-list a:hover span {
+  color: var(--brand);
+}
+
+/* TOC support card */
+.toc-support-card {
+  background: rgba(130, 255, 216, 0.05);
+  border: 1px solid rgba(130, 255, 216, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.toc-support-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.toc-support-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-2);
+  text-decoration: none;
+  padding: 8px 16px;
+  background: rgba(130, 255, 216, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.toc-support-card a:hover {
+  background: rgba(130, 255, 216, 0.15);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Platform / scope badges (used inline within cards)
+   -------------------------------------------------------------------------- */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -4px 0 18px;
+}
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.platform-badge.badge-android { color: var(--brand-2); border-color: rgba(130, 255, 216, 0.25); }
+.platform-badge.badge-windows { color: var(--brand); border-color: rgba(110, 168, 255, 0.3); }
+.platform-badge.badge-both { color: var(--text); }
+
+/* --------------------------------------------------------------------------
+   Callout boxes
+   -------------------------------------------------------------------------- */
+.callout {
+  display: flex;
+  gap: 14px;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin: 4px 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.callout-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  margin-top: 1px;
+}
+
+.callout-icon i,
+.callout-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.callout-body p {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.callout-body p:last-child {
+  margin-bottom: 0;
+}
+
+.callout-body strong.callout-title {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.callout--danger {
+  border-color: rgba(255, 125, 125, 0.3);
+  background: rgba(255, 125, 125, 0.06);
+}
+.callout--danger .callout-icon { background: rgba(255, 125, 125, 0.15); }
+.callout--danger .callout-icon i { color: var(--danger); }
+.callout--danger strong.callout-title { color: var(--danger); }
+
+.callout--warn {
+  border-color: rgba(255, 170, 128, 0.3);
+  background: rgba(255, 170, 128, 0.06);
+}
+.callout--warn .callout-icon { background: rgba(255, 170, 128, 0.15); }
+.callout--warn .callout-icon i { color: var(--accent); }
+.callout--warn strong.callout-title { color: var(--accent); }
+
+.callout--info {
+  border-color: rgba(110, 168, 255, 0.3);
+  background: rgba(110, 168, 255, 0.06);
+}
+.callout--info .callout-icon { background: rgba(110, 168, 255, 0.15); }
+.callout--info .callout-icon i { color: var(--brand); }
+.callout--info strong.callout-title { color: var(--brand); }
+
+/* --------------------------------------------------------------------------
+   Security / permission feature grid
+   -------------------------------------------------------------------------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 4px 0 20px;
+}
+
+@media (max-width: 560px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.feature-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.feature-card-head i {
+  width: 16px;
+  height: 16px;
+  color: var(--brand-2);
+  flex-shrink: 0;
+}
+
+.feature-card-head span {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Definitions / permission list
+   -------------------------------------------------------------------------- */
+.legal-content dl.definitions {
+  margin: 0 0 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.legal-content dl.definitions:last-child {
+  margin-bottom: 0;
+}
+
+.legal-content dl.definitions dt {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.legal-content dl.definitions dd {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.legal-content dl.permission-list {
+  gap: 14px;
+}
+
+.legal-content dl.permission-list > div {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.legal-content code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--brand-2);
+  background: rgba(130, 255, 216, 0.08);
+  border: 1px solid rgba(130, 255, 216, 0.15);
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.01em;
+}
+
+.legal-content dl.permission-list dt {
+  margin-bottom: 6px;
+}
+
+.permission-scope {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-left: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Region sub-blocks (rights by jurisdiction)
+   -------------------------------------------------------------------------- */
+.region-block {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.region-block:last-child {
+  margin-bottom: 0;
+}
+
+.region-block h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-2);
+  margin: 0 0 12px;
+}
+
+.region-block p {
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+
+.region-block p:last-child {
+  margin-bottom: 0;
+}
+
+.region-block ul {
+  margin: 0 0 12px;
+}
+
+.region-block ul:last-child {
+  margin-bottom: 0;
+}
