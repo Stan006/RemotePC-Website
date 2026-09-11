@@ -1,16 +1,16 @@
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(button => {
+// ============================================================
+// FAQ accordion (single-open across all groups)
+// ============================================================
+document.querySelectorAll('.faq-q').forEach(button => {
   button.addEventListener('click', () => {
     const item = button.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    
-    // Close all items
+
     document.querySelectorAll('.faq-item').forEach(i => {
       i.classList.remove('open');
-      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
     });
-    
-    // Open clicked item if it was closed
+
     if (!isOpen) {
       item.classList.add('open');
       button.setAttribute('aria-expanded', 'true');
@@ -18,30 +18,32 @@ document.querySelectorAll('.faq-question').forEach(button => {
   });
 });
 
-// Mobile menu toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navMenu = document.getElementById('navMenu');
+// ============================================================
+// Mobile nav toggle
+// ============================================================
+const navToggle = document.getElementById('navToggle');
+const navPanel = document.getElementById('navPanel');
 
-if (mobileMenuBtn && navMenu) {
-  const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
-  const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+if (navToggle && navPanel) {
+  const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+  const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
 
   const closeMobileMenu = () => {
-    navMenu.classList.remove('open');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    mobileMenuBtn.setAttribute('aria-label', 'Open menu');
-    mobileMenuBtn.innerHTML = menuIcon;
+    navPanel.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open menu');
+    navToggle.innerHTML = menuIcon;
   };
 
   const openMobileMenu = () => {
-    navMenu.classList.add('open');
-    mobileMenuBtn.setAttribute('aria-expanded', 'true');
-    mobileMenuBtn.setAttribute('aria-label', 'Close menu');
-    mobileMenuBtn.innerHTML = closeIcon;
+    navPanel.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close menu');
+    navToggle.innerHTML = closeIcon;
   };
 
-  mobileMenuBtn.addEventListener('click', () => {
-    if (navMenu.classList.contains('open')) {
+  navToggle.addEventListener('click', () => {
+    if (navPanel.classList.contains('open')) {
       closeMobileMenu();
     } else {
       openMobileMenu();
@@ -49,7 +51,7 @@ if (mobileMenuBtn && navMenu) {
   });
 
   // Close the menu when any link inside it is tapped
-  navMenu.addEventListener('click', (e) => {
+  navPanel.addEventListener('click', (e) => {
     if (e.target.closest('a')) {
       closeMobileMenu();
     }
@@ -57,7 +59,7 @@ if (mobileMenuBtn && navMenu) {
 
   // Close it if the viewport grows back past the mobile breakpoint
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 968 && navMenu.classList.contains('open')) {
+    if (window.innerWidth > 980 && navPanel.classList.contains('open')) {
       closeMobileMenu();
     }
   });
@@ -65,9 +67,9 @@ if (mobileMenuBtn && navMenu) {
   // Close on outside tap/click
   document.addEventListener('click', (e) => {
     if (
-      navMenu.classList.contains('open') &&
-      !navMenu.contains(e.target) &&
-      !mobileMenuBtn.contains(e.target)
+      navPanel.classList.contains('open') &&
+      !navPanel.contains(e.target) &&
+      !navToggle.contains(e.target)
     ) {
       closeMobileMenu();
     }
@@ -75,28 +77,32 @@ if (mobileMenuBtn && navMenu) {
 
   // Close on Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+    if (e.key === 'Escape' && navPanel.classList.contains('open')) {
       closeMobileMenu();
-      mobileMenuBtn.focus();
+      navToggle.focus();
     }
   });
 }
 
-// Feature card mouse tracking
-document.querySelectorAll('.feature-card').forEach(card => {
+// ============================================================
+// Feature grid — cursor-follow highlight (responds to the
+// user's own mouse position, not a scroll/load animation)
+// ============================================================
+document.querySelectorAll('.feature, .category-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mouse-x', `${x}%`);
-    card.style.setProperty('--mouse-y', `${y}%`);
+    card.style.setProperty('--mx', `${x}%`);
+    card.style.setProperty('--my', `${y}%`);
   });
 });
 
-// Smooth scroll with offset for fixed header
-// (":not([href=\"#\"])" excludes bare "#" links like the logo and the
-// download buttons, which already have their own click handlers and would
-// otherwise throw on document.querySelector('#'))
+// ============================================================
+// Smooth scroll with offset for the sticky header
+// (":not([href=\"#\"])" excludes bare "#" links like the logo,
+// which would otherwise throw on document.querySelector('#'))
+// ============================================================
 document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -111,7 +117,129 @@ document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
   });
 });
 
+// ============================================================
+// Scroll progress bar, header "scrolled" state, back-to-top
+// ============================================================
+const scrollProgressBar = document.getElementById('scrollProgressBar');
+const backToTop = document.getElementById('backToTop');
+const siteHeader = document.querySelector('.site-header');
+
+function updateScrollState() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+
+  if (scrollProgressBar) scrollProgressBar.style.width = `${progress}%`;
+  if (siteHeader) siteHeader.classList.toggle('scrolled', scrollTop > 12);
+  if (backToTop) backToTop.classList.toggle('visible', progress > 50);
+}
+
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
+
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ============================================================
+// Download modal + latest Windows build lookup
+// ============================================================
+const downloadModal = document.getElementById('downloadModal');
+const downloadBtn = document.getElementById('downloadBtn');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+const understandCheckbox = document.getElementById('understandCheckbox');
+const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+const downloadBtnLabel = document.getElementById('downloadBtnLabel');
+const modalDownloadBtnLabel = document.getElementById('modalDownloadBtnLabel');
+
+const GITHUB_RELEASES_API = 'https://api.github.com/repos/Stan006/RemotePC/releases/latest';
+const GITHUB_RELEASES_PAGE = 'https://github.com/Stan006/RemotePC/releases/latest';
+
+let resolvedExeUrl = null;
+
+async function resolveLatestWindowsBuild() {
+  try {
+    const res = await fetch(GITHUB_RELEASES_API);
+    if (!res.ok) throw new Error('GitHub API request failed');
+    const release = await res.json();
+
+    const exeAsset = (release.assets || []).find(a => a.name.toLowerCase().endsWith('.exe'));
+    resolvedExeUrl = exeAsset ? exeAsset.browser_download_url : GITHUB_RELEASES_PAGE;
+
+    if (release.tag_name) {
+      [downloadBtnLabel, modalDownloadBtnLabel].forEach(label => {
+        if (label) label.textContent = `Download for Windows (${release.tag_name})`;
+      });
+    }
+  } catch (error) {
+    // Network/API hiccup — fall back to the releases page so the
+    // button still does something useful.
+    resolvedExeUrl = GITHUB_RELEASES_PAGE;
+    console.error('Could not resolve the latest release:', error);
+  }
+}
+
+resolveLatestWindowsBuild();
+
+function openDownloadModal() {
+  if (!downloadModal) return;
+  downloadModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  modalCloseBtn?.focus();
+}
+
+function closeDownloadModal() {
+  if (!downloadModal) return;
+  downloadModal.style.display = 'none';
+  document.body.style.overflow = '';
+  downloadBtn?.focus();
+}
+
+if (downloadBtn && downloadModal) {
+  downloadBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openDownloadModal();
+  });
+}
+
+modalCloseBtn?.addEventListener('click', closeDownloadModal);
+
+downloadModal?.addEventListener('click', (e) => {
+  if (e.target === downloadModal) closeDownloadModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && downloadModal && downloadModal.style.display === 'flex') {
+    closeDownloadModal();
+  }
+});
+
+understandCheckbox?.addEventListener('change', () => {
+  if (!modalDownloadBtn) return;
+  const enabled = understandCheckbox.checked;
+  modalDownloadBtn.classList.toggle('btn-disabled', !enabled);
+  modalDownloadBtn.setAttribute('aria-disabled', String(!enabled));
+});
+
+modalDownloadBtn?.addEventListener('click', (e) => {
+  if (!understandCheckbox?.checked) {
+    e.preventDefault();
+    return;
+  }
+  if (resolvedExeUrl) {
+    modalDownloadBtn.setAttribute('href', resolvedExeUrl);
+  }
+  closeDownloadModal();
+});
+
+// ============================================================
 // Search functionality
+// Guarded — not present on every page that loads this script,
+// but kept here so pages with a search UI (e.g. a help center)
+// continue to work against the same shared script.
+// ============================================================
 const searchInput = document.getElementById('searchInput');
 const categoriesContainer = document.getElementById('categoriesContainer');
 const noResults = document.getElementById('noResults');
@@ -131,7 +259,7 @@ if (searchInput && categoriesContainer && noResults) {
         if (titleElement) {
           const title = titleElement.textContent.toLowerCase();
           const parent = article.parentElement;
-          
+
           if (title.includes(query)) {
             parent.style.display = 'block';
             categoryHasMatch = true;
@@ -149,7 +277,21 @@ if (searchInput && categoriesContainer && noResults) {
   });
 }
 
+if (searchInput) {
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+  });
+}
+
+// ============================================================
 // Form validation and submission
+// Guarded — this page doesn't include a contact form, but other
+// pages on the same site (e.g. /contact/) share this script.
+// ============================================================
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
@@ -158,7 +300,7 @@ if (contactForm) {
 
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
   // Suspicious patterns to detect
   // Note: no 'g' flag here — these are only ever used with .test(), and a
   // global regex keeps a lastIndex between calls, which makes repeated

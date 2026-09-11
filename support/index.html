@@ -5,50 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RemotePC – Support &amp; Help Center</title>
   <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48">
-
-  <!-- Professional font stack: Inter (body) + Plus Jakarta Sans (display) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <link href="support.css" rel="stylesheet">
+  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="support.css">
+  <script defer src="../app.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <meta name="description" content="Get help with RemotePC. Find articles, guides, and solutions to common issues.">
+  <meta name="theme-color" content="#08090b">
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Background decoration -->
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
 
-  <header class="header" role="banner">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="../" class="logo">
-        <div class="logo-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+        </span>
+        RemotePC
+      </a>
+
+      <div class="nav-panel" id="navPanel">
+        <ul class="nav-links">
+          <li><a href="../#features">Features</a></li>
+          <li><a href="../#how-it-works">How it works</a></li>
+          <li><a href="../#download">Download</a></li>
+          <li><a href="../releases/">Releases</a></li>
+          <li><a href="../#faq">FAQ</a></li>
+          <li><a href="./" aria-current="page">Support</a></li>
+          <li><a href="../contact/">Contact us</a></li>
+          <li><a href="../#support" class="is-accent">☕ Support us</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="../#download" class="btn btn-primary">
+            Get started
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
-        <span>RemotePC</span>
-      </a>
-      <a href="../" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Back to Home
-      </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </nav>
   </header>
 
-  <main>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-badge">Help Center</div>
-      <h1>How can we <span class="gradient-text">help you?</span></h1>
-      <p class="hero-description">Find answers to common questions, troubleshooting guides, and setup instructions for RemotePC.</p>
+  <main id="main">
+    <section class="support-hero">
+      <div class="wrap support-hero-inner">
+        <span class="pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Help center
+        </span>
+        <h1>How can we help you?</h1>
+        <p class="support-hero-sub">Find answers to common questions, troubleshooting guides, and setup instructions for RemotePC.</p>
+      </div>
     </section>
 
-    <!-- Search -->
     <section class="search-section" aria-label="Search support articles">
       <div class="search-container">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input
           type="search"
           class="search-input"
@@ -61,50 +84,45 @@
       </div>
     </section>
 
-    <!-- WIP notice -->
-    <section class="wip-notice" role="alert" aria-live="polite" style="max-width:820px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;">
-      <div class="wip-icon-wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-          <line x1="12" y1="9" x2="12" y2="13"/>
-          <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-      </div>
-      <div class="wip-content">
-        <strong>Help articles are on the way!</strong>
-        <span>We're actively writing them. For now, use the contact form below for fast, direct help.</span>
+    <section class="wrap">
+      <div class="wip-notice" role="status" aria-live="polite">
+        <div class="wip-icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="wip-content">
+          <strong>Help articles are on the way</strong>
+          <span>We're actively writing them. For now, use the contact form below for fast, direct help.</span>
+        </div>
       </div>
     </section>
 
-    <!-- Article categories -->
     <section class="main-content">
       <p class="section-label">Browse by topic</p>
+
       <div id="categoriesContainer" class="categories-grid">
 
-        <!-- Getting Started -->
-        <article class="category-card" data-category="getting-started" style="--card-hue: 210;">
+        <article class="category-card" data-category="getting-started">
           <div class="category-header">
-            <div class="category-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            <div class="category-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
             </div>
             <div class="card-meta">
-              <h2>Getting Started</h2>
+              <h2>Getting started</h2>
               <span class="article-count">4 articles</span>
             </div>
           </div>
           <ul class="articles-list">
-            <li><a href="#install-windows" class="article-link"><span>How to install RemotePC on Windows</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#install-android" class="article-link"><span>Installing the Android app</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#first-connection" class="article-link"><span>Connecting for the first time</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#find-ip" class="article-link"><span>How to find your PC's IP address</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#install-windows" class="article-link"><span>How to install RemotePC on Windows</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#install-android" class="article-link"><span>Installing the Android app</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#first-connection" class="article-link"><span>Connecting for the first time</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#find-ip" class="article-link"><span>How to find your PC's IP address</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
           </ul>
         </article>
 
-        <!-- Troubleshooting -->
-        <article class="category-card" data-category="troubleshooting" style="--card-hue: 20;">
+        <article class="category-card" data-category="troubleshooting">
           <div class="category-header">
-            <div class="category-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <div class="category-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
             <div class="card-meta">
               <h2>Troubleshooting</h2>
@@ -112,18 +130,17 @@
             </div>
           </div>
           <ul class="articles-list">
-            <li><a href="#cant-connect" class="article-link"><span>Can't connect to PC</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#windows-defender" class="article-link"><span>Windows Defender blocking the app</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#laggy-connection" class="article-link"><span>Connection is slow or laggy</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#file-transfer-fail" class="article-link"><span>File transfer not working</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#cant-connect" class="article-link"><span>Can't connect to PC</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#windows-defender" class="article-link"><span>Windows Defender blocking the app</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#laggy-connection" class="article-link"><span>Connection is slow or laggy</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#file-transfer-fail" class="article-link"><span>File transfer not working</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
           </ul>
         </article>
 
-        <!-- Features -->
-        <article class="category-card" data-category="features" style="--card-hue: 160;">
+        <article class="category-card" data-category="features">
           <div class="category-header">
-            <div class="category-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            <div class="category-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
             <div class="card-meta">
               <h2>Features</h2>
@@ -131,48 +148,45 @@
             </div>
           </div>
           <ul class="articles-list">
-            <li><a href="#trackpad-gestures" class="article-link"><span>Using trackpad gestures</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#file-transfer" class="article-link"><span>How to transfer files</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#system-controls" class="article-link"><span>Using system controls (shutdown, restart)</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="#screenshots" class="article-link"><span>Taking screenshots remotely</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#trackpad-gestures" class="article-link"><span>Using trackpad gestures</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#file-transfer" class="article-link"><span>How to transfer files</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#system-controls" class="article-link"><span>Using system controls (shutdown, restart)</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="#screenshots" class="article-link"><span>Taking screenshots remotely</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
           </ul>
         </article>
 
-        <!-- Privacy & Security -->
-        <article class="category-card" data-category="privacy" style="--card-hue: 340;">
+        <article class="category-card" data-category="privacy">
           <div class="category-header">
-            <div class="category-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="category-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div class="card-meta">
-              <h2>Privacy &amp; Security</h2>
+              <h2>Privacy &amp; security</h2>
               <span class="article-count">4 articles</span>
             </div>
           </div>
           <ul class="articles-list">
-            <li><a href="../article/?id=vpn" class="article-link"><span>Why do VPNs interfere with RemotePC?</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="../article/?id=drag-drop" class="article-link"><span>Why is drag and drop disabled?</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="../article/?id=windows-defender" class="article-link"><span>Why is Windows Defender flagging the listener?</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
-            <li><a href="../article/?id=android-permissions" class="article-link"><span>Android app permissions explained</span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="../article/?id=vpn" class="article-link"><span>Why do VPNs interfere with RemotePC?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="../article/?id=drag-drop" class="article-link"><span>Why is drag and drop disabled?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="../article/?id=windows-defender" class="article-link"><span>Why is Windows Defender flagging the listener?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+            <li><a href="../article/?id=android-permissions" class="article-link"><span>Android app permissions explained</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
           </ul>
         </article>
 
       </div>
 
-      <!-- No results state -->
       <div id="noResults" class="no-results hidden" role="status">
-        <div class="no-results-icon">
+        <div class="no-results-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
         <h3>No articles found</h3>
         <p>Try different keywords or browse the categories above.</p>
       </div>
 
-      <!-- Contact Form -->
       <div class="contact-box">
         <div class="contact-header">
-          <div class="contact-icon-wrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div class="contact-icon-wrap" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </div>
           <div>
             <h3>Still need help?</h3>
@@ -184,8 +198,8 @@
 
         <form id="contactForm" class="contact-form" action="https://api.staticforms.dev/submit" method="POST" novalidate>
           <input type="hidden" name="accessKey" value="sf_chghbf47fdkgk3iec94egkj8">
-          <input type="hidden" name="subject"   value="RemotePC Support Request">
-          <input type="hidden" name="replyTo"   id="replyTo">
+          <input type="hidden" name="subject" value="RemotePC Support Request">
+          <input type="hidden" name="replyTo" id="replyTo">
 
           <div class="form-row">
             <div class="form-group">
@@ -211,143 +225,80 @@
           </div>
 
           <div class="form-footer">
-            <button type="submit" class="submit-btn" id="submitBtn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              Send Message
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send message
             </button>
             <div class="alternative-contact">
               <span>Or reach us via:</span>
               <a href="mailto:support@remotepc.tech" class="contact-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 Email
               </a>
               <a href="https://github.com/Stan006/RemotePC/issues" class="contact-link" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                 GitHub Issues
               </a>
             </div>
           </div>
         </form>
       </div>
-
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="../">
-            <div class="footer-logo-icon"></div>
-            <span>RemotePC</span>
+          <a href="../" class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+            </span>
+            RemotePC
           </a>
-          <p class="footer-tagline">Secure, local-first remote control for the modern workspace.</p>
+          <p class="footer-desc">Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.</p>
+          <div class="footer-social">
+            <a href="https://github.com/Stan006/RemotePC" aria-label="RemotePC on GitHub" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="footer-links-group">
-          <div class="footer-col">
-            <span class="footer-label">Product</span>
-            <a href="../#features">Features</a>
-            <a href="../#download">Download</a>
-          </div>
-          <div class="footer-col">
-            <span class="footer-label">Resources</span>
-            <a href="../#faq">FAQ</a>
-            <a href="../support/">Support</a>
-            <a href="https://github.com/Stan006/RemotePC" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-          <div class="footer-col">
-            <span class="footer-label">Legal</span>
-            <a href="../privacy/">Privacy Policy</a>
-            <a href="../terms/">Terms of Service</a>
-          </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="../#features">Features</a></li>
+            <li><a href="../#how-it-works">How it works</a></li>
+            <li><a href="../#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="./" aria-current="page">Support</a></li>
+            <li><a href="../contact/">Contact us</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="https://github.com/Stan006/RemotePC">GitHub</a></li>
+            <li><a href="../releases/">Release notes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../privacy/">Privacy policy</a></li>
+            <li><a href="../terms/">Terms of service</a></li>
+            <li><a href="../#support">☕ Support us</a></li>
+          </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <span>© 2026 RemotePC. Engineered for privacy.</span>
+        <p>© 2026 RemotePC – Breadworks. Created for privacy.</p>
+        <p>No accounts. No cloud. No tracking.</p>
       </div>
     </div>
   </footer>
-
-  <script>
-    // ── Search ──────────────────────────────────────────────────────
-    const searchInput = document.getElementById('searchInput');
-    const noResults   = document.getElementById('noResults');
-    const allCards    = document.querySelectorAll('.category-card');
-
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase().trim();
-      let anyVisible = false;
-
-      allCards.forEach(card => {
-        const match = !q || card.textContent.toLowerCase().includes(q);
-        card.style.display = match ? '' : 'none';
-        if (match) anyVisible = true;
-      });
-
-      noResults.classList.toggle('hidden', anyVisible || !q);
-    });
-
-    // ⌘K / Ctrl+K shortcut
-    document.addEventListener('keydown', e => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        searchInput.focus();
-        searchInput.select();
-      }
-    });
-
-    // ── Contact form ────────────────────────────────────────────────
-    const form        = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    const submitBtn   = document.getElementById('submitBtn');
-    const emailInput  = document.getElementById('email');
-    const replyTo     = document.getElementById('replyTo');
-
-    emailInput.addEventListener('input', () => { replyTo.value = emailInput.value; });
-
-    // Clear field errors on input
-    form.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-      input.addEventListener('input', () => input.closest('.form-group').classList.remove('error'));
-    });
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      let valid = true;
-
-      form.querySelectorAll('.form-group').forEach(group => {
-        const input = group.querySelector('input, textarea');
-        if (input && !input.checkValidity()) {
-          group.classList.add('error');
-          valid = false;
-        } else if (input) {
-          group.classList.remove('error');
-        }
-      });
-
-      if (!valid) return;
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-
-      try {
-        const res  = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        const json = await res.json();
-
-        if (json.success) {
-          formMessage.className = 'form-message success';
-          formMessage.textContent = '✓ Message sent — we\'ll get back to you shortly.';
-          form.reset();
-        } else {
-          throw new Error('Submission failed');
-        }
-      } catch {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = '✕ Something went wrong. Please try again or email us directly.';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-      }
-    });
-  </script>
 </body>
 </html>

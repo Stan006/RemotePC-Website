@@ -8,22 +8,19 @@
   <link rel="stylesheet" href="index.css">
   <script defer src="app.js"></script>
   <meta name="description" content="Privacy-first remote desktop control. Connect your Android to Windows over your local network. No cloud, no accounts, zero latency.">
-  <!-- Open Graph -->
-<meta property="og:site_name" content="RemotePC">
-<meta property="og:title" content="RemotePC — Privacy-first remote desktop">
-<meta property="og:url" content="https://remotepc.tech">
-
   <meta name="keywords" content="RemotePC, remote desktop, Android remote control, Windows remote control, local network remote desktop, privacy remote desktop, LAN remote control, remote mouse, remote keyboard, Android to Windows control, low latency remote desktop, secure remote desktop">
-
   <meta name="author" content="Breadworks">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#08090b">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://remotepc.tech/">
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="RemotePC">
+  <meta property="og:title" content="RemotePC — Privacy-first remote desktop">
+  <meta property="og:url" content="https://remotepc.tech">
   <meta property="og:type" content="website">
   <meta property="og:description" content="Privacy-first remote desktop control for Android and Windows. No cloud, no accounts, zero latency.">
   <meta property="og:image" content="https://remotepc.tech/assets/og-image.png">
@@ -39,7 +36,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- Additional Structured Data -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,1375 +46,719 @@
     "operatingSystem": "Windows, Android",
     "description": "Privacy-first remote desktop and PC control app for Android and Windows over local network.",
     "url": "https://remotepc.tech",
-    "author": {
-      "@type": "Organization",
-      "name": "Breadworks"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "author": { "@type": "Organization", "name": "Breadworks" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-
-<!-- WebSite structured data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "RemotePC",
-  "url": "https://remotepc.tech"
-}
-</script>
-  <!-- ── Support section styles (additions only) ── -->
-  <style>
-    /* ── Support / Donate section ─────────────────────────────── */
-    #support {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-md);
-    }
-
-    .support-onetime-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-md);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .support-onetime-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .6rem;
-      padding: var(--space-lg) var(--space-md);
-      background: var(--surface-1);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      text-decoration: none;
-      color: var(--text-primary);
-      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
-      position: relative;
-      overflow: hidden;
-    }
-    .support-onetime-card:hover {
-      transform: translateY(-5px);
-      background: var(--surface-2);
-      border-color: rgba(91,124,250,.4);
-      box-shadow: 0 20px 40px -12px rgba(91,124,250,.25);
-    }
-    .support-onetime-emoji { font-size: 1.75rem; }
-    .support-onetime-amount {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .support-onetime-label {
-      font-size: .8rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .support-onetime-arrow {
-      color: var(--text-muted);
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-    .support-onetime-card:hover .support-onetime-arrow {
-      color: var(--brand-cyan);
-      transform: translateX(4px);
-    }
-
-    /* Membership */
-    .support-membership-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-    }
-    .support-membership-card {
-      display: flex;
-      flex-direction: column;
-      padding: var(--space-lg);
-      background: var(--surface-1);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-xl);
-      text-decoration: none;
-      color: var(--text-primary);
-      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
-      position: relative;
-      overflow: hidden;
-    }
-    .support-membership-card:hover { transform: translateY(-6px); background: var(--surface-2); }
-    .sm-supporter { --sm-color: #22d3ee; --sm-glow: rgba(34,211,238,.15); }
-    .sm-backer    { --sm-color: #5b7cfa; --sm-glow: rgba(91,124,250,.18); }
-    .sm-champion  { --sm-color: #8b5cf6; --sm-glow: rgba(139,92,246,.18); }
-    .sm-supporter:hover { border-color: rgba(34,211,238,.4);   box-shadow: 0 20px 50px var(--sm-glow); }
-    .sm-backer:hover    { border-color: rgba(91,124,250,.4);  box-shadow: 0 20px 50px var(--sm-glow); }
-    .sm-champion:hover  { border-color: rgba(139,92,246,.4);  box-shadow: 0 20px 50px var(--sm-glow); }
-    .support-membership-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--sm-color);
-      opacity: .55;
-      transition: opacity var(--transition-fast);
-    }
-    .support-membership-card:hover::after { opacity: 1; }
-
-    .sm-popular-badge {
-      position: absolute;
-      top: var(--space-md);
-      right: var(--space-md);
-      padding: .2rem .65rem;
-      background: rgba(91,124,250,.15);
-      border: 1px solid rgba(91,124,250,.3);
-      border-radius: 999px;
-      font-size: .68rem;
-      font-weight: 700;
-      color: var(--brand-blue);
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .sm-icon {
-      font-size: 1.5rem;
-      width: 48px; height: 48px;
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: var(--space-md);
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.035);
-    }
-    .sm-supporter .sm-icon { background: rgba(34,211,238,.1);   border-color: rgba(34,211,238,.2); }
-    .sm-backer    .sm-icon { background: rgba(91,124,250,.1);  border-color: rgba(91,124,250,.2); }
-    .sm-champion  .sm-icon { background: rgba(139,92,246,.1);  border-color: rgba(139,92,246,.2); }
-
-    .sm-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: .2rem;
-    }
-    .sm-price {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--sm-color);
-      margin-bottom: var(--space-md);
-      display: flex; align-items: baseline; gap: .2rem;
-    }
-    .sm-price-period { font-size: .8rem; font-weight: 500; color: var(--text-muted); }
-    .sm-desc {
-      font-size: .875rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: var(--space-md);
-      flex: 1;
-    }
-    .sm-perks {
-      list-style: none;
-      display: flex; flex-direction: column; gap: .5rem;
-      margin-bottom: var(--space-lg);
-    }
-    .sm-perk {
-      display: flex; align-items: center; gap: .55rem;
-      font-size: .82rem;
-      color: var(--text-secondary);
-    }
-    .sm-check {
-      flex-shrink: 0;
-      width: 17px; height: 17px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(16,185,129,.1);
-      border: 1px solid rgba(16,185,129,.25);
-      color: #10b981;
-    }
-    .sm-btn {
-      display: inline-flex;
-      align-items: center; justify-content: center; gap: .4rem;
-      width: 100%;
-      padding: .7rem 1rem;
-      border-radius: var(--radius-md);
-      font-weight: 600; font-size: .9rem;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.04);
-      color: var(--text-primary);
-      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-      cursor: pointer;
-    }
-    .sm-supporter .sm-btn { border-color: rgba(34,211,238,.3);  color: #22d3ee; background: rgba(34,211,238,.07); }
-    .sm-backer    .sm-btn { border-color: rgba(91,124,250,.3); color: #5b7cfa; background: rgba(91,124,250,.07); }
-    .sm-champion  .sm-btn { border-color: rgba(139,92,246,.3); color: #8b5cf6; background: rgba(139,92,246,.07); }
-    .sm-supporter .sm-btn:hover { background: rgba(34,211,238,.15);  border-color: rgba(34,211,238,.6);  color: #fff; }
-    .sm-backer    .sm-btn:hover { background: rgba(91,124,250,.15); border-color: rgba(91,124,250,.6); color: #fff; }
-    .sm-champion  .sm-btn:hover { background: rgba(139,92,246,.15); border-color: rgba(139,92,246,.6); color: #fff; }
-
-    .support-note {
-      text-align: center;
-      margin-top: var(--space-xl);
-      font-size: .875rem;
-      color: var(--text-muted);
-    }
-    .support-note a { color: var(--brand-blue); text-decoration: none; }
-    .support-note a:hover { text-decoration: underline; }
-
-    /* Nav Support link accent */
-    .nav-link-support {
-      color: var(--brand-cyan) !important;
-    }
-    .nav-link-support::after {
-      background: linear-gradient(135deg, #22d3ee, #8b5cf6) !important;
-    }
-
-    /* Responsive */
-    @media (max-width: 968px) {
-      .support-onetime-grid   { grid-template-columns: repeat(2, 1fr); }
-      .support-membership-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-    }
-    @media (max-width: 640px) {
-      .support-onetime-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "RemotePC",
+    "url": "https://remotepc.tech"
+  }
+  </script>
 </head>
 <body>
-  <!-- ── Scroll-follow trail: a wavy line that fills in and a dot that travels down it as the page scrolls ── -->
-  <div class="scroll-follow" aria-hidden="true">
-    <svg id="scrollFollowSvg" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="scrollGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#5b7cfa"/>
-          <stop offset="100%" stop-color="#22d3ee"/>
-        </linearGradient>
-      </defs>
-      <path class="scroll-follow-track" id="scrollTrackPath" d=""></path>
-      <path class="scroll-follow-progress" id="scrollProgressPath" d=""></path>
-    </svg>
-    <div class="scroll-follow-dot" id="scrollFollowDot"></div>
-    <div class="scroll-follow-burst" id="scrollFollowBurst" aria-hidden="true"></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
   </div>
 
-  <!-- ── Back to top: fades in once you're well down the page ── -->
   <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 19V5"/>
-      <path d="m5 12 7-7 7 7"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
   </button>
 
-  <header class="header" role="banner">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="#" class="logo">
-        <div class="logo-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
-        </div>
-        <span>RemotePC</span>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+        </span>
+        RemotePC
       </a>
 
-      <div class="nav-menu" id="navMenu">
+      <div class="nav-panel" id="navPanel">
         <ul class="nav-links">
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#how-it-works" class="nav-link">How it works</a></li>
-          <li><a href="#download" class="nav-link">Download</a></li>
-          <li><a href="releases/" class="nav-link">Releases</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
-          <li><a href="support/" class="nav-link">Support</a></li>
-          <li><a href="contact/" class="nav-link">Contact Us</a></li>
-          <li><a href="#support" class="nav-link nav-link-support">☕ Support Us</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="releases/">Releases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="support/">Support</a></li>
+          <li><a href="contact/">Contact us</a></li>
+          <li><a href="#support" class="is-accent">☕ Support us</a></li>
         </ul>
-
-        <div class="nav-actions">
-          <a href="#download" class="nav-cta">
-            Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="nav-cta">
+          <a href="#download" class="btn btn-primary">
+            Get started
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero">
-      <div class="hero-content">
-        <div class="badge">
+      <div class="wrap hero-inner">
+        <span class="pill">
           <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Local Network Only</span>
-        </div>
+          Local network only — nothing leaves your Wi-Fi
+        </span>
 
-        <h1>
-          Control your Windows PC<br>
-          <span class="gradient-text">from your Android</span>
-        </h1>
+        <h1>Control your Windows PC from your Android phone</h1>
 
-        <p class="hero-description">
-          A privacy-first remote control solution. Turn your phone into a precision trackpad, keyboard, and system controller—no accounts, no cloud, zero latency.
+        <p class="hero-lead">
+          Turn your phone into a trackpad, keyboard, and system controller for your PC — connected directly over your own network. No cloud, no accounts, no lag.
         </p>
 
         <div class="hero-actions">
           <a href="#download" class="btn btn-primary">
-            Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Get started
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="#features" class="btn btn-secondary">
-            See Features
-          </a>
+          <a href="#features" class="btn btn-secondary">See what it does</a>
         </div>
 
-        <div class="playstore-stats">
-          <div class="ps-stat">
-            <svg class="ps-stat-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span class="ps-stat-value">25k+</span>
-            <span class="ps-stat-label">Downloads</span>
-          </div>
-          <span class="ps-divider" aria-hidden="true"></span>
-          <div class="ps-stat">
-            <svg class="ps-stat-icon ps-star" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span class="ps-stat-value">4.3</span>
-            <span class="ps-stat-label">Rating</span>
-          </div>
-          <span class="ps-divider" aria-hidden="true"></span>
-          <div class="ps-stat">
-            <svg class="ps-stat-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span class="ps-stat-value">100+</span>
-            <span class="ps-stat-label">Reviews</span>
-          </div>
+        <div class="hero-stats">
+          <span class="hero-stat"><strong>25k+</strong> downloads</span>
+          <span class="hero-stat-sep" aria-hidden="true"></span>
+          <span class="hero-stat"><strong>4.3★</strong> Play Store rating</span>
+          <span class="hero-stat-sep" aria-hidden="true"></span>
+          <span class="hero-stat"><strong>0ms</strong> cloud latency</span>
+          <span class="hero-stat-sep" aria-hidden="true"></span>
+          <span class="hero-stat"><strong>100MB</strong> install size</span>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat">
-            <span class="stat-value">0ms</span>
-            <span class="stat-label">Cloud Latency</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value">100MB</span>
-            <span class="stat-label">Ultra Light</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Private</span>
-          </div>
-        </div>
-      </div>
+        <div class="signal" aria-hidden="true">
+          <svg class="signal-svg" viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+            <path class="signal-path" d="M122 95 H518"/>
+            <path class="signal-path-draw" d="M122 95 H518" pathLength="466"/>
+            <circle class="signal-pulse" cx="320" cy="95" r="4"/>
 
-      <div class="hero-visual">
-        <div class="mockup">
-          <div class="mockup-header">
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-          </div>
-          <div class="mockup-content">
-            <div class="mockup-pulse" aria-hidden="true"></div>
-          </div>
+            <circle class="signal-node-bg" cx="90" cy="95" r="34"/>
+            <circle class="signal-node-ring" cx="90" cy="95" r="34"/>
+            <g class="signal-node-icon" transform="translate(78,83)">
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+              <path d="M12 18h.01"/>
+            </g>
+            <text class="signal-label" x="90" y="150" text-anchor="middle">android</text>
+
+            <circle class="signal-node-bg" cx="550" cy="95" r="34"/>
+            <circle class="signal-node-ring" cx="550" cy="95" r="34"/>
+            <g class="signal-node-icon" transform="translate(535,80)">
+              <rect x="2" y="3" width="26" height="18" rx="2"/>
+              <line x1="10" y1="27" x2="20" y2="27"/>
+              <line x1="15" y1="21" x2="15" y2="27"/>
+            </g>
+            <text class="signal-label" x="550" y="150" text-anchor="middle">windows pc</text>
+          </svg>
         </div>
       </div>
     </section>
 
     <section id="features" class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          Everything you need, <span class="gradient-text">nothing you don't</span>
-        </h2>
-        <p class="section-subtitle">
-          Designed for speed, simplicity, and full local control
-        </p>
-      </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Everything runs on your network, nothing runs on someone else's server</h2>
+          <p>Nine tools for controlling your PC, all built to work without a cloud in the loop.</p>
+        </div>
 
-      <div class="features-grid">
-       
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
-          </div>
-          <h3>Trackpad & Keyboard</h3>
-          <p>Move, click, drag, scroll, and type—your phone becomes a precision input device with zero-latency response.</p>
-        </article>
+        <div class="features-grid">
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
+            </div>
+            <h3>Trackpad &amp; keyboard</h3>
+            <p>Move, click, drag, scroll, and type — your phone becomes a precision input device with zero-latency response.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </div>
-          <h3>Audio Volume and Media Controls</h3>
-          <p>Quickly change Windows system volume, and manage media playback.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </div>
+            <h3>Volume &amp; media controls</h3>
+            <p>Quickly change Windows system volume and manage media playback from wherever you're sitting.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-          </div>
-          <h3>System Controls</h3>
-          <p>Shutdown, restart, lock, sleep, sign out - right from your hand.</p>
-        </article>
-    
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
-          </div>
-          <h3>System Stats</h3>
-          <p>CPU, RAM, Battery, along with CPU amd GPU temperatures—streamed live from your PC in realtime.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
+            </div>
+            <h3>System controls</h3>
+            <p>Shut down, restart, lock, sleep, or sign out — right from your hand.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-          </div>
-          <h3>Secure File Transfer</h3>
-          <p>Send files between your devices over TCP local tunnels. No cloud involved.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
+            </div>
+            <h3>System stats</h3>
+            <p>CPU, RAM, battery, and CPU/GPU temperatures, streamed live from your PC in real time.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
-          </div>
-          <h3>Live Screen Stream</h3>
-          <p>Desktop mirroring with low latency & high quality audio streaming. Watch and listen to your PC's activity in real-time without leaving the app.</p>
-        </article>
-      
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-          </div>
-          <h3>Instant Screenshots</h3>
-          <p>Capture a screenshot of your desktop and save it on your Android device instantly.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            </div>
+            <h3>Secure file transfer</h3>
+            <p>Send files between your devices over local TCP tunnels. No cloud involved, ever.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>
-          </div>
-          <h3>Multi-Language Support</h3>
-          <p>Use the app in 10 different languages, with even more on the way.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+            </div>
+            <h3>Live screen stream</h3>
+            <p>Desktop mirroring with low latency and high-quality audio. Watch your PC's activity without leaving the app.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <h3>Privacy First</h3>
-          <p>No accounts, no cloud servers, no data collection. Everything stays on your local network.</p>
-        </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <h3>Instant screenshots</h3>
+            <p>Capture your desktop and save it straight to your Android device.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>
+            </div>
+            <h3>Multi-language support</h3>
+            <p>Use the app in 10 languages, with more on the way.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Privacy first</h3>
+            <p>No accounts, no cloud servers, no data collection. Everything stays on your local network.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="how-it-works" class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          Three steps to <span class="gradient-text">total control</span>
-        </h2>
-        <p class="section-subtitle">
-          No accounts. No cloud. Just direct local connectivity.
-        </p>
-      </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Three steps to total control</h2>
+          <p>No accounts. No cloud. Just a direct connection over your own Wi-Fi.</p>
+        </div>
 
-      <div class="steps">
-        <article class="step">
-          <div class="step-number" aria-hidden="true">1</div>
-          <div class="step-content">
-            <h3>Install the Windows Listener</h3>
-            <p>Download and Install the Windows server app on your PC. It remains dormant until you connect, listening only on your secure local network.</p>
-          </div>
-        </article>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Install the Windows listener</h3>
+            <p>Runs on your PC and stays dormant until you connect, listening only on your local network.</p>
+          </article>
 
-        <article class="step">
-          <div class="step-number" aria-hidden="true">2</div>
-          <div class="step-content">
-            <h3>Pair Your Devices</h3>
-            <p>Download and Launch the Android app and point it to your PC's local IP address, either manually or automatically. The connection happens instantly over your Wi-Fi.</p>
-          </div>
-        </article>
+          <article class="step">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Pair your devices</h3>
+            <p>Launch the Android app and point it to your PC — manually or with automatic discovery.</p>
+          </article>
 
-        <article class="step">
-          <div class="step-number" aria-hidden="true">3</div>
-          <div class="step-content">
-            <h3>That's it!</h3>
-            <p>Enjoy low latency control and high-speed file transfers. Your data never leaves your home Wi-Fi.</p>
-          </div>
-        </article>
+          <article class="step">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>That's it</h3>
+            <p>Low-latency control and fast file transfers. Your data never leaves your home Wi-Fi.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="download" class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          Get <span class="gradient-text">RemotePC</span>
-        </h2>
-        <p class="section-subtitle">
-          Start controlling your workspace in seconds
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Get RemotePC</h2>
+          <p>Start controlling your workspace in seconds.</p>
+        </div>
+
+        <div class="download-grid">
+          <article class="download-panel is-windows">
+            <div class="platform-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Windows host</h3>
+            <p>Run the listener on your PC to enable incoming connections.</p>
+
+            <ul class="req-list">
+              <li>Windows 10 / 11</li>
+              <li>Installer (.exe)</li>
+              <li>Local network only</li>
+              <li>~100MB download</li>
+            </ul>
+
+            <a href="#" id="downloadBtn" class="btn btn-primary btn-block">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              <span id="downloadBtnLabel">Download for Windows</span>
+            </a>
+
+            <p class="release-note">
+              Looking for all releases?
+              <a href="releases/" class="release-link">View release notes →</a>
+            </p>
+          </article>
+
+          <article class="download-panel is-android">
+            <div class="platform-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <h3>Android client</h3>
+            <p>The controller for your phone or tablet.</p>
+
+            <ul class="req-list">
+              <li>Android 10.0+</li>
+              <li>3GB RAM minimum</li>
+              <li>Wi-Fi required</li>
+              <li>Free download</li>
+            </ul>
+
+            <div class="store-badges">
+              <a href="https://play.google.com/store/apps/details?id=com.wheat.remotepc" aria-label="Get it on Google Play">
+                <img src="assets/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play" class="store-badge">
+              </a>
+              <a href="https://remotepc.en.uptodown.com/android" aria-label="Download from Uptodown">
+                <img src="https://stc.utdstc.com/img/mediakit/download-aao-big.png" alt="Download from Uptodown" class="store-badge">
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="section-note">
+          Need help connecting? <a href="https://www.youtube.com/watch?v=PufDvBx25wk" target="_blank" rel="noopener noreferrer" class="release-link">Watch the setup video →</a>
         </p>
-      </div>
 
-      <div class="download-grid">
-        <article class="download-card">
-          <div class="platform-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
+        <div class="callout">
+          <div class="callout-left">
+            <span class="callout-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </span>
+            <span class="callout-text">
+              <span class="callout-label">Public roadmap &amp; bug tracker</span>
+              <span class="callout-sub">See what's coming next and track known bugs</span>
+            </span>
           </div>
-          <h3>Windows Host</h3>
-          <p>Run the listener on your PC to enable incoming connections</p>
-          
-          <ul class="requirements-list">
-            <li>Windows 10/11</li>
-            <li>Installer (.exe)</li>
-            <li>Local Network Only</li>
-            <li>~100MB Download</li>
-          </ul>
+          <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" target="_blank" rel="noopener noreferrer" class="callout-link">
+            View on Trello
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
 
-          <a href="#" id="download-btn" class="btn btn-primary">
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-  Download for Windows
-</a>
+        <!-- Download warning modal -->
+        <div id="downloadModal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="modalTitle">
+          <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
 
-<!-- Download Warning Modal -->
-<div id="download-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="modal-title" style="display:none;">
-  <div class="modal-box">
-    <button class="modal-close" id="modal-close-btn" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+            <div class="modal-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
 
-    <div class="modal-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    </div>
+            <h2 id="modalTitle" class="modal-title">Before you download</h2>
 
-    <h2 id="modal-title" class="modal-title">Before you download</h2>
+            <p class="modal-body">Windows may display a <strong>"Windows protected your PC"</strong> SmartScreen warning when you run this installer. That's expected — the app isn't code signed.</p>
+            <p class="modal-body">Code signing certificates cost up to <strong>$350 a year</strong>. For a free app with no monetisation, that overhead isn't viable, so we skip it and keep RemotePC free for everyone.</p>
+            <p class="modal-body">You can read more about this <a href="https://remotepc.tech/article/?id=windows-defender" target="_blank" rel="noopener noreferrer" class="release-link">here</a> — you're welcome to review or build it yourself. To proceed past the warning, click <strong>More info → Run anyway</strong>.</p>
+            <p class="modal-body">Want to verify it yourself? Check the independent <a href="https://www.virustotal.com/gui/file/df8e21580555081d6d554a56813c6131c244dc0a42bb7a20924376098bd403ae" target="_blank" rel="noopener noreferrer" class="release-link">VirusTotal scan report →</a></p>
 
-    <p class="modal-body">
-      Windows may display a <strong>"Windows protected your PC"</strong> SmartScreen warning when you run this installer. This is expected as the app is not code signed.
-    </p>
-    <p class="modal-body">
-      Code signing certificates cost up to <strong>$350 per year</strong>. For a free app with no monetisation, that overhead simply isn't viable, so we skip it and keep RemotePC free for everyone.
-    </p>
-    <p class="modal-body">
-      You can read more about this <a href="https://remotepc.tech/article/?id=windows-defender" target="_blank" rel="noopener noreferrer" class="release-link">Here</a> — you're welcome to review or build it yourself. To proceed past the warning, click <strong>More info → Run anyway</strong>.
-    </p>
-    <p class="modal-body">
-  Want to verify it yourself? Check the independent
-  <a href="https://www.virustotal.com/gui/file/df8e21580555081d6d554a56813c6131c244dc0a42bb7a20924376098bd403ae" target="_blank" rel="noopener noreferrer" class="release-link">VirusTotal scan report →</a>
-</p>
+            <hr class="modal-divider">
 
-    <label class="modal-checkbox-label" for="understand-checkbox">
-      <input type="checkbox" id="understand-checkbox">
-      <span>I understand — the warning is expected and the app is safe to run</span>
-    </label>
+            <label class="modal-checkbox-label" for="understandCheckbox">
+              <input type="checkbox" id="understandCheckbox">
+              <span>I understand — the warning is expected and the app is safe to run</span>
+            </label>
 
-    <a href="#" id="modal-download-btn" class="btn btn-primary modal-download-btn" aria-disabled="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-      Download for Windows
-    </a>
-  </div>
-</div>
-
-<script>
-(function () {
-  const modal = document.getElementById('download-modal');
-  modal.innerHTML = `
-    <div class="modal-box">
-      <button class="modal-close" id="modal-close-btn" aria-label="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <div class="modal-icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <h2 id="modal-title" class="modal-title">Before you download</h2>
-      <p class="modal-body">
-        Windows may display a <strong>"Windows protected your PC"</strong> SmartScreen warning when you run this installer. This is expected as the app is not code signed.
-      </p>
-      <p class="modal-body">
-        Code signing certificates cost up to <strong>$350 / year</strong>. For a free project with no monetisation, that cost simply isn't viable, so we keep RemotePC free instead.
-      </p>
-      <p class="modal-body">
-        You can read more about this <a href="https://remotepc.tech/article/?id=windows-defender" target="_blank" rel="noopener noreferrer" class="release-link">here</a>. To proceed past the warning, click <strong>More info → Run anyway</strong>.
-      </p>
-      <p class="modal-body">
-  Want to verify it yourself? Check the independent
-  <a href="https://www.virustotal.com/gui/file/df8e21580555081d6d554a56813c6131c244dc0a42bb7a20924376098bd403ae" target="_blank" rel="noopener noreferrer" class="release-link">VirusTotal scan report →</a>
-</p>
-      <hr class="modal-divider">
-      <label class="modal-checkbox-label" for="understand-checkbox">
-        <input type="checkbox" id="understand-checkbox">
-        <span>I understand that the warning is expected and the app is safe to run</span>
-      </label>
-      <a href="#" id="modal-download-btn" class="btn btn-primary modal-download-btn btn-disabled" aria-disabled="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        Download for Windows
-      </a>
-    </div>`;
-
-  document.body.appendChild(modal);
-
-  let downloadUrl = '';
-
-  fetch('https://api.github.com/repos/Stan006/RemotePC/releases/latest')
-    .then(r => r.json())
-    .then(data => {
-      const exeAsset = data.assets.find(a => a.name.endsWith('.exe'));
-      if (!exeAsset) return;
-      downloadUrl = exeAsset.browser_download_url;
-      const tag = data.tag_name;
-      document.getElementById('download-btn').innerHTML +=
-        ` <span style="opacity:.7;font-size:.85em">(${tag})</span>`;
-      document.getElementById('modal-download-btn').innerHTML +=
-        ` <span style="opacity:.7;font-size:.85em">(${tag})</span>`;
-    })
-    .catch(err => console.error('GitHub release fetch failed:', err));
-
-  function openModal() {
-    const cb = document.getElementById('understand-checkbox');
-    const dlBtn = document.getElementById('modal-download-btn');
-    cb.checked = false;
-    dlBtn.classList.add('btn-disabled');
-    dlBtn.setAttribute('aria-disabled', 'true');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  document.getElementById('download-btn').addEventListener('click', e => {
-    e.preventDefault();
-    openModal();
-  });
-
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
-  });
-
-  modal.addEventListener('click', e => {
-    if (e.target.closest('#modal-close-btn')) closeModal();
-  });
-
-  modal.addEventListener('change', e => {
-    if (e.target.id === 'understand-checkbox') {
-      const dlBtn = document.getElementById('modal-download-btn');
-      const on = e.target.checked;
-      dlBtn.classList.toggle('btn-disabled', !on);
-      dlBtn.setAttribute('aria-disabled', String(!on));
-    }
-  });
-
-  modal.addEventListener('click', e => {
-    const dlBtn = e.target.closest('#modal-download-btn');
-    if (!dlBtn || dlBtn.classList.contains('btn-disabled')) return;
-    e.preventDefault();
-    if (!downloadUrl) return;
-    const tmp = document.createElement('a');
-    tmp.href = downloadUrl;
-    document.body.appendChild(tmp);
-    tmp.click();
-    document.body.removeChild(tmp);
-    closeModal();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
-  });
-})();
-</script>
-
-          <p class="release-note">
-            Looking for all releases? 
-            <a href="releases/" class="release-link">
-              View release notes
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </p>
-        </article>
-
-        <article class="download-card">
-          <div class="platform-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          </div>
-          <h3>Android Client</h3>
-          <p>The controller for your phone or tablet</p>
-
-          <ul class="requirements-list">
-            <li>Android 10.0+</li>
-            <li>3GB RAM minimum</li>
-            <li>Wi-Fi Required</li>
-            <li>Free Download</li>
-          </ul>
-
-          <div class="store-badges">
-            <a href="https://play.google.com/store/apps/details?id=com.wheat.remotepc" aria-label="Get it on Google Play">
-              <img src="assets/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Google Play" class="store-badge">
-            </a>
-            <a href="https://remotepc.en.uptodown.com/android" aria-label="Download from Uptodown">
-              <img src="https://stc.utdstc.com/img/mediakit/download-aao-big.png" alt="Uptodown" class="store-badge">
+            <a href="#" id="modalDownloadBtn" class="btn btn-primary btn-block btn-disabled" aria-disabled="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              <span id="modalDownloadBtnLabel">Download for Windows</span>
             </a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
-      <p class="section-note" style="text-align:center; margin-top:1.5rem; font-size:0.9rem; opacity:0.7;">
-        If you need help with connecting, 
-        <a href="https://www.youtube.com/watch?v=PufDvBx25wk" target="_blank" rel="noopener noreferrer" class="release-link">watch this video</a>.
-      </p>
-
-      <div class="roadmap-panel">
-        <div class="roadmap-panel-left">
-          <div class="roadmap-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          </div>
-          <div class="roadmap-text">
-            <span class="roadmap-label">Public Roadmap &amp; Bug Tracker</span>
-            <span class="roadmap-sub">See what's coming next and track known bugs</span>
-          </div>
+    <section id="support">
+      <div class="wrap">
+        <div class="section-head is-centered support-lead">
+          <span class="pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Buy me a coffee
+          </span>
+          <h2>Keep RemotePC free and thriving</h2>
+          <p>RemotePC is free, ad-free, and always will be. If it's saved you time, a coffee goes a long way toward keeping development active.</p>
         </div>
-        <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" target="_blank" rel="noopener noreferrer" class="roadmap-link-btn">
-          View on Trello
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-        </a>
-      </div>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         SUPPORT / DONATE SECTION
-    ════════════════════════════════════════════════════════════ -->
-    <section id="support" aria-labelledby="support-heading">
-      <div class="section-header" style="max-width:1280px;margin:0 auto;padding:var(--space-2xl) var(--space-md) 0;">
-        <div class="badge" style="margin:0 auto var(--space-lg);">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Buy Me a Coffee</span>
+        <p class="support-sub-label">One-time support</p>
+        <div class="amount-grid">
+          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="amount-tile" aria-label="Donate $3">
+            <span class="amount-value">$3</span>
+            <span class="amount-label">A coffee</span>
+          </a>
+          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="amount-tile" aria-label="Donate $5">
+            <span class="amount-value">$5</span>
+            <span class="amount-label">Double espresso</span>
+          </a>
+          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="amount-tile" aria-label="Donate $10">
+            <span class="amount-value">$10</span>
+            <span class="amount-label">Large round</span>
+          </a>
+          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="amount-tile" aria-label="Donate a custom amount">
+            <span class="amount-value">Custom</span>
+            <span class="amount-label">Your choice</span>
+          </a>
         </div>
-        <h2 class="section-title" id="support-heading">
-          Keep RemotePC <span class="gradient-text">free &amp; thriving</span>
-        </h2>
-        <p class="section-subtitle">
-          RemotePC is free, ad-free, and always will be. If it's saved you time, a coffee goes a long way toward keeping development active.
-        </p>
-      </div>
 
-      <!-- One-time -->
-      <div style="max-width:1280px;margin:0 auto;padding:var(--space-xl) var(--space-md) 0;">
-        <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700;margin-bottom:var(--space-md);">One-time support</p>
-        <div class="support-onetime-grid">
-
-          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="support-onetime-card" aria-label="Donate $3">
-            <span class="support-onetime-emoji" aria-hidden="true">☕</span>
-            <span class="support-onetime-amount">$3</span>
-            <span class="support-onetime-label">A coffee</span>
-            <svg class="support-onetime-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-
-          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="support-onetime-card" aria-label="Donate $5">
-            <span class="support-onetime-emoji" aria-hidden="true">⚡</span>
-            <span class="support-onetime-amount">$5</span>
-            <span class="support-onetime-label">Double espresso</span>
-            <svg class="support-onetime-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-
-          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="support-onetime-card" aria-label="Donate $10">
-            <span class="support-onetime-emoji" aria-hidden="true">🍕</span>
-            <span class="support-onetime-amount">$10</span>
-            <span class="support-onetime-label">Large round</span>
-            <svg class="support-onetime-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-
-          <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer" class="support-onetime-card" aria-label="Donate a custom amount">
-            <span class="support-onetime-emoji" aria-hidden="true">🎁</span>
-            <span class="support-onetime-amount">Custom</span>
-            <span class="support-onetime-label">Your choice</span>
-            <svg class="support-onetime-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- Memberships -->
-      <div style="max-width:1280px;margin:0 auto;padding:var(--space-xl) var(--space-md) var(--space-2xl);">
-        <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:700;margin-bottom:var(--space-md);">Monthly membership</p>
-        <div class="support-membership-grid">
-
-          <!-- Supporter -->
-          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="support-membership-card sm-supporter" aria-label="Supporter membership, $5 per month">
-            <div class="sm-icon" aria-hidden="true">☕</div>
-            <div class="sm-name">Supporter</div>
-            <div class="sm-price">$2 <span class="sm-price-period">/ month</span></div>
-            <p class="sm-desc">You like what I'm building and want to help keep the lights on. Every bit counts.</p>
-            <ul class="sm-perks">
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <p class="support-sub-label">Monthly membership</p>
+        <div class="tier-grid">
+          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="tier" aria-label="Supporter membership, $2 per month">
+            <div class="tier-name">Supporter</div>
+            <div class="tier-price">$2 <span>/ month</span></div>
+            <p class="tier-desc">You like what I'm building and want to help keep the lights on. Every bit counts.</p>
+            <ul class="tier-perks">
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Supporter badge on Buy Me a Coffee
               </li>
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 My genuine gratitude
               </li>
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Helps fund development time
               </li>
             </ul>
-            <div class="sm-btn" role="presentation">
-              Join as Supporter
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </div>
+            <span class="btn btn-secondary btn-block" role="presentation">Join as Supporter</span>
           </a>
 
-          <!-- Backer -->
-          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="support-membership-card sm-backer" aria-label="Backer membership, $10 per month">
-            <div class="sm-popular-badge">Popular</div>
-            <div class="sm-icon" aria-hidden="true">🚀</div>
-            <div class="sm-name">Backer</div>
-            <div class="sm-price">$4 <span class="sm-price-period">/ month</span></div>
-            <p class="sm-desc">A meaningful commitment that helps prioritise new features and faster release cycles.</p>
-            <ul class="sm-perks">
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="tier is-popular" aria-label="Backer membership, $4 per month, most popular">
+            <span class="tier-badge">Most popular</span>
+            <div class="tier-name">Backer</div>
+            <div class="tier-price">$4 <span>/ month</span></div>
+            <p class="tier-desc">A meaningful commitment that helps prioritise new features and faster release cycles.</p>
+            <ul class="tier-perks">
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Everything in Supporter
               </li>
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Influence feature priorities
-              </li>              
+              </li>
             </ul>
-            <div class="sm-btn" role="presentation">
-              Join as Backer
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </div>
+            <span class="btn btn-primary btn-block" role="presentation">Join as Backer</span>
           </a>
 
-          <!-- Champion -->
-          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="support-membership-card sm-champion" aria-label="Champion membership, $25 per month">
-            <div class="sm-icon" aria-hidden="true">🏆</div>
-            <div class="sm-name">Champion</div>
-            <div class="sm-price">$6 <span class="sm-price-period">/ month</span></div>
-            <p class="sm-desc">You're all in. This level of support is extraordinary and directly fuels the most ambitious work.</p>
-            <ul class="sm-perks">
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <a href="https://buymeacoffee.com/breadworks/membership" target="_blank" rel="noopener noreferrer" class="tier" aria-label="Champion membership, $6 per month">
+            <div class="tier-name">Champion</div>
+            <div class="tier-price">$6 <span>/ month</span></div>
+            <p class="tier-desc">You're all in. This level of support is extraordinary and directly fuels the most ambitious work.</p>
+            <ul class="tier-perks">
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Everything in Backer
-              </li>              
-              <li class="sm-perk">
-                <span class="sm-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              </li>
+              <li class="tier-perk">
+                <span class="tier-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 Direct feedback channel
               </li>
             </ul>
-            <div class="sm-btn" role="presentation">
-              Join as Champion
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </div>
+            <span class="btn btn-secondary btn-block" role="presentation">Join as Champion</span>
           </a>
-
         </div>
 
         <p class="support-note">
-          All contributions go through <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>.
-          Support is entirely optional — RemotePC will always be free.          
+          All contributions go through <a href="https://buymeacoffee.com/breadworks" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>. Support is entirely optional — RemotePC will always be free.
         </p>
       </div>
     </section>
-    <!-- ══ end support section ══════════════════════════════════ -->
 
     <section id="faq" class="section">
-  <div class="section-header">
-    <h2 class="section-title">
-      Common <span class="gradient-text">Questions</span>
-    </h2>
-    <p class="section-subtitle">
-      Everything you need to know about privacy, security, compatibility, and setup
-    </p>
-  </div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Common questions</h2>
+          <p>Everything you need to know about privacy, security, compatibility, and setup.</p>
+        </div>
 
-  <div class="faq-list">
+        <div class="faq-groups">
+          <div class="faq-group">
+            <h3 class="faq-group-title">Setup &amp; compatibility</h3>
+            <div class="faq-list">
 
-    <!-- ── SETUP & COMPATIBILITY ─────────────────────────────────────── -->
-    <div class="faq-group">
-      <h3 class="faq-group-title">Setup &amp; Compatibility</h3>
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>What are the system requirements?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p><strong>Windows host (PC):</strong> Windows 10 or Windows 11. The listener application is approximately 40&nbsp;MB and runs only when you launch it — it does not install background services or startup entries.</p>
+                  <p><strong>Android client:</strong> Android 8.0 (Oreo) or later, a minimum of 2&nbsp;GB RAM, and an active Wi-Fi connection. The app is available on Google Play and Uptodown.</p>
+                  <p>Both devices must be connected to the same local network (Wi-Fi or LAN) for a successful connection.</p>
+                </div></div></div>
+              </article>
 
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>What are the system requirements?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p><strong>Windows host (PC):</strong> Windows 10 or Windows 11. The listener application is approximately 40 MB and runs only when you launch it—it does not install background services or startup entries.</p>
-          <p><strong>Android client:</strong> Android 8.0 (Oreo) or later, a minimum of 2 GB RAM, and an active Wi-Fi connection. The app is available on Google Play and Uptodown.</p>
-          <p>Both devices must be connected to the same local network (Wi-Fi or LAN) for a successful connection.</p>
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>How do I find my PC's local IP address?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>Your PC's local IP address is displayed directly in the RemotePC Windows listener once it's running — no manual lookup is required in most cases.</p>
+                  <p>If you need to find it manually, open a Command Prompt and run <code>ipconfig</code>. Look for the <strong>IPv4 Address</strong> listed under your active network adapter (typically beginning with <code>192.168.</code> or <code>10.</code>).</p>
+                  <p>Alternatively, on Windows 11 go to <strong>Settings → Network &amp; Internet → Wi-Fi → Hardware properties</strong> to view the IP address without the command line.</p>
+                  <p>The Android app also supports automatic device discovery, which can detect the PC on your network without requiring manual IP entry.</p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>What permissions does the Android app use, and why?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>The app requests only the minimum permissions necessary to operate. Nothing is requested speculatively or for future use.</p>
+                  <p><strong>Network access:</strong> required to connect directly to your PC over local Wi-Fi and transmit input commands in real time. No data is sent to external servers.</p>
+                  <p><strong>Storage access:</strong> only invoked when you explicitly start a file transfer. The app never scans, indexes, or reads your files on its own.</p>
+                  <p>You remain in full control of what the app can access at all times. Permissions can be reviewed or revoked in your device's app settings.</p>
+                  <p class="release-note">For a full breakdown of each permission, <a href="https://remotepc.tech/supportarticles/art4/art4.html" class="release-link" target="_blank" rel="noopener noreferrer">read this article →</a></p>
+                </div></div></div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <h3 class="faq-group-title">Security &amp; privacy</h3>
+            <div class="faq-list">
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Why does Windows Defender or SmartScreen flag the listener?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>This is an expected false positive, not a sign that anything is wrong with the application.</p>
+                  <p>Remote control software by nature performs actions — simulating input, capturing the screen, communicating over the network — that automated security heuristics associate with malware. Windows Defender and SmartScreen flag these behaviours regardless of intent.</p>
+                  <p>The installer is also not code-signed. Code signing certificates typically run <strong>$200 to $500+ a year</strong> depending on the certificate authority and validation level, which isn't viable for a free, zero-monetisation app. Skipping it keeps RemotePC free for everyone.</p>
+                  <p>A few things that distinguish RemotePC from malware:</p>
+                  <ul>
+                    <li>The listener is entirely dormant until you launch it — no background processes or startup entries</li>
+                    <li>No telemetry, analytics, or hidden data collection of any kind</li>
+                    <li>No cloud communication — all traffic stays on your local network</li>
+                  </ul>
+                  <p>To proceed past the warning, click <strong>More info → Run anyway</strong>. You can also verify the installer independently via the linked VirusTotal scan report.</p>
+                  <p class="release-note"><a href="https://remotepc.tech/supportarticles/art2/art2.html" class="release-link" target="_blank" rel="noopener noreferrer">Read the full explanation →</a></p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Can anyone else access my PC through RemotePC?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>No. Access is constrained by design at multiple levels.</p>
+                  <p>Only devices on your local network (Wi-Fi or LAN) can attempt a connection at all, and even then a connecting device must know your PC's specific IP address and port. The Windows listener also includes explicit controls to block individual local devices from connecting.</p>
+                  <p>By default, RemotePC is <strong>not exposed to the internet</strong>. No external device can reach your PC unless you deliberately configure advanced networking, such as port forwarding on your router — something that requires intentional action on your part.</p>
+                  <p>This local-first architecture is a deliberate security choice, not a limitation. It removes an entire class of remote attack vectors that cloud-based solutions must actively defend against.</p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Does the app collect any data or track usage?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>No. RemotePC collects no personal data, usage metrics, crash telemetry, or device information. There are no accounts to create, no registration, and no third-party analytics or tracking SDKs in the app.</p>
+                  <p>All communication happens directly between your Android device and your Windows PC over your local network. Nothing is routed through external servers — there are no external servers.</p>
+                  <p>Privacy isn't an opt-in feature here. It's the default and only mode of operation.</p>
+                </div></div></div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <h3 class="faq-group-title">Connectivity &amp; performance</h3>
+            <div class="faq-list">
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Does RemotePC work over the internet or away from home?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>RemotePC is designed for <strong>local network use only</strong>. Both devices must be on the same Wi-Fi or LAN segment for a connection to be established.</p>
+                  <p>Internet access is not required and is not used. That's intentional — it removes the latency of cloud relay servers, removes any dependency on external infrastructure, and ensures your data never leaves your home network.</p>
+                  <p>Remote access over the internet is technically possible through advanced router configuration (port forwarding, or a personal VPN tunnel), but that's outside RemotePC's supported setup and carries security considerations worth researching independently.</p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Why does a VPN interfere with the connection?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>RemotePC talks directly between your devices over the local network. A VPN active on either device can redirect or intercept that traffic in a way that breaks the direct local connection.</p>
+                  <p>Most VPN clients route all device traffic through a remote server by default, which effectively takes your device off the local network from a connectivity standpoint. Some VPN apps offer a <strong>split-tunnelling</strong> or "local network access" setting that excludes LAN traffic from the tunnel — if yours supports this, turning it on may let RemotePC keep working while the VPN stays on.</p>
+                  <p>If you run into connection issues, try disabling any active VPN on both devices, then reconnect.</p>
+                  <p class="release-note"><a href="https://remotepc.tech/article/?id=vpn" class="release-link" target="_blank" rel="noopener noreferrer">Read full explanation →</a></p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>The connection is slow or laggy — what should I check?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>Performance is mostly down to your local network. A few things to check:</p>
+                  <ul>
+                    <li><strong>Wi-Fi signal strength:</strong> both devices should have a strong, stable connection to the router. Distance, walls, and interference all matter — try moving closer or using a 5GHz band.</li>
+                    <li><strong>Network congestion:</strong> heavy simultaneous use (streaming, downloads, video calls) reduces available bandwidth and adds latency.</li>
+                    <li><strong>VPN interference:</strong> an active VPN on either device can noticeably slow things down. Disable it and test again.</li>
+                    <li><strong>PC load:</strong> screen streaming is resource-intensive — make sure the Windows host isn't under heavy CPU or GPU load elsewhere.</li>
+                  </ul>
+                  <p>On most home networks, input control (trackpad, keyboard, media keys) feels effectively instant. Screen streaming varies more with network conditions.</p>
+                </div></div></div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <h3 class="faq-group-title">Features</h3>
+            <div class="faq-list">
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Why is drag and drop not supported?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>This is most likely a Windows security restriction rather than a RemotePC design choice. Windows enforces <strong>UIPI (User Interface Privilege Isolation)</strong>, which blocks lower-privilege processes — such as File Explorer, running at standard user level — from sending input messages like drag-and-drop events to a higher-privilege process. Because the RemotePC listener runs with administrator privileges, it sits on the wrong side of that boundary.</p>
+                  <p>There's no straightforward workaround that preserves the level of system access RemotePC needs, so drag and drop stays unsupported for now.</p>
+                  <p class="release-note"><a href="https://remotepc.tech/article/?id=drag-drop" class="release-link" target="_blank" rel="noopener noreferrer">Read more about this limitation →</a></p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>What languages does the app support?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>The RemotePC Android app currently supports <strong>10 languages</strong>, with more planned for future releases.</p>
+                  <p>Language preference is typically detected automatically from your device's system settings. Want a specific language added? Submit a request via the GitHub issue tracker or by contacting support directly.</p>
+                </div></div></div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <h3 class="faq-group-title">General</h3>
+            <div class="faq-list">
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>Is RemotePC free? Are there any paid plans?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>RemotePC is completely free. There are no paid tiers, no premium features behind a subscription, and no in-app purchases.</p>
+                  <p>The app has no monetisation model — no ads, no selling data, no upgrades to buy. The full feature set is available to every user at no cost.</p>
+                </div></div></div>
+              </article>
+
+              <article class="faq-item">
+                <button class="faq-q" aria-expanded="false">
+                  <span>How do I report a bug or request a feature?</span>
+                  <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-content">
+                  <p>A couple of ways to get in touch:</p>
+                  <ul>
+                    <li><strong>GitHub Issues:</strong> the preferred channel for bug reports and feature requests. Reproduction steps, your Android version, and expected-vs-actual behaviour all help resolve things faster.</li>
+                    <li><strong>Contact form or email:</strong> reach the team via the <a href="https://remotepc.tech/contact/" target="_blank" rel="noopener noreferrer">contact form</a> or at <a href="mailto:support@remotepc.tech">support@remotepc.tech</a>.</li>
+                  </ul>
+                  <p>You can also check the public <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" target="_blank" rel="noopener noreferrer">Trello roadmap</a> to see what's planned or in progress.</p>
+                  <p class="release-note"><a href="https://github.com/Stan006/RemotePC/issues" class="release-link" target="_blank" rel="noopener noreferrer">Open a GitHub issue →</a></p>
+                </div></div></div>
+              </article>
+
+            </div>
+          </div>
         </div>
       </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>How do I find my PC's local IP address?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>Your PC's local IP address is displayed directly in the RemotePC Windows listener once it is running—no manual lookup is required in most cases.</p>
-          <p>If you need to find it manually, open a Command Prompt and run <code>ipconfig</code>. Look for the <strong>IPv4 Address</strong> listed under your active network adapter (typically beginning with <code>192.168.</code> or <code>10.</code>).</p>
-          <p>Alternatively, you can navigate to <strong>Settings → Network &amp; Internet → Wi-Fi → Hardware properties</strong> on Windows 11 to view the IP address without using the command line.</p>
-          <p>The Android app also supports automatic device discovery, which can detect the PC on your network without requiring manual IP entry.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>What permissions does the Android app use, and why?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>The app requests only the minimum permissions necessary to operate. No permissions are requested speculatively or for future use.</p>
-          <p><strong>Network access:</strong> Required to establish a direct connection to your PC over your local Wi-Fi network and transmit input commands in real time. No data is sent to external servers.</p>
-          <p><strong>Storage access:</strong> Only invoked when you explicitly initiate a file transfer. The app never scans, indexes, or reads your files autonomously.</p>
-          <p>You remain in full control of what the app can access at all times. Permissions can be reviewed or revoked through your device's standard app settings.</p>
-          <p class="release-note">
-            For a full breakdown of each permission,
-            <a href="https://remotepc.tech/article/?id=android-permissions" class="release-link" target="_blank" rel="noopener noreferrer">
-              read this article
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    </div>
-
-    <!-- ── SECURITY & PRIVACY ─────────────────────────────────────────── -->
-    <div class="faq-group">
-      <h3 class="faq-group-title">Security &amp; Privacy</h3>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Why does Windows Defender or SmartScreen flag the listener?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>This is an expected false positive, not an indication that anything is wrong with the application.</p>
-          <p>Remote control software by nature performs actions—simulating input, capturing the screen, communicating over the network—that automated security heuristics associate with malware. Windows Defender and SmartScreen flag these behaviors regardless of intent.</p>
-          <p>Additionally, the installer is not code-signed. Code signing certificates typically run anywhere from <strong>$200 to $500+ per year</strong> depending on the certificate authority and validation level, which is not viable for a free, zero-monetisation application. Skipping code signing keeps RemotePC free for everyone.</p>
-          <p>Key facts that distinguish RemotePC from malware:</p>
-          <ul>
-            <li>The listener is entirely dormant until you launch it—there are no background processes or startup entries</li>
-            <li>No telemetry, analytics, or hidden data collection of any kind</li>
-            <li>No cloud communication—all traffic is confined to your local network</li>
-          </ul>
-          <p>To proceed past the SmartScreen warning, click <strong>More info → Run anyway</strong>. You can also verify the installer independently via the linked VirusTotal scan report.</p>
-          <p class="release-note">
-            <a href="https://remotepc.tech/supportarticles/art2/art2.html" class="release-link" target="_blank" rel="noopener noreferrer">
-              Read the full explanation
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Can anyone else access my PC through RemotePC?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>No. Access is constrained by design at multiple levels.</p>
-          <p>Only devices on your local network (Wi-Fi or LAN) can attempt a connection at all. Even then, a connecting device must know your PC's specific IP address and port. The Windows listener also includes explicit controls to block individual local devices from connecting.</p>
-          <p>By default, RemotePC is <strong>not exposed to the internet</strong>. No external device can reach your PC unless you deliberately configure advanced networking, such as port forwarding on your router—something that requires intentional action on your part.</p>
-          <p>This local-first architecture is a deliberate security choice, not a limitation. It eliminates an entire class of remote attack vectors that cloud-based solutions must actively defend against.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Does the app collect any data or track usage?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>No. RemotePC collects no personal data, usage metrics, crash telemetry, or device information. There are no accounts to create, no registration required, and no third-party analytics or tracking SDKs embedded in the application.</p>
-          <p>All communication occurs directly between your Android device and your Windows PC over your local network. Nothing is routed through external servers—there are no external servers.</p>
-          <p>Privacy is not an opt-in feature. It is the default and only mode of operation.</p>
-        </div>
-      </div>
-    </article>
-
-    </div>
-
-    <!-- ── CONNECTIVITY & PERFORMANCE ────────────────────────────────── -->
-    <div class="faq-group">
-      <h3 class="faq-group-title">Connectivity &amp; Performance</h3>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Does RemotePC work over the internet or away from home?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>RemotePC is designed for <strong>local network use only</strong>. Both devices must be on the same Wi-Fi or LAN segment for a connection to be established.</p>
-          <p>Internet access is not required and is not used. This is an intentional architectural decision—it eliminates latency introduced by cloud relay servers, removes any dependency on external infrastructure, and ensures your data never leaves your home network.</p>
-          <p>Remote access over the internet is technically possible through advanced router configuration (such as port forwarding or a personal VPN tunnel), but this is outside the scope of RemotePC's supported setup and introduces additional security considerations that you should research independently.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Why does a VPN interfere with the connection?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>RemotePC communicates directly between your devices over the local network. A VPN, when active on either device, can redirect or intercept network traffic in a way that breaks this direct local connection.</p>
-          <p>Most VPN clients route all device traffic through a remote server by default, which effectively takes your device off the local network from a connectivity standpoint. This prevents RemotePC from locating or reaching the other device. Some VPN apps offer a <strong>split-tunneling</strong> or "local network access" setting that excludes LAN traffic from the tunnel—if your VPN supports this, enabling it may let RemotePC keep working while the VPN stays on.</p>
-          <p>If you experience connection issues, try disabling any active VPN on both your Android device and your Windows PC, then attempt to reconnect.</p>
-          <p class="release-note">
-            <a href="https://remotepc.tech/article/?id=vpn" class="release-link" target="_blank" rel="noopener noreferrer">
-              Read full explanation
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>The connection is slow or laggy—what should I check?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>Performance is primarily determined by the quality of your local network. A few things to check:</p>
-          <ul>
-            <li><strong>Wi-Fi signal strength:</strong> Both devices should have a strong, stable connection to the router. Distance, walls, and interference all affect performance. If possible, position devices closer to the router or use a 5 GHz band.</li>
-            <li><strong>Network congestion:</strong> Heavy simultaneous use of the network (streaming, downloads, video calls) can reduce available bandwidth and increase latency.</li>
-            <li><strong>VPN interference:</strong> An active VPN on either device can significantly degrade local network performance. Disable it and test again.</li>
-            <li><strong>PC performance:</strong> Screen streaming is resource-intensive. Ensure the Windows host is not under heavy CPU or GPU load from other applications.</li>
-          </ul>
-          <p>For most home networks, input control (trackpad, keyboard, media keys) operates with effectively zero perceptible latency. Screen streaming performance varies more with network conditions.</p>
-        </div>
-      </div>
-    </article>
-
-    </div>
-
-    <!-- ── FEATURES ───────────────────────────────────────────────────── -->
-    <div class="faq-group">
-      <h3 class="faq-group-title">Features</h3>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Why is drag and drop not supported?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>This is most likely a Windows security restriction rather than a RemotePC design choice. Windows enforces something called <strong>UIPI (User Interface Privilege Isolation)</strong>, which blocks lower-privilege processes—such as File Explorer, which runs at standard user level—from sending input messages like drag-and-drop events to a higher-privilege process. Because the RemotePC listener runs with administrator privileges, it falls on the wrong side of that boundary.</p>
-          <p>There is no straightforward workaround that preserves RemotePC's required level of system access, so drag and drop remains unsupported for now.</p>
-          <p class="release-note">
-            <a href="https://remotepc.tech/article/?id=drag-drop" class="release-link" target="_blank" rel="noopener noreferrer">
-              Read more about this limitation
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>What languages does the app support?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>The RemotePC Android app currently supports <strong>10 languages</strong>, with additional languages planned for future releases.</p>
-          <p>Language preference is typically detected automatically from your device's system settings. If you would like to see a specific language added, you are welcome to submit a request via the GitHub issue tracker or by contacting support directly.</p>
-        </div>
-      </div>
-    </article>
-
-    </div>
-
-    <!-- ── GENERAL ─────────────────────────────────────────────────────── -->
-    <div class="faq-group">
-      <h3 class="faq-group-title">General</h3>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>Is RemotePC free? Are there any paid plans or subscriptions?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>RemotePC is completely free. There are no paid tiers, no premium features gated behind a subscription, and no in-app purchases.</p>
-          <p>The application has no monetisation model. It does not display advertisements, sell data, or offer upgrades. The full feature set is available to every user at no cost.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        <span>How do I report a bug or request a feature?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          <p>There are a couple of ways to get in touch:</p>
-          <ul>
-            <li><strong>GitHub Issues:</strong> The preferred channel for both bug reports and feature requests. Providing reproduction steps, your Android version, and a description of the expected vs actual behaviour helps resolve issues faster.</li>
-            <li><strong>Contact form / email:</strong> Reach the team directly via the <a href="https://remotepc.tech/contact/" target="_blank" rel="noopener noreferrer">contact form</a> or at <a href="mailto:support@remotepc.tech">support@remotepc.tech</a>.</li>
-          </ul>
-          <p>You can also view the public <a href="https://trello.com/b/hpFWIO3E/remotepc-feature-pool" target="_blank" rel="noopener noreferrer">Trello roadmap</a> to see what is planned or currently in progress.</p>
-          <p class="release-note">
-            <a href="https://github.com/Stan006/RemotePC/issues" class="release-link" target="_blank" rel="noopener noreferrer">
-              Open a GitHub issue
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    </div>
-
-  </div>
-</section>
+    </section>
   </main>
 
   <footer class="footer" role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <div class="logo-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
-          </div>
-          <span>RemotePC</span>
-        </a>
-        <p class="footer-description">
-          Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.
-        </p>
-        <div class="footer-social">
-          <a href="https://github.com/Stan006/RemotePC" class="footer-social-link" aria-label="RemotePC on GitHub" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+            </span>
+            RemotePC
           </a>
+          <p class="footer-desc">Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.</p>
+          <div class="footer-social">
+            <a href="https://github.com/Stan006/RemotePC" aria-label="RemotePC on GitHub" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="support/">Support</a></li>
+            <li><a href="contact/">Contact us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://github.com/Stan006/RemotePC">GitHub</a></li>
+            <li><a href="releases/">Release notes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="privacy/">Privacy policy</a></li>
+            <li><a href="terms/">Terms of service</a></li>
+            <li><a href="#support">☕ Support us</a></li>
+          </ul>
         </div>
       </div>
 
-      <div class="footer-section">
-        <h4>Product</h4>
-        <ul class="footer-links">
-          <li><a href="#features" class="footer-link">Features</a></li>
-          <li><a href="#how-it-works" class="footer-link">How it works</a></li>
-          <li><a href="#download" class="footer-link">Download</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>© 2026 RemotePC – Breadworks. Created for privacy.</p>
+        <p>No accounts. No cloud. No tracking.</p>
       </div>
-
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul class="footer-links">
-          <li><a href="support/" class="footer-link">Support</a></li>
-          <li><a href="contact/" class="footer-link">Contact Us</a></li>
-          <li><a href="#faq" class="footer-link">FAQ</a></li>
-          <li><a href="https://github.com/Stan006/RemotePC" class="footer-link">GitHub</a></li>
-          <li><a href="releases/" class="footer-link">Release Notes</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul class="footer-links">
-          <li><a href="privacy/" class="footer-link">Privacy Policy</a></li>
-          <li><a href="terms/" class="footer-link">Terms of Service</a></li>
-          <li><a href="#support" class="footer-link footer-link-support">☕ Support Us</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 RemotePC - Breadworks. Created for privacy.</p>
-      <p class="footer-tagline">No accounts. No cloud. No tracking.</p>
     </div>
   </footer>
-
-  <script>
-  (function () {
-    var wrap = document.querySelector('.scroll-follow');
-    if (!wrap) return;
-
-    var svg = document.getElementById('scrollFollowSvg');
-    var trackPath = document.getElementById('scrollTrackPath');
-    var progressPath = document.getElementById('scrollProgressPath');
-    var dot = document.getElementById('scrollFollowDot');
-    var burstLayer = document.getElementById('scrollFollowBurst');
-    var backToTopBtn = document.getElementById('backToTop');
-
-    var WIDTH = 46;      // matches CSS width of .scroll-follow
-    var AMPLITUDE = 14;  // how far the wave swings side to side
-    var WAVELENGTH = 170; // vertical distance per half-wave
-
-    var totalLength = 0;
-    var height = 0;
-    var hasExploded = false;
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function explode(x, y) {
-      if (!('animate' in Element.prototype)) return;
-
-      var colors = ['#5b7cfa', '#22d3ee', '#8b5cf6'];
-
-      // shockwave ring
-      var ring = document.createElement('span');
-      ring.className = 'burst-ring';
-      ring.style.left = x + 'px';
-      ring.style.top = y + 'px';
-      burstLayer.appendChild(ring);
-      ring.animate(
-        [
-          { transform: 'translate(-50%, -50%) scale(0.4)', opacity: 0.85 },
-          { transform: 'translate(-50%, -50%) scale(2.6)', opacity: 0 }
-        ],
-        { duration: 700, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
-      );
-      setTimeout(function () { ring.remove(); }, 720);
-
-      // a brief flash on the dot itself
-      dot.classList.add('dot-flash');
-      setTimeout(function () { dot.classList.remove('dot-flash'); }, 500);
-
-      // fan of small particles
-      var count = 10;
-      for (var i = 0; i < count; i++) {
-        var angle = (Math.PI * 2 * i) / count + (Math.random() * 0.35 - 0.175);
-        var dist = 20 + Math.random() * 18;
-        var dx = Math.cos(angle) * dist;
-        var dy = Math.sin(angle) * dist;
-
-        var p = document.createElement('span');
-        p.className = 'burst-particle';
-        p.style.left = x + 'px';
-        p.style.top = y + 'px';
-        p.style.background = colors[i % colors.length];
-        burstLayer.appendChild(p);
-
-        (function (particle, dx, dy) {
-          var anim = particle.animate(
-            [
-              { transform: 'translate(-50%, -50%) translate(0px, 0px) scale(1)', opacity: 1 },
-              { transform: 'translate(-50%, -50%) translate(' + dx + 'px, ' + dy + 'px) scale(0.2)', opacity: 0 }
-            ],
-            { duration: 550 + Math.random() * 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', delay: Math.random() * 40 }
-          );
-          anim.onfinish = function () { particle.remove(); };
-        })(p, dx, dy);
-      }
-    }
-
-    function buildWavePath(h) {
-      var cx = WIDTH / 2;
-      var d = 'M ' + cx + ' 0';
-      var y = 0;
-      var dir = 1;
-      while (y < h) {
-        var next = Math.min(y + WAVELENGTH, h);
-        var midY = (y + next) / 2;
-        var cpX = cx + dir * AMPLITUDE;
-        d += ' Q ' + cpX + ' ' + midY + ' ' + cx + ' ' + next;
-        y = next;
-        dir *= -1;
-      }
-      return d;
-    }
-
-    function layout() {
-      height = window.innerHeight;
-      svg.setAttribute('viewBox', '0 0 ' + WIDTH + ' ' + height);
-      svg.setAttribute('width', WIDTH);
-      svg.setAttribute('height', height);
-
-      var d = buildWavePath(height);
-      trackPath.setAttribute('d', d);
-      progressPath.setAttribute('d', d);
-
-      totalLength = progressPath.getTotalLength();
-      progressPath.style.strokeDasharray = totalLength;
-      update();
-    }
-
-    function update() {
-      if (!totalLength) return;
-      var doc = document.documentElement;
-      var scrollTop = window.scrollY || doc.scrollTop;
-      var maxScroll = doc.scrollHeight - window.innerHeight;
-      var fraction = maxScroll > 0 ? Math.min(Math.max(scrollTop / maxScroll, 0), 1) : 0;
-
-      progressPath.style.strokeDashoffset = totalLength * (1 - fraction);
-
-      var point = progressPath.getPointAtLength(totalLength * fraction);
-      dot.style.transform = 'translate(' + (point.x - 5) + 'px, ' + (point.y - 5) + 'px)';
-      dot.style.opacity = fraction > 0.002 ? '1' : '0';
-
-      if (fraction >= 0.999 && !hasExploded) {
-        hasExploded = true;
-        if (!reduceMotion) explode(point.x, point.y);
-      } else if (fraction < 0.98) {
-        hasExploded = false;
-      }
-
-      if (backToTopBtn) {
-        backToTopBtn.classList.toggle('visible', fraction > 0.5);
-      }
-    }
-
-    var ticking = false;
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          update();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', layout);
-    layout();
-
-    if (backToTopBtn) {
-      backToTopBtn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
-    }
-  })();
-
-  // Header: switch to a more solid, compact state once the page is scrolled
-  (function () {
-    var header = document.querySelector('.header');
-    if (!header) return;
-
-    var THRESHOLD = 12;
-    var ticking = false;
-
-    function apply() {
-      header.classList.toggle('scrolled', window.scrollY > THRESHOLD);
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(apply);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    apply();
-  })();
-  </script>
 </body>
 </html>

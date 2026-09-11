@@ -383,6 +383,7 @@
       <div class="release-card-header" role="button" tabindex="0" aria-expanded="false">
         <div class="release-card-left">
           <span class="release-tag-pill ${typeCls}"${data.manualType ? ' title="Manually set in release notes"' : ''}>${typeLabel}</span>
+          ${isLatest ? '<span class="release-latest-badge">Latest</span>' : ''}
           <span class="release-version">${escHtml(data.version)}</span>
           ${title ? `<span class="release-title">${escHtml(title)}</span>` : ''}
         </div>

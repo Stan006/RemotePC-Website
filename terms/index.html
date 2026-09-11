@@ -6,518 +6,575 @@
   <title>Terms of Service — RemotePC</title>
   <meta name="description" content="Terms of Service for RemotePC — the local-network remote control tool for the Android App and Windows Listener. Local-only by design, closed source, no spying.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../index.css">
   <link rel="stylesheet" href="terms.css">
   <script defer src="../app.js"></script>
+  <meta name="theme-color" content="#08090b">
 </head>
-
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="../">
-      <div class="logo"></div>
-      <span>RemotePC</span>
-    </a>
-
-    <nav id="primary-nav" class="navlinks">
-        <a href="../privacy/">Privacy Policy</a>
-        <a href="../terms/">Terms of Service</a>
-    </nav>
-
-    <div class="nav-actions">
-      <a class="cta-primary desktop-only" href="../#download" style="height:40px;padding:0 16px;font-size:13px;">Get Started</a>
-
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-    </div>
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
   </div>
-</header>
 
-<main class="container section legal-main">
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
 
-  <header class="legal-header" data-animate>
-    <div class="breadcrumb">Legal / Terms of Service</div>
-    <h1>Usage <span class="text-gradient">Agreement</span></h1>
-    <p class="lead">
-      Clear, honest rules for using the RemotePC Android App and Windows Listener — built around one idea: this runs on your local network, under your control, and we're upfront about what it does and doesn't protect you from.
-    </p>
-
-    <div class="legal-summary-grid">
-
-      <div class="summary-item">
-        <span class="summary-icon">
-          <i data-lucide="handshake"></i>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
         </span>
-        <strong>Personal License</strong>
-        <span>Non-exclusive & revocable</span>
+        RemotePC
+      </a>
+
+      <div class="nav-panel" id="navPanel">
+        <ul class="nav-links">
+          <li><a href="../#features">Features</a></li>
+          <li><a href="../#how-it-works">How it works</a></li>
+          <li><a href="../#download">Download</a></li>
+          <li><a href="../releases/">Releases</a></li>
+          <li><a href="../#faq">FAQ</a></li>
+          <li><a href="../support/">Support</a></li>
+          <li><a href="../contact/">Contact us</a></li>
+          <li><a href="../#support" class="is-accent">☕ Support us</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="../#download" class="btn btn-primary">
+            Get started
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div class="summary-item">
-        <span class="summary-icon">
-          <i data-lucide="wifi"></i>
-        </span>
-        <strong>LAN-Only</strong>
-        <span>No cross-network use</span>
-      </div>
-
-      <div class="summary-item">
-        <span class="summary-icon">
-          <i data-lucide="shield-off"></i>
-        </span>
-        <strong>No Spying</strong>
-        <span>Consent is mandatory</span>
-      </div>
-
-      <div class="summary-item">
-        <span class="summary-icon">
-          <i data-lucide="scale"></i>
-        </span>
-        <strong>"As Is" Basis</strong>
-        <span>Provided without warranty</span>
-      </div>
-
-    </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </nav>
   </header>
 
-  <section class="platform-overview" data-animate aria-label="Platform overview: Android App and Windows Listener">
-    <div class="platform-card">
-      <div class="platform-card-head">
-        <span class="platform-icon"><i data-lucide="smartphone"></i></span>
-        <div>
-          <h3>Android App</h3>
-          <span class="platform-tag">Client · Controller</span>
+  <main id="main">
+    <section class="legal-hero">
+      <div class="wrap legal-hero-inner">
+        <span class="pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Legal
+        </span>
+        <p class="legal-updated">Last updated: August 28, 2026</p>
+        <h1>Usage agreement</h1>
+        <p class="lead">
+          Clear, honest rules for using the RemotePC Android App and Windows Listener — built around one idea: this runs on your local network, under your control, and we're upfront about what it does and doesn't protect you from.
+        </p>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="5"/><path d="M10.5 13.5 19 5"/><path d="m17 7 2 2"/><path d="m14 10 2 2"/></svg>
+            </div>
+            <strong>Personal license</strong>
+            <span>Non-exclusive &amp; revocable</span>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg>
+            </div>
+            <strong>LAN-only</strong>
+            <span>No cross-network use</span>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+            </div>
+            <strong>No spying</strong>
+            <span>Consent is mandatory</span>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m17 7-3 7a3 3 0 0 0 6 0z"/><path d="m7 7-3 7a3 3 0 0 0 6 0z"/><path d="M7 21h10"/></svg>
+            </div>
+            <strong>"As is" basis</strong>
+            <span>Provided without warranty</span>
+          </div>
         </div>
       </div>
-      <p>The app you install on your phone or tablet. It finds and connects to a Windows Listener on the same local network so you can view and control that PC.</p>
-      <p class="platform-note"><strong>Requires:</strong> local network access (Wi-Fi/LAN) to discover and connect to nearby devices. If you downloaded it from Google Play, your use of that store is also governed by Google Play's own terms.</p>
+    </section>
+
+    <section class="platform-overview" aria-label="Platform overview: Android App and Windows Listener">
+      <div class="platform-card">
+        <div class="platform-card-head">
+          <span class="platform-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </span>
+          <div>
+            <h3>Android App</h3>
+            <span class="platform-tag">Client · Controller</span>
+          </div>
+        </div>
+        <p>The app you install on your phone or tablet. It finds and connects to a Windows Listener on the same local network so you can view and control that PC.</p>
+        <p class="platform-note"><strong>Requires:</strong> local network access (Wi-Fi/LAN) to discover and connect to nearby devices. If you downloaded it from Google Play, your use of that store is also governed by Google Play's own terms.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-head">
+          <span class="platform-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </span>
+          <div>
+            <h3>Windows Listener</h3>
+            <span class="platform-tag">Host</span>
+          </div>
+        </div>
+        <p>Runs on the PC you want to access remotely. It listens for incoming connections from the Android App and holds the security controls that decide who's allowed to connect.</p>
+        <p class="platform-note"><strong>Carries:</strong> the local security features below — IP whitelisting, IP banning, a client connection limit, and encryption of certain data such as clipboard content.</p>
+        <p class="platform-note"><strong>Also connects to:</strong> Google Firebase, for exactly two always-on, fully anonymous purposes — receiving broadcast messages from us and sending an anonymous "how many people are using RemotePC right now" ping. Neither can be turned off. See <a href="#privacy">Section 9</a>.</p>
+      </div>
+    </section>
+
+    <div class="legal-layout">
+
+      <aside class="legal-toc">
+        <div class="toc-sticky">
+          <span class="legal-toc-title">Terms navigation</span>
+          <nav aria-label="Table of contents">
+
+            <div class="toc-group">
+              <span class="toc-group-label">Getting started</span>
+              <ul class="toc-list">
+                <li><a href="#intro"><span>01</span> Introduction</a></li>
+                <li><a href="#definitions"><span>02</span> Definitions</a></li>
+                <li><a href="#eligibility"><span>03</span> Eligibility</a></li>
+              </ul>
+            </div>
+
+            <div class="toc-group">
+              <span class="toc-group-label">Using RemotePC</span>
+              <ul class="toc-list">
+                <li><a href="#license"><span>04</span> License &amp; usage</a></li>
+                <li><a href="#acceptable-use"><span>05</span> Acceptable use</a></li>
+                <li><a href="#local"><span>06</span> Local-only design</a></li>
+                <li><a href="#security"><span>07</span> Security</a></li>
+                <li><a href="#responsibility"><span>08</span> Responsibilities</a></li>
+              </ul>
+            </div>
+
+            <div class="toc-group">
+              <span class="toc-group-label">Data &amp; third parties</span>
+              <ul class="toc-list">
+                <li><a href="#privacy"><span>09</span> Privacy</a></li>
+                <li><a href="#third-party"><span>10</span> Third-party services</a></li>
+              </ul>
+            </div>
+
+            <div class="toc-group">
+              <span class="toc-group-label">Legal terms</span>
+              <ul class="toc-list">
+                <li><a href="#ip"><span>11</span> IP &amp; source code</a></li>
+                <li><a href="#warranty"><span>12</span> No warranty</a></li>
+                <li><a href="#liability"><span>13</span> Liability</a></li>
+                <li><a href="#indemnification"><span>14</span> Indemnification</a></li>
+                <li><a href="#export"><span>15</span> Export control</a></li>
+              </ul>
+            </div>
+
+            <div class="toc-group">
+              <span class="toc-group-label">Account &amp; changes</span>
+              <ul class="toc-list">
+                <li><a href="#termination"><span>16</span> Term &amp; termination</a></li>
+                <li><a href="#updates"><span>17</span> Updates</a></li>
+                <li><a href="#changes"><span>18</span> Changes to terms</a></li>
+              </ul>
+            </div>
+
+            <div class="toc-group">
+              <span class="toc-group-label">Jurisdiction &amp; contact</span>
+              <ul class="toc-list">
+                <li><a href="#law"><span>19</span> Governing law</a></li>
+                <li><a href="#region"><span>20</span> Region-specific</a></li>
+                <li><a href="#general"><span>21</span> General provisions</a></li>
+                <li><a href="#contact"><span>22</span> Contact</a></li>
+              </ul>
+            </div>
+
+          </nav>
+
+          <div class="toc-support-card">
+            <p>Questions about our terms?</p>
+            <a href="mailto:contact@remotepc.tech">
+              Email us
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <section class="legal-content">
+
+        <article class="legal-section" id="intro">
+          <h2>1. Introduction and Acceptance</h2>
+          <p>RemotePC by Breadworks is an independent, non-commercial project. It's developed and made available by an individual developer operating under the name "Breadworks" (based in Athens, Greece) — <strong>not</strong> a registered company or other formal legal entity. These Terms are a direct agreement between you and that developer, personally.</p>
+          <p>RemotePC is provided entirely free of charge: no purchases, subscriptions, license fees, ads, or other monetization of any kind.</p>
+          <p>These Terms govern your access to and use of:</p>
+          <ul>
+            <li>The RemotePC by Breadworks <strong>Android App</strong></li>
+            <li>The RemotePC <strong>Windows Listener</strong> software</li>
+            <li>The website at remotepc.tech</li>
+          </ul>
+          <p>By downloading, installing, accessing, or using any part of RemotePC, you agree to these Terms and to our <a href="../privacy/">Privacy Policy</a>. If you don't agree, don't download, install, or use RemotePC.</p>
+          <p>If you're using RemotePC on behalf of a company or other organization, you confirm you have authority to bind that organization, and "you" refers to it.</p>
+        </article>
+
+        <article class="legal-section" id="definitions">
+          <h2>2. Definitions</h2>
+          <dl class="definitions">
+            <div>
+              <dt>Software</dt>
+              <dd>The Android App, the Windows Listener, related documentation and updates, and the Website.</dd>
+            </div>
+            <div>
+              <dt>Local Network / LAN</dt>
+              <dd>A private network not exposed to the public internet by default.</dd>
+            </div>
+            <div>
+              <dt>You / User</dt>
+              <dd>The person or entity using the Software.</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="legal-section" id="eligibility">
+          <h2>3. Eligibility</h2>
+          <p>You must be at least 18, or the age of legal majority where you live, to accept these Terms yourself. If you're using RemotePC on behalf of, or in the presence of, a minor, you confirm you're their parent or legal guardian, or otherwise legally authorized, and you accept these Terms on their behalf.</p>
+          <p>RemotePC isn't directed at children, and we don't knowingly collect personal information from children under 13 (or the relevant age under your local law). If you believe a child has given us personal information, contact us using the details in <a href="#contact">Section 22</a>.</p>
+        </article>
+
+        <article class="legal-section" id="license">
+          <h2>4. License &amp; Permitted Use</h2>
+          <div class="badge-row">
+            <span class="platform-badge badge-both">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              Applies to Android App &amp; Windows Listener
+            </span>
+          </div>
+          <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use RemotePC on devices you own or control, for personal or internal business use.</p>
+          <p>Except where applicable law gives you a right despite this restriction (for example, interoperability rights under the EU Software Directive 2009/24/EC or an equivalent local law), you agree not to:</p>
+          <ul>
+            <li>Misrepresent the Software as your own product, or remove or alter proprietary notices</li>
+            <li>Redistribute modified builds under the "RemotePC by Breadworks" name, logo, or branding without our prior written permission</li>
+            <li>Sell, rent, lease, sublicense, or otherwise commercially exploit the Software without our prior written permission</li>
+            <li>Reverse-engineer, decompile, or disassemble the Software beyond what applicable law allows</li>
+          </ul>
+          <p>RemotePC's source code is closed and proprietary — see <a href="#ip">Section 11</a> for details. We reserve all rights not expressly granted here.</p>
+        </article>
+
+        <article class="legal-section" id="acceptable-use">
+          <h2>5. Acceptable Use</h2>
+          <p>You agree not to use RemotePC to:</p>
+          <ul>
+            <li>Access, monitor, or control any device or network without the explicit authorization of its owner or administrator</li>
+            <li>Surveil, track, or spy on any person without the consent required by applicable law</li>
+            <li>Violate any applicable law or regulation, including computer-misuse and data-protection laws</li>
+            <li>Infringe anyone else's intellectual property, privacy, or other rights</li>
+            <li>Introduce malware or attempt to compromise the security of any system</li>
+          </ul>
+
+          <div class="callout callout--danger">
+            <span class="callout-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            <div class="callout-body">
+              <strong class="callout-title">No covert monitoring, ever</strong>
+              <p>Installing or using RemotePC on a device to covertly monitor, record, or control that device without the explicit, informed consent of its owner — including on a partner's, family member's, employee's, or any other person's device — is strictly prohibited.</p>
+              <p>This applies regardless of your relationship to that person or your reason for wanting access, and such use may violate computer-misuse, wiretapping, and anti-stalking laws in your jurisdiction.</p>
+            </div>
+          </div>
+
+          <p>We may suspend or terminate your license if we reasonably believe you've violated this Section.</p>
+        </article>
+
+        <article class="legal-section" id="local">
+          <h2>6. Local-Only Design; No Built-In Cloud Relay</h2>
+          <div class="badge-row">
+            <span class="platform-badge badge-windows">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Windows Listener hosts the connection
+            </span>
+            <span class="platform-badge badge-android">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              Android App connects locally
+            </span>
+          </div>
+          <p>RemotePC by Breadworks is a <strong>local-network (LAN) tool only</strong>. It's designed and intended to be used exclusively between devices on the same local network:</p>
+          <ul>
+            <li>No built-in cloud relay</li>
+            <li>No external servers operated by us to facilitate remote control</li>
+            <li>No automatic exposure to the public internet</li>
+          </ul>
+
+          <div class="callout callout--warn">
+            <span class="callout-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M5 12.9a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+            </span>
+            <div class="callout-body">
+              <strong class="callout-title">You can't use this across different networks</strong>
+              <p>Connecting from a different Wi-Fi network, over the public internet, or between two separate LANs isn't a supported use case. This is a hard limitation on RemotePC's intended use, not just a description of a default setting.</p>
+            </div>
+          </div>
+
+          <p>This describes how the Software is designed to work. It isn't a guarantee against bugs, misconfiguration, or third-party interference, and is subject to the disclaimers in Sections 12 and 13.</p>
+          <p>If you nonetheless attempt to expose the Windows Listener to the internet or another network — for example through port forwarding, a VPN, or tunneling tools — you're doing so entirely outside RemotePC's supported use case, and entirely at your own risk. You're solely responsible for that configuration and everything that follows from it, including unauthorized access.</p>
+          <p>Separately from this — and not something you can disable — the Windows Listener also maintains two limited, one-way connections to Google Firebase: a broadcast channel for messages from us, and an anonymous ping so we know how many people are using RemotePC at a given time. Neither connection relays, routes, or otherwise facilitates a remote-control session, and neither gives us access to your screen, input, clipboard, files, or any other session content. See <a href="#privacy">Section 9</a>.</p>
+        </article>
+
+        <article class="legal-section" id="security">
+          <h2>7. Security</h2>
+          <p>RemotePC takes a local-first approach to reduce attack surface, but it doesn't replace proper network security practices.</p>
+          <p>RemotePC includes security features intended to help prevent unauthorized access and reduce exposure. These live on the <strong>Windows Listener</strong>, since it's the side that accepts incoming connections from the Android App:</p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-card-head">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6h9"/><path d="M11 12h9"/><path d="M11 18h9"/><path d="m3 6 1.5 1.5L7 5"/><path d="m3 12 1.5 1.5L7 11"/><path d="m3 18 1.5 1.5L7 17"/></svg>
+                <span>IP Whitelisting</span>
+              </div>
+              <p>Restrict which IP addresses are permitted to connect to the Windows Listener.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-card-head">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
+                <span>IP Banning</span>
+              </div>
+              <p>Block specific local IP addresses from connecting.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-card-head">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Encryption</span>
+              </div>
+              <p>Certain data in transit, including clipboard content, is encrypted.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-card-head">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Connection Limit</span>
+              </div>
+              <p>Restricts how many clients may connect to the Windows Listener at once.</p>
+            </div>
+          </div>
+
+          <p>These features are tools to help reduce risk, not a guarantee — you're responsible for configuring and using them correctly.</p>
+
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg>
+            </span>
+            <div class="callout-body">
+              <strong class="callout-title">A secure network is required, not optional</strong>
+              <p>You must only run and connect to RemotePC over a network you control and trust — a private home or office LAN behind a properly configured router. Using RemotePC over public Wi-Fi, shared networks, or any network you don't control significantly increases the risk of interception or unauthorized access, and is done entirely at your own risk.</p>
+            </div>
+          </div>
+
+          <p>We don't guarantee protection against every attack, vulnerability, or misconfiguration — including cases where security features such as IP whitelisting are bypassed, misconfigured, or fail. You're responsible for your firewall rules, router settings, and keeping your systems updated. Any connection made with RemotePC is only as secure as your Wi-Fi network and devices.</p>
+          <p>Despite these features, RemotePC — including any of its security features — is provided <strong>"as is."</strong> We don't warrant that it, or any security feature, will prevent unauthorized access in every case; see Sections 12 and 13.</p>
+        </article>
+
+        <article class="legal-section" id="responsibility">
+          <h2>8. Your Responsibilities</h2>
+          <p>You are solely responsible for your use of the Service, including:</p>
+          <ul>
+            <li>Ensuring you have explicit authorization to access and control any device</li>
+            <li>Maintaining reasonable security on your network and devices</li>
+            <li>Protecting your access credentials, IP addresses, and connection details</li>
+            <li>Complying with all applicable laws</li>
+          </ul>
+        </article>
+
+        <article class="legal-section" id="privacy">
+          <h2>9. Privacy &amp; Data Collection</h2>
+          <p>We try to collect as little as possible.</p>
+          <ul>
+            <li><strong>Session data:</strong> the current version of the Windows Listener doesn't create or keep local logs of remote-control sessions.</li>
+            <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
+            <li><strong>Broadcast channel (Firebase):</strong> the Windows Listener keeps a persistent, one-way connection to Google Firebase so we can push broadcast messages — announcements, security notices, and similar updates — to users. This is a fixed part of how the Windows Listener is built; there's no in-app or config-file setting to turn it off.</li>
+            <li><strong>Anonymous usage ping (Firebase):</strong> the Windows Listener also sends a periodic ping to us via Firebase so we can see how many people are using RemotePC at a given time. The ping is fully anonymous — it isn't linked to an account, name, email, or anything else that could identify you, your device, or your network — and, like the broadcast channel, it can't be turned off.</li>
+          </ul>
+          <p>Other than the GitHub update check and these two Firebase connections, RemotePC makes no other connection to us. Full details — including our legal basis for the Firebase connections and your right to object — live in our standalone <a href="../privacy/">Privacy Policy</a>. If you're in the EEA/UK, you generally have rights to access, correct, delete, or restrict use of your personal data, and to complain to your local data protection authority. If you're a California resident, you may have rights under the CCPA, as amended — see <a href="#region">Section 20</a> and our Privacy Policy.</p>
+        </article>
+
+        <article class="legal-section" id="third-party">
+          <h2>10. Third-Party Services</h2>
+          <div class="badge-row">
+            <span class="platform-badge badge-android">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              Android App
+            </span>
+            <span class="platform-badge badge-windows">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Windows Listener
+            </span>
+          </div>
+          <p>The update-check feature interacts with GitHub, which has its own terms and privacy statement that we don't control.</p>
+          <p>The Windows Listener connects to Google Firebase for exactly two purposes: delivering broadcast messages from us to users, and sending us an anonymous ping so we can see how many people are using RemotePC at a given time. Both are fully anonymous, both are a fixed part of how the Windows Listener is built, and neither can be turned off. Neither connection relays, routes, or facilitates a remote-control session, and RemotePC makes no other connection to us beyond these two and the GitHub update check. See <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for details, including Firebase's role as a processor.</p>
+          <p>If you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's terms.</p>
+        </article>
+
+        <article class="legal-section" id="ip">
+          <h2>11. Intellectual Property</h2>
+          <p>RemotePC by Breadworks is <strong>closed-source software</strong>: its source code is proprietary and is not published, disclosed, or otherwise made available to the public.</p>
+          <p>RemotePC by Breadworks — including its source code, name, and logo — belongs to us (that is, to the developer personally, since "Breadworks" is a project name and not a separate legal entity) or our licensors, and is protected by copyright, trademark, and other laws.</p>
+          <p>Other than the limited license in <a href="#license">Section 4</a>, nothing here transfers any rights to you, and no license to view, access, or copy the source code is granted.</p>
+        </article>
+
+        <article class="legal-section" id="warranty">
+          <h2>12. Disclaimer of Warranties</h2>
+          <p>
+            TO THE FULLEST EXTENT THE LAW ALLOWS, REMOTEPC IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY — INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DON'T WARRANT THAT REMOTEPC WILL BE ERROR-FREE, SECURE, UNINTERRUPTED, OR THAT ALL BUGS WILL BE FIXED. THIS INCLUDES ANY SECURITY FEATURES (SUCH AS IP WHITELISTING, IP BANNING, ENCRYPTION, OR CLIENT CONNECTION LIMITS) — WE DON'T WARRANT THAT THEY WILL PREVENT UNAUTHORIZED ACCESS, PROTECT TRANSMITTED DATA IN EVERY CASE, OR OPERATE WITHOUT FLAWS.
+          </p>
+          <p>Nothing here excludes any statutory guarantee or right that can't lawfully be excluded — including digital-content conformity guarantees available to EU consumers under Directive (EU) 2019/770, or other non-waivable rights under the law of your country of residence.</p>
+        </article>
+
+        <article class="legal-section" id="liability">
+          <h2>13. Limitation of Liability</h2>
+          <p>
+            TO THE FULLEST EXTENT THE LAW ALLOWS: WE ARE NOT LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES — INCLUDING LOST DATA, LOST PROFITS, OR HARDWARE/SOFTWARE DAMAGE — ARISING FROM YOUR USE OR INABILITY TO USE REMOTEPC, INCLUDING UNAUTHORIZED ACCESS RESULTING FROM MISCONFIGURATION OR WEAK NETWORK SECURITY.
+          </p>
+          <p>Nothing here excludes liability that can't be excluded under applicable law — including for death or personal injury caused by negligence, fraud, or, where local law forbids excluding it, gross negligence or willful misconduct.</p>
+        </article>
+
+        <article class="legal-section" id="indemnification">
+          <h2>14. Indemnification</h2>
+          <p>You agree to defend, indemnify, and hold us harmless from claims, damages, and expenses (including reasonable legal fees) arising from:</p>
+          <ul>
+            <li>Your use of RemotePC in breach of these Terms or applicable law</li>
+            <li>Your violation of anyone else's rights</li>
+            <li>Unauthorized access to a device or network carried out using RemotePC through your action or negligence</li>
+          </ul>
+          <p>— except to the extent applicable consumer-protection law doesn't allow this.</p>
+        </article>
+
+        <article class="legal-section" id="export">
+          <h2>15. Export Control and Sanctions Compliance</h2>
+          <p>RemotePC may be subject to export-control and economic sanctions laws, including those of the United States and European Union. You confirm you're not located in, or a national or resident of, a country or region subject to comprehensive trade sanctions, and that you're not on any applicable restricted-party list. You agree not to export or use RemotePC in violation of these laws.</p>
+        </article>
+
+        <article class="legal-section" id="termination">
+          <h2>16. Term and Termination</h2>
+          <p>These Terms apply until terminated. We may suspend or terminate your license for material breach. You can stop using RemotePC and uninstall it any time.</p>
+          <p>Sections that should reasonably survive termination — including 11 through 15 and 19 — do.</p>
+        </article>
+
+        <article class="legal-section" id="updates">
+          <h2>17. Software Updates and Changes to the Service</h2>
+          <p>We may release updates — new features, bug fixes, security patches — from time to time. RemotePC may check GitHub's public API for new versions, as described in <a href="#privacy">Section 9</a>.</p>
+          <p>We may modify, suspend, or discontinue parts of RemotePC at any time, and will try to give reasonable notice of material changes where practical.</p>
+        </article>
+
+        <article class="legal-section" id="changes">
+          <h2>18. Changes to These Terms</h2>
+          <p>We may update these Terms periodically. Material changes will update the "Last Updated" date above and, where practical, be flagged in the app or on the Website.</p>
+          <p>Continuing to use RemotePC after changes take effect means you accept them, to the extent the law allows; where the law requires your affirmative consent, we'll ask for it.</p>
+        </article>
+
+        <article class="legal-section" id="law">
+          <h2>19. Governing Law and Dispute Resolution</h2>
+          <p>These Terms are governed by the laws of Greece (the Hellenic Republic), the developer's country of residence, and the courts of Athens have jurisdiction over any dispute, subject to the paragraph below.</p>
+          <p>If you're a consumer habitually resident in the EU, EEA, or UK, this clause doesn't take away the protection of mandatory consumer-protection rules in your country of residence, and you keep the right to bring proceedings in your local courts under applicable law (including Regulation (EU) No 1215/2012 and Regulation (EC) No 593/2008, or their UK equivalents).</p>
+          <p>Contact us first (<a href="#contact">Section 22</a>) — we'd rather resolve a dispute directly than through a formal process.</p>
+        </article>
+
+        <article class="legal-section" id="region">
+          <h2>20. Region-Specific Terms</h2>
+
+          <div class="region-block">
+            <h4>European Union / EEA / United Kingdom</h4>
+            <p><strong>Who we are:</strong> An independent developer operating under the name "Breadworks," based in Athens, Greece. Breadworks is a project name, not a registered company. Contact: <a href="mailto:contact@remotepc.tech">contact@remotepc.tech</a>.</p>
+            <p><strong>Statutory rights:</strong> nothing here limits your non-waivable consumer rights, including digital-content conformity rights under Directive (EU) 2019/770 or UK equivalents.</p>
+            <p><strong>Data protection:</strong> see <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for your rights under the GDPR (Regulation (EU) 2016/679).</p>
+          </div>
+
+          <div class="region-block">
+            <h4>United States</h4>
+            <p><strong>California disclosure (Cal. Civ. Code § 1789.3):</strong> current charges for RemotePC: none. RemotePC is provided entirely free of charge, with no in-app purchases, subscriptions, or other charges of any kind. California residents may direct complaints to the Complaint Assistance Unit, Division of Consumer Services, California Department of Consumer Affairs, 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, (800) 952-5210.</p>
+            <p><strong>CCPA/CPRA:</strong> you may have rights under the California Consumer Privacy Act, as amended by the CPRA, over personal information we or our service providers process — see our Privacy Policy for how to exercise them.</p>
+            <p><strong>Warranty/liability carve-outs:</strong> some US states don't allow excluding certain implied warranties or limiting incidental/consequential damages, so parts of Sections 12–13 may not fully apply to you.</p>
+          </div>
+        </article>
+
+        <article class="legal-section" id="general">
+          <h2>21. General Provisions</h2>
+          <ul>
+            <li><strong>Severability:</strong> if any provision is found unenforceable, the rest stays in effect, and that provision is read narrowly enough to be enforceable.</li>
+            <li><strong>Entire Agreement:</strong> these Terms plus our Privacy Policy are the whole agreement between us about RemotePC, replacing any earlier agreements.</li>
+            <li><strong>No Waiver:</strong> not enforcing a provision once doesn't waive our right to enforce it later.</li>
+            <li><strong>Assignment:</strong> you can't assign these Terms without our written consent; we may assign them as part of a merger, acquisition, or asset sale.</li>
+            <li><strong>Notices:</strong> we may notify you via the app, the Website, or the email you've provided.</li>
+          </ul>
+        </article>
+
+        <article class="legal-section" id="contact">
+          <h2>22. Contact</h2>
+          <p>Questions about these Terms? Email:</p>
+          <p><a href="mailto:contact@remotepc.tech">contact@remotepc.tech</a></p>
+        </article>
+
+      </section>
     </div>
-    <div class="platform-card">
-      <div class="platform-card-head">
-        <span class="platform-icon"><i data-lucide="monitor"></i></span>
-        <div>
-          <h3>Windows Listener</h3>
-          <span class="platform-tag">Host</span>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
+            </span>
+            RemotePC
+          </a>
+          <p class="footer-desc">Secure, local-first remote control for the modern workspace. Privacy-first architecture with zero cloud dependencies.</p>
+          <div class="footer-social">
+            <a href="https://github.com/Stan006/RemotePC" aria-label="RemotePC on GitHub" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="../#features">Features</a></li>
+            <li><a href="../#how-it-works">How it works</a></li>
+            <li><a href="../#download">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="../support/">Support</a></li>
+            <li><a href="../contact/">Contact us</a></li>
+            <li><a href="../#faq">FAQ</a></li>
+            <li><a href="https://github.com/Stan006/RemotePC">GitHub</a></li>
+            <li><a href="../releases/">Release notes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../privacy/">Privacy policy</a></li>
+            <li><a href="./" aria-current="page">Terms of service</a></li>
+            <li><a href="../#support">☕ Support us</a></li>
+          </ul>
         </div>
       </div>
-      <p>Runs on the PC you want to access remotely. It listens for incoming connections from the Android App and holds the security controls that decide who's allowed to connect.</p>
-      <p class="platform-note"><strong>Carries:</strong> the local security features below — IP whitelisting, IP banning, a client connection limit, and encryption of certain data such as clipboard content.</p>
-      <p class="platform-note"><strong>Also connects to:</strong> Google Firebase, for exactly two always-on, fully anonymous purposes — receiving broadcast messages from us and sending an anonymous "how many people are using RemotePC right now" ping. Neither can be turned off. See <a href="#privacy">Section 9</a>.</p>
-    </div>
-  </section>
 
-  <div class="legal-layout">
-
-    <aside class="legal-toc">
-      <div class="toc-sticky">
-        <div class="legal-toc-title">Terms Navigation</div>
-
-        <nav aria-label="Table of Contents">
-
-          <div class="toc-group">
-            <span class="toc-group-label">Getting Started</span>
-            <ul class="toc-list">
-              <li><a href="#intro" class="active"><span>01</span> Introduction</a></li>
-              <li><a href="#definitions"><span>02</span> Definitions</a></li>
-              <li><a href="#eligibility"><span>03</span> Eligibility</a></li>
-            </ul>
-          </div>
-
-          <div class="toc-group">
-            <span class="toc-group-label">Using RemotePC</span>
-            <ul class="toc-list">
-              <li><a href="#license"><span>04</span> License & Usage</a></li>
-              <li><a href="#acceptable-use"><span>05</span> Acceptable Use</a></li>
-              <li><a href="#local"><span>06</span> Local-Only Design</a></li>
-              <li><a href="#security"><span>07</span> Security</a></li>
-              <li><a href="#responsibility"><span>08</span> Responsibilities</a></li>
-            </ul>
-          </div>
-
-          <div class="toc-group">
-            <span class="toc-group-label">Data & Third Parties</span>
-            <ul class="toc-list">
-              <li><a href="#privacy"><span>09</span> Privacy</a></li>
-              <li><a href="#third-party"><span>10</span> Third-Party Services</a></li>
-            </ul>
-          </div>
-
-          <div class="toc-group">
-            <span class="toc-group-label">Legal Terms</span>
-            <ul class="toc-list">
-              <li><a href="#ip"><span>11</span> IP & Source Code</a></li>
-              <li><a href="#warranty"><span>12</span> No Warranty</a></li>
-              <li><a href="#liability"><span>13</span> Liability</a></li>
-              <li><a href="#indemnification"><span>14</span> Indemnification</a></li>
-              <li><a href="#export"><span>15</span> Export Control</a></li>
-            </ul>
-          </div>
-
-          <div class="toc-group">
-            <span class="toc-group-label">Account & Changes</span>
-            <ul class="toc-list">
-              <li><a href="#termination"><span>16</span> Term & Termination</a></li>
-              <li><a href="#updates"><span>17</span> Updates</a></li>
-              <li><a href="#changes"><span>18</span> Changes to Terms</a></li>
-            </ul>
-          </div>
-
-          <div class="toc-group">
-            <span class="toc-group-label">Jurisdiction & Contact</span>
-            <ul class="toc-list">
-              <li><a href="#law"><span>19</span> Governing Law</a></li>
-              <li><a href="#region"><span>20</span> Region-Specific</a></li>
-              <li><a href="#general"><span>21</span> General Provisions</a></li>
-              <li><a href="#contact"><span>22</span> Contact</a></li>
-            </ul>
-          </div>
-
-        </nav>
-
-        <div class="toc-support-card">
-          <p>Questions about our terms?</p>
-          <a href="mailto:contact@remotepc.tech">Email Us</a>
-        </div>
-      </div>
-    </aside>
-
-    <div class="legal-content">
-
-  <section class="card" id="intro" data-animate>
-    <h2>1. Introduction and Acceptance</h2>
-    <p>RemotePC by Breadworks is an independent, non-commercial project. It's developed and made available by an individual developer operating under the name "Breadworks" (based in Athens, Greece) — <strong>not</strong> a registered company or other formal legal entity. These Terms are a direct agreement between you and that developer, personally.</p>
-    <p>RemotePC is provided entirely free of charge: no purchases, subscriptions, license fees, ads, or other monetization of any kind.</p>
-    <p>These Terms govern your access to and use of:</p>
-    <ul>
-      <li>The RemotePC by Breadworks <strong>Android App</strong></li>
-      <li>The RemotePC <strong>Windows Listener</strong> software</li>
-      <li>The website at remotepc.tech</li>
-    </ul>
-    <p>By downloading, installing, accessing, or using any part of RemotePC, you agree to these Terms and to our <a href="../privacy/">Privacy Policy</a>. If you don't agree, don't download, install, or use RemotePC.</p>
-    <p>If you're using RemotePC on behalf of a company or other organization, you confirm you have authority to bind that organization, and "you" refers to it.</p>
-  </section>
-
-  <section class="card" id="definitions" data-animate>
-    <h2>2. Definitions</h2>
-    <dl class="definitions">
-      <div>
-        <dt>Software</dt>
-        <dd>The Android App, the Windows Listener, related documentation and updates, and the Website.</dd>
-      </div>
-      <div>
-        <dt>Local Network / LAN</dt>
-        <dd>A private network not exposed to the public internet by default.</dd>
-      </div>
-      <div>
-        <dt>You / User</dt>
-        <dd>The person or entity using the Software.</dd>
-      </div>
-    </dl>
-  </section>
-
-  <section class="card" id="eligibility" data-animate>
-    <h2>3. Eligibility</h2>
-    <p>You must be at least 18, or the age of legal majority where you live, to accept these Terms yourself. If you're using RemotePC on behalf of, or in the presence of, a minor, you confirm you're their parent or legal guardian, or otherwise legally authorized, and you accept these Terms on their behalf.</p>
-    <p>RemotePC isn't directed at children, and we don't knowingly collect personal information from children under 13 (or the relevant age under your local law). If you believe a child has given us personal information, contact us using the details in <a href="#contact">Section 22</a>.</p>
-  </section>
-
-  <section class="card" id="license" data-animate>
-    <h2>4. License & Permitted Use</h2>
-    <div class="badge-row">
-      <span class="platform-badge badge-both"><i data-lucide="check-circle-2" style="width:13px;height:13px;"></i> Applies to Android App & Windows Listener</span>
-    </div>
-    <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use RemotePC on devices you own or control, for personal or internal business use.</p>
-    <p>Except where applicable law gives you a right despite this restriction (for example, interoperability rights under the EU Software Directive 2009/24/EC or an equivalent local law), you agree not to:</p>
-    <ul>
-      <li>Misrepresent the Software as your own product, or remove or alter proprietary notices</li>
-      <li>Redistribute modified builds under the "RemotePC by Breadworks" name, logo, or branding without our prior written permission</li>
-      <li>Sell, rent, lease, sublicense, or otherwise commercially exploit the Software without our prior written permission</li>
-      <li>Reverse-engineer, decompile, or disassemble the Software beyond what applicable law allows</li>
-    </ul>
-    <p>RemotePC's source code is closed and proprietary — see <a href="#ip">Section 11</a> for details. We reserve all rights not expressly granted here.</p>
-  </section>
-
-  <section class="card" id="acceptable-use" data-animate>
-    <h2>5. Acceptable Use</h2>
-    <p>You agree not to use RemotePC to:</p>
-    <ul>
-      <li>Access, monitor, or control any device or network without the explicit authorization of its owner or administrator</li>
-      <li>Surveil, track, or spy on any person without the consent required by applicable law</li>
-      <li>Violate any applicable law or regulation, including computer-misuse and data-protection laws</li>
-      <li>Infringe anyone else's intellectual property, privacy, or other rights</li>
-      <li>Introduce malware or attempt to compromise the security of any system</li>
-    </ul>
-
-    <div class="callout callout--danger">
-      <span class="callout-icon"><i data-lucide="shield-alert"></i></span>
-      <div class="callout-body">
-        <strong class="callout-title">No covert monitoring, ever</strong>
-        <p>Installing or using RemotePC on a device to covertly monitor, record, or control that device without the explicit, informed consent of its owner — including on a partner's, family member's, employee's, or any other person's device — is strictly prohibited.</p>
-        <p>This applies regardless of your relationship to that person or your reason for wanting access, and such use may violate computer-misuse, wiretapping, and anti-stalking laws in your jurisdiction.</p>
+      <div class="footer-bottom">
+        <p>© 2026 RemotePC – Breadworks. Created for privacy.</p>
+        <p>No accounts. No cloud. No tracking.</p>
       </div>
     </div>
-
-    <p>We may suspend or terminate your license if we reasonably believe you've violated this Section.</p>
-  </section>
-
-  <section class="card" id="local" data-animate>
-    <h2>6. Local-Only Design; No Built-In Cloud Relay</h2>
-    <div class="badge-row">
-      <span class="platform-badge badge-windows"><i data-lucide="monitor" style="width:13px;height:13px;"></i> Windows Listener hosts the connection</span>
-      <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App connects locally</span>
-    </div>
-    <p>RemotePC by Breadworks is a <strong>local-network (LAN) tool only</strong>. It's designed and intended to be used exclusively between devices on the same local network:</p>
-    <ul>
-      <li>No built-in cloud relay</li>
-      <li>No external servers operated by us to facilitate remote control</li>
-      <li>No automatic exposure to the public internet</li>
-    </ul>
-
-    <div class="callout callout--warn">
-      <span class="callout-icon"><i data-lucide="wifi-off"></i></span>
-      <div class="callout-body">
-        <strong class="callout-title">You can't use this across different networks</strong>
-        <p>Connecting from a different Wi-Fi network, over the public internet, or between two separate LANs isn't a supported use case. This is a hard limitation on RemotePC's intended use, not just a description of a default setting.</p>
-      </div>
-    </div>
-
-    <p>This describes how the Software is designed to work. It isn't a guarantee against bugs, misconfiguration, or third-party interference, and is subject to the disclaimers in Sections 12 and 13.</p>
-    <p>If you nonetheless attempt to expose the Windows Listener to the internet or another network — for example through port forwarding, a VPN, or tunneling tools — you're doing so entirely outside RemotePC's supported use case, and entirely at your own risk. You're solely responsible for that configuration and everything that follows from it, including unauthorized access.</p>
-    <p>Separately from this — and not something you can disable — the Windows Listener also maintains two limited, one-way connections to Google Firebase: a broadcast channel for messages from us, and an anonymous ping so we know how many people are using RemotePC at a given time. Neither connection relays, routes, or otherwise facilitates a remote-control session, and neither gives us access to your screen, input, clipboard, files, or any other session content. See <a href="#privacy">Section 9</a>.</p>
-  </section>
-
-  <section class="card" id="security" data-animate>
-    <h2>7. Security</h2>
-    <p>RemotePC takes a local-first approach to reduce attack surface, but it doesn't replace proper network security practices.</p>
-    <p>RemotePC includes security features intended to help prevent unauthorized access and reduce exposure. These live on the <strong>Windows Listener</strong>, since it's the side that accepts incoming connections from the Android App:</p>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-card-head"><i data-lucide="list-checks"></i><span>IP Whitelisting</span></div>
-        <p>Restrict which IP addresses are permitted to connect to the Windows Listener.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card-head"><i data-lucide="ban"></i><span>IP Banning</span></div>
-        <p>Block specific local IP addresses from connecting.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card-head"><i data-lucide="lock"></i><span>Encryption</span></div>
-        <p>Certain data in transit, including clipboard content, is encrypted.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-card-head"><i data-lucide="users"></i><span>Connection Limit</span></div>
-        <p>Restricts how many clients may connect to the Windows Listener at once.</p>
-      </div>
-    </div>
-
-    <p>These features are tools to help reduce risk, not a guarantee — you're responsible for configuring and using them correctly.</p>
-
-    <div class="callout callout--info">
-      <span class="callout-icon"><i data-lucide="wifi"></i></span>
-      <div class="callout-body">
-        <strong class="callout-title">A secure network is required, not optional</strong>
-        <p>You must only run and connect to RemotePC over a network you control and trust — a private home or office LAN behind a properly configured router. Using RemotePC over public Wi-Fi, shared networks, or any network you don't control significantly increases the risk of interception or unauthorized access, and is done entirely at your own risk.</p>
-      </div>
-    </div>
-
-    <p>We don't guarantee protection against every attack, vulnerability, or misconfiguration — including cases where security features such as IP whitelisting are bypassed, misconfigured, or fail. You're responsible for your firewall rules, router settings, and keeping your systems updated. Any connection made with RemotePC is only as secure as your Wi-Fi network and devices.</p>
-    <p>Despite these features, RemotePC — including any of its security features — is provided <strong>"as is."</strong> We don't warrant that it, or any security feature, will prevent unauthorized access in every case; see Sections 12 and 13.</p>
-  </section>
-
-  <section class="card" id="responsibility" data-animate>
-    <h2>8. Your Responsibilities</h2>
-    <p>You are solely responsible for your use of the Service, including:</p>
-    <ul>
-      <li>Ensuring you have explicit authorization to access and control any device</li>
-      <li>Maintaining reasonable security on your network and devices</li>
-      <li>Protecting your access credentials, IP addresses, and connection details</li>
-      <li>Complying with all applicable laws</li>
-    </ul>
-  </section>
-
-  <section class="card" id="privacy" data-animate>
-    <h2>9. Privacy & Data Collection</h2>
-    <p>We try to collect as little as possible.</p>
-    <ul>
-      <li><strong>Session data:</strong> the current version of the Windows Listener doesn't create or keep local logs of remote-control sessions.</li>
-      <li><strong>Update checks:</strong> RemotePC may contact GitHub's public API to check for new versions. Like any internet request, this sends your device's IP address to GitHub, which processes it under GitHub's own privacy statement — we don't receive or store it. Nothing else is transmitted for this purpose.</li>
-      <li><strong>Broadcast channel (Firebase):</strong> the Windows Listener keeps a persistent, one-way connection to Google Firebase so we can push broadcast messages — announcements, security notices, and similar updates — to users. This is a fixed part of how the Windows Listener is built; there's no in-app or config-file setting to turn it off.</li>
-      <li><strong>Anonymous usage ping (Firebase):</strong> the Windows Listener also sends a periodic ping to us via Firebase so we can see how many people are using RemotePC at a given time. The ping is fully anonymous — it isn't linked to an account, name, email, or anything else that could identify you, your device, or your network — and, like the broadcast channel, it can't be turned off.</li>
-    </ul>
-    <p>Other than the GitHub update check and these two Firebase connections, RemotePC makes no other connection to us. Full details — including our legal basis for the Firebase connections and your right to object — live in our standalone <a href="../privacy/">Privacy Policy</a>. If you're in the EEA/UK, you generally have rights to access, correct, delete, or restrict use of your personal data, and to complain to your local data protection authority. If you're a California resident, you may have rights under the CCPA, as amended — see <a href="#region">Section 20</a> and our Privacy Policy.</p>
-  </section>
-
-  <section class="card" id="third-party" data-animate>
-    <h2>10. Third-Party Services</h2>
-    <div class="badge-row">
-      <span class="platform-badge badge-android"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Android App</span>
-      <span class="platform-badge badge-windows"><i data-lucide="monitor" style="width:13px;height:13px;"></i> Windows Listener</span>
-    </div>
-    <p>The update-check feature interacts with GitHub, which has its own terms and privacy statement that we don't control.</p>
-    <p>The Windows Listener connects to Google Firebase for exactly two purposes: delivering broadcast messages from us to users, and sending us an anonymous ping so we can see how many people are using RemotePC at a given time. Both are fully anonymous, both are a fixed part of how the Windows Listener is built, and neither can be turned off. Neither connection relays, routes, or facilitates a remote-control session, and RemotePC makes no other connection to us beyond these two and the GitHub update check. See <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for details, including Firebase's role as a processor.</p>
-    <p>If you downloaded the Android App from the Google Play Store, your use of that distribution channel is also subject to Google Play's terms.</p>
-  </section>
-
-  <section class="card" id="ip" data-animate>
-    <h2>11. Intellectual Property</h2>
-    <p>RemotePC by Breadworks is <strong>closed-source software</strong>: its source code is proprietary and is not published, disclosed, or otherwise made available to the public.</p>
-    <p>RemotePC by Breadworks — including its source code, name, and logo — belongs to us (that is, to the developer personally, since "Breadworks" is a project name and not a separate legal entity) or our licensors, and is protected by copyright, trademark, and other laws.</p>
-    <p>Other than the limited license in <a href="#license">Section 4</a>, nothing here transfers any rights to you, and no license to view, access, or copy the source code is granted.</p>
-  </section>
-
-  <section class="card" id="warranty" data-animate>
-    <h2>12. Disclaimer of Warranties</h2>
-    <p>
-      TO THE FULLEST EXTENT THE LAW ALLOWS, REMOTEPC IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY — INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DON'T WARRANT THAT REMOTEPC WILL BE ERROR-FREE, SECURE, UNINTERRUPTED, OR THAT ALL BUGS WILL BE FIXED. THIS INCLUDES ANY SECURITY FEATURES (SUCH AS IP WHITELISTING, IP BANNING, ENCRYPTION, OR CLIENT CONNECTION LIMITS) — WE DON'T WARRANT THAT THEY WILL PREVENT UNAUTHORIZED ACCESS, PROTECT TRANSMITTED DATA IN EVERY CASE, OR OPERATE WITHOUT FLAWS.
-    </p>
-    <p>Nothing here excludes any statutory guarantee or right that can't lawfully be excluded — including digital-content conformity guarantees available to EU consumers under Directive (EU) 2019/770, or other non-waivable rights under the law of your country of residence.</p>
-  </section>
-
-  <section class="card" id="liability" data-animate>
-    <h2>13. Limitation of Liability</h2>
-    <p>
-      TO THE FULLEST EXTENT THE LAW ALLOWS: WE ARE NOT LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES — INCLUDING LOST DATA, LOST PROFITS, OR HARDWARE/SOFTWARE DAMAGE — ARISING FROM YOUR USE OR INABILITY TO USE REMOTEPC, INCLUDING UNAUTHORIZED ACCESS RESULTING FROM MISCONFIGURATION OR WEAK NETWORK SECURITY.
-    </p>
-    <p>Nothing here excludes liability that can't be excluded under applicable law — including for death or personal injury caused by negligence, fraud, or, where local law forbids excluding it, gross negligence or willful misconduct.</p>
-  </section>
-
-  <section class="card" id="indemnification" data-animate>
-    <h2>14. Indemnification</h2>
-    <p>You agree to defend, indemnify, and hold us harmless from claims, damages, and expenses (including reasonable legal fees) arising from:</p>
-    <ul>
-      <li>Your use of RemotePC in breach of these Terms or applicable law</li>
-      <li>Your violation of anyone else's rights</li>
-      <li>Unauthorized access to a device or network carried out using RemotePC through your action or negligence</li>
-    </ul>
-    <p>— except to the extent applicable consumer-protection law doesn't allow this.</p>
-  </section>
-
-  <section class="card" id="export" data-animate>
-    <h2>15. Export Control and Sanctions Compliance</h2>
-    <p>RemotePC may be subject to export-control and economic sanctions laws, including those of the United States and European Union. You confirm you're not located in, or a national or resident of, a country or region subject to comprehensive trade sanctions, and that you're not on any applicable restricted-party list. You agree not to export or use RemotePC in violation of these laws.</p>
-  </section>
-
-  <section class="card" id="termination" data-animate>
-    <h2>16. Term and Termination</h2>
-    <p>These Terms apply until terminated. We may suspend or terminate your license for material breach. You can stop using RemotePC and uninstall it any time.</p>
-    <p>Sections that should reasonably survive termination — including 11 through 15 and 19 — do.</p>
-  </section>
-
-  <section class="card" id="updates" data-animate>
-    <h2>17. Software Updates and Changes to the Service</h2>
-    <p>We may release updates — new features, bug fixes, security patches — from time to time. RemotePC may check GitHub's public API for new versions, as described in <a href="#privacy">Section 9</a>.</p>
-    <p>We may modify, suspend, or discontinue parts of RemotePC at any time, and will try to give reasonable notice of material changes where practical.</p>
-  </section>
-
-  <section class="card" id="changes" data-animate>
-    <h2>18. Changes to These Terms</h2>
-    <p>We may update these Terms periodically. Material changes will update the "Last Updated" date above and, where practical, be flagged in the app or on the Website.</p>
-    <p>Continuing to use RemotePC after changes take effect means you accept them, to the extent the law allows; where the law requires your affirmative consent, we'll ask for it.</p>
-  </section>
-
-  <section class="card" id="law" data-animate>
-    <h2>19. Governing Law and Dispute Resolution</h2>
-    <p>These Terms are governed by the laws of Greece (the Hellenic Republic), the developer's country of residence, and the courts of Athens have jurisdiction over any dispute, subject to the paragraph below.</p>
-    <p>If you're a consumer habitually resident in the EU, EEA, or UK, this clause doesn't take away the protection of mandatory consumer-protection rules in your country of residence, and you keep the right to bring proceedings in your local courts under applicable law (including Regulation (EU) No 1215/2012 and Regulation (EC) No 593/2008, or their UK equivalents).</p>
-    <p>Contact us first (<a href="#contact">Section 22</a>) — we'd rather resolve a dispute directly than through a formal process.</p>
-  </section>
-
-  <section class="card" id="region" data-animate>
-    <h2>20. Region-Specific Terms</h2>
-
-    <div class="region-block">
-      <h4>European Union / EEA / United Kingdom</h4>
-      <p><strong>Who we are:</strong> An independent developer operating under the name "Breadworks," based in Athens, Greece. Breadworks is a project name, not a registered company. Contact: <a href="mailto:contact@remotepc.tech">contact@remotepc.tech</a>.</p>
-      <p><strong>Statutory rights:</strong> nothing here limits your non-waivable consumer rights, including digital-content conformity rights under Directive (EU) 2019/770 or UK equivalents.</p>
-      <p><strong>Data protection:</strong> see <a href="#privacy">Section 9</a> and our <a href="../privacy/">Privacy Policy</a> for your rights under the GDPR (Regulation (EU) 2016/679).</p>
-    </div>
-
-    <div class="region-block">
-      <h4>United States</h4>
-      <p><strong>California disclosure (Cal. Civ. Code § 1789.3):</strong> current charges for RemotePC: none. RemotePC is provided entirely free of charge, with no in-app purchases, subscriptions, or other charges of any kind. California residents may direct complaints to the Complaint Assistance Unit, Division of Consumer Services, California Department of Consumer Affairs, 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, (800) 952-5210.</p>
-      <p><strong>CCPA/CPRA:</strong> you may have rights under the California Consumer Privacy Act, as amended by the CPRA, over personal information we or our service providers process — see our Privacy Policy for how to exercise them.</p>
-      <p><strong>Warranty/liability carve-outs:</strong> some US states don't allow excluding certain implied warranties or limiting incidental/consequential damages, so parts of Sections 12–13 may not fully apply to you.</p>
-    </div>
-  </section>
-
-  <section class="card" id="general" data-animate>
-    <h2>21. General Provisions</h2>
-    <ul>
-      <li><strong>Severability:</strong> if any provision is found unenforceable, the rest stays in effect, and that provision is read narrowly enough to be enforceable.</li>
-      <li><strong>Entire Agreement:</strong> these Terms plus our Privacy Policy are the whole agreement between us about RemotePC, replacing any earlier agreements.</li>
-      <li><strong>No Waiver:</strong> not enforcing a provision once doesn't waive our right to enforce it later.</li>
-      <li><strong>Assignment:</strong> you can't assign these Terms without our written consent; we may assign them as part of a merger, acquisition, or asset sale.</li>
-      <li><strong>Notices:</strong> we may notify you via the app, the Website, or the email you've provided.</li>
-    </ul>
-  </section>
-
-  <section class="card" id="contact" data-animate>
-    <h2>22. Contact</h2>
-    <p>Questions about these Terms? Email:</p>
-    <p><a href="mailto:contact@remotepc.tech" class="cookie-link">contact@remotepc.tech</a></p>
-  </section>
-
-</div>
-
-    </div>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand">
-      <a class="brand" href="../">
-        <div class="logo"></div><span>RemotePC</span>
-      </a>
-      <p class="footer-tagline">Secure, local-first remote control for the modern workspace.</p>
-    </div>
-
-    <div class="footer-links-group">
-      <div class="footer-col">
-        <span class="footer-label">Product</span>
-        <a href="../#features">Features</a>
-        <a href="../#download">Download</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-label">Resources</span>
-        <a href="../#faq">FAQ</a>
-        <a href="../support/">Support</a>
-      </div>
-      <div class="footer-col">
-        <span class="footer-label">Legal</span>
-        <a href="../privacy/">Privacy Policy</a>
-        <a href="../terms/">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="container footer-bottom">
-    <div class="copyright">© 2026 RemotePC. Engineered for privacy.</div>
-  </div>
-</footer>
-
-<!-- Lucide -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
-
-<!-- Reveal animations (FIXED) -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll('[data-animate]');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  elements.forEach(el => observer.observe(el));
-});
-</script>
-
+  </footer>
 </body>
 </html>
