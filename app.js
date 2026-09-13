@@ -99,6 +99,131 @@ document.querySelectorAll('.feature, .category-card').forEach(card => {
 });
 
 // ============================================================
+// Feature tour — tabbed phone preview that plays itself.
+// Click a tab to jump; otherwise it advances on its own, pausing
+// on hover/focus and off-screen, and skipping autoplay entirely
+// for reduced-motion users (manual clicks still work).
+// ============================================================
+(function () {
+  const tour = document.getElementById('tourWidget');
+  if (!tour) return;
+
+  const tabs = Array.from(tour.querySelectorAll('.tour-tab'));
+  const images = Array.from(tour.querySelectorAll('.tour-img'));
+  const captions = Array.from(tour.querySelectorAll('.tour-caption-text'));
+  const glows = Array.from(tour.querySelectorAll('.tour-glow'));
+  if (!tabs.length) return;
+
+  const AUTOPLAY_MS = 5000;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let activeIndex = 0;
+  let timer = null;
+  let isInView = true;
+
+  function setActive(index) {
+    activeIndex = (index + tabs.length) % tabs.length;
+    const key = tabs[activeIndex].dataset.panel;
+
+    tabs.forEach(tab => {
+      const isActive = tab.dataset.panel === key;
+      tab.classList.toggle('is-active', isActive);
+      tab.setAttribute('aria-pressed', String(isActive));
+
+      const fill = tab.querySelector('.tour-tab-progress-fill');
+      if (!fill) return;
+      // Restart the fill animation cleanly: drop it, force a reflow,
+      // then re-add it — otherwise the browser just continues the
+      // existing (already-finished) animation instance.
+      fill.classList.remove('is-running');
+      void fill.offsetWidth;
+      if (isActive && !prefersReducedMotion) fill.classList.add('is-running');
+    });
+
+    images.forEach(img => img.classList.toggle('is-active', img.dataset.panel === key));
+    captions.forEach(cap => cap.classList.toggle('is-active', cap.dataset.panel === key));
+    glows.forEach(glow => glow.classList.toggle('is-active', glow.dataset.panel === key));
+  }
+
+  function stopAutoplay() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (prefersReducedMotion || !isInView) return;
+    timer = setInterval(() => setActive(activeIndex + 1), AUTOPLAY_MS);
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      setActive(i);
+      startAutoplay();
+    });
+  });
+
+  tour.addEventListener('mouseenter', stopAutoplay);
+  tour.addEventListener('mouseleave', startAutoplay);
+  tour.addEventListener('focusin', stopAutoplay);
+  tour.addEventListener('focusout', startAutoplay);
+
+  const tourObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      isInView = entry.isIntersecting;
+      if (isInView) startAutoplay();
+      else stopAutoplay();
+    });
+  }, { threshold: 0.4 });
+  tourObserver.observe(tour);
+
+  setActive(0);
+})();
+
+// ============================================================
+// Theme swatch picker — swaps the trackpad preview image and
+// its ambient glow to match the selected accent.
+// ============================================================
+(function () {
+  const picker = document.getElementById('themePicker');
+  if (!picker) return;
+
+  const swatches = Array.from(picker.querySelectorAll('.theme-swatch'));
+  const images = Array.from(picker.querySelectorAll('.theme-img'));
+  const glows = Array.from(picker.querySelectorAll('.theme-glow'));
+  const nameEl = picker.querySelector('.theme-name');
+
+  swatches.forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      const key = swatch.dataset.theme;
+
+      swatches.forEach(s => s.setAttribute('aria-pressed', String(s === swatch)));
+      images.forEach(img => img.classList.toggle('is-active', img.dataset.theme === key));
+      glows.forEach(glow => glow.classList.toggle('is-active', glow.dataset.theme === key));
+
+      const label = swatch.querySelector('.sr-only');
+      if (nameEl && label) nameEl.textContent = label.textContent;
+    });
+  });
+})();
+
+// ============================================================
+// Discourage casual saving of the showcase preview images
+// (right-click "save image as", long-press on mobile, dragging
+// out to the desktop). This is a deterrent, not a lock: the
+// images are still regular <img> files the browser has to
+// download to display, so anyone using devtools, view-source,
+// or a screenshot can still get them. Nothing running in the
+// browser can make an on-screen image truly undownloadable.
+// ============================================================
+['tourWidget', 'themePicker'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('contextmenu', e => e.preventDefault());
+  el.addEventListener('dragstart', e => e.preventDefault());
+});
+
+// ============================================================
 // Smooth scroll with offset for the sticky header
 // (":not([href=\"#\"])" excludes bare "#" links like the logo,
 // which would otherwise throw on document.querySelector('#'))
@@ -156,6 +281,8 @@ const modalDownloadBtnLabel = document.getElementById('modalDownloadBtnLabel');
 
 const GITHUB_RELEASES_API = 'https://api.github.com/repos/Stan006/RemotePC/releases/latest';
 const GITHUB_RELEASES_PAGE = 'https://github.com/Stan006/RemotePC/releases/latest';
+const versionBadge = document.getElementById('versionBadge');
+const versionBadgeText = document.getElementById('versionBadgeText');
 
 let resolvedExeUrl = null;
 
@@ -168,15 +295,15 @@ async function resolveLatestWindowsBuild() {
     const exeAsset = (release.assets || []).find(a => a.name.toLowerCase().endsWith('.exe'));
     resolvedExeUrl = exeAsset ? exeAsset.browser_download_url : GITHUB_RELEASES_PAGE;
 
-    if (release.tag_name) {
-      [downloadBtnLabel, modalDownloadBtnLabel].forEach(label => {
-        if (label) label.textContent = `Download for Windows (${release.tag_name})`;
-      });
+    if (release.tag_name && versionBadgeText) {
+      versionBadgeText.textContent = `Latest release: ${release.tag_name}`;
+      if (versionBadge) versionBadge.classList.add('is-resolved');
     }
   } catch (error) {
     // Network/API hiccup — fall back to the releases page so the
     // button still does something useful.
     resolvedExeUrl = GITHUB_RELEASES_PAGE;
+    if (versionBadgeText) versionBadgeText.textContent = 'See release notes';
     console.error('Could not resolve the latest release:', error);
   }
 }

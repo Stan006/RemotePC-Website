@@ -464,6 +464,18 @@ code {
   background: var(--hairline-strong);
 }
 
+.footnote-ref {
+  font-size: 0.65em;
+  margin-left: 0.1em;
+}
+
+.footnote-ref a {
+  color: var(--muted-2);
+  text-decoration: none;
+}
+
+.footnote-ref a:hover { color: var(--paper); }
+
 /* Signal visual: two devices, one straight line, drawn once */
 .signal {
   width: 100%;
@@ -534,6 +546,39 @@ code {
 }
 
 /* --------------------------------------------------------------------------
+   Trust strip — a single scannable line between hero and features
+   -------------------------------------------------------------------------- */
+.trust-strip {
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.trust-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 1.5rem 0;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.trust-item svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--muted-2);
+}
+
+/* --------------------------------------------------------------------------
    Section shell
    -------------------------------------------------------------------------- */
 .section {
@@ -560,6 +605,13 @@ code {
 .section-head.is-centered {
   margin-inline: auto;
   text-align: center;
+}
+
+/* The lead paragraph has its own max-width (52ch) capped below the
+   640px section-head, so without its own auto margins it hugs the
+   left edge instead of sitting in the middle of the centered block. */
+.section-head.is-centered p {
+  margin-inline: auto;
 }
 
 .section-divider {
@@ -621,6 +673,380 @@ code {
   color: var(--muted);
   line-height: 1.6;
   position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   Feature tour — tabbed phone preview, autoplaying on its own.
+   Glow stays blue throughout: this is the PC side of the product, and
+   blue is already the color that means "PC / primary action" everywhere
+   else on the page.
+   -------------------------------------------------------------------------- */
+.tour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 2.75rem);
+}
+
+.tour-tabs {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 720px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.2rem 0.2rem 0.4rem;
+  margin: -0.2rem -0.2rem -0.4rem;
+}
+
+.tour-tabs::-webkit-scrollbar { display: none; }
+
+.tour-tab {
+  flex: 1 1 0;
+  min-width: 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.95rem 1rem 0.85rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--ink-panel);
+  text-align: left;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+
+.tour-tab:hover { border-color: var(--hairline-strong); }
+
+.tour-tab.is-active {
+  border-color: var(--blue-line);
+  background: linear-gradient(165deg, var(--blue-soft), transparent 130%), var(--ink-panel);
+}
+
+.tour-tab-top {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  transition: color var(--fast) var(--ease);
+}
+
+.tour-tab.is-active .tour-tab-top { color: var(--paper); }
+
+.tour-tab-icon { width: 17px; height: 17px; flex-shrink: 0; }
+.tour-tab-icon svg { width: 100%; height: 100%; }
+
+.tour-tab-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tour-tab-progress {
+  width: 100%;
+  height: 2px;
+  border-radius: var(--r-pill);
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.tour-tab-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--blue);
+  border-radius: inherit;
+}
+
+.tour-tab.is-active .tour-tab-progress-fill.is-running {
+  animation: tour-progress 5s linear forwards;
+}
+
+@keyframes tour-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.tour-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.tour-glow {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(69, 115, 255, 0.38), transparent 70%);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity var(--slow) var(--ease);
+  pointer-events: none;
+}
+
+.tour-glow.is-active { opacity: 1; }
+
+/* The float animation and the drop-shadow filter used to live on the
+   same element. Animating transform on a node that also carries a
+   blurred filter forces the browser to redraw the filter every frame
+   instead of just moving a compositor layer — that's what read as
+   "not smooth". Splitting them onto two nested elements (this wrapper
+   moves, the inner .tour-phone just holds the static shadow) lets the
+   motion run as a cheap, GPU-only transform. */
+.tour-phone-float {
+  width: min(62vw, 300px);
+  aspect-ratio: 720 / 1549;
+  animation: tour-float 8s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.tour-phone {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 30px 55px rgba(0, 0, 0, 0.55)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+}
+
+/* Sampled from a true sine curve (11 stops) rather than eased between
+   two or three keyframes. A couple of wide keyframes with an
+   ease-in-out timing function re-eases at every stop, which reads as
+   a small stutter at the top of the float; many keyframes plus a
+   linear timing function interpolate smoothly between them, so the
+   whole cycle reads as one continuous, gentle drift — closer to how
+   Apple's product shots float. */
+@keyframes tour-float {
+  0%   { transform: translate3d(0, 0, 0); }
+  10%  { transform: translate3d(0, -3.4px, 0); }
+  20%  { transform: translate3d(0, -6.5px, 0); }
+  30%  { transform: translate3d(0, -8.9px, 0); }
+  40%  { transform: translate3d(0, -10.5px, 0); }
+  50%  { transform: translate3d(0, -11px, 0); }
+  60%  { transform: translate3d(0, -10.5px, 0); }
+  70%  { transform: translate3d(0, -8.9px, 0); }
+  80%  { transform: translate3d(0, -6.5px, 0); }
+  90%  { transform: translate3d(0, -3.4px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.tour-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 550ms var(--ease), transform 550ms var(--ease);
+  /* Discourage casual saving — long-press menu, drag, and text-select
+     all disabled. Not a hard guarantee (see app.js note), just a
+     deterrent for right-click / long-press / drag saves. */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.tour-img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tour-caption {
+  position: relative;
+  width: min(100%, 40ch);
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+  min-height: 2.8em;
+  text-align: center;
+}
+
+.tour-caption-text {
+  position: absolute;
+  inset: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.tour-caption-text.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Make it yours — theme swatch picker. This is the one place decorative
+   color is intentional: the section is literally about color options.
+   -------------------------------------------------------------------------- */
+/* The section itself is the containing box for the ambient color wash
+   below — position/overflow here is what lets the glow bleed edge to
+   edge behind the phone without leaking into the sections above or
+   below it. */
+#themes {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Positioned elements paint above static ones by default regardless
+   of DOM order, so once the glow is large enough to reach past the
+   phone frame it would otherwise sit on top of this text. Pinning
+   these to their own stacking layer keeps them readable no matter
+   how far the wash spreads. */
+#themes .section-head,
+.theme-name,
+.theme-swatches,
+.theme-disclaimer {
+  position: relative;
+  z-index: 1;
+}
+
+.theme-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+.theme-frame {
+  position: relative;
+  width: min(58vw, 280px);
+  aspect-ratio: 720 / 1549;
+  animation: tour-float 8s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Wider than it is tall, so the wash spreads across the section the
+   way it would on a wide desktop screen, rather than sitting as a
+   contained circle tucked behind the phone. Sized with clamp() so it
+   scales from a full-bleed wash on mobile up to a broad one on
+   desktop without ever getting large enough to swallow the section. */
+.theme-glow {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: clamp(640px, 120vw, 1800px);
+  height: clamp(420px, 68vw, 820px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 900ms var(--ease);
+  pointer-events: none;
+}
+
+.theme-glow.is-active { opacity: 1; }
+
+/* Two blurred, differently-timed layers rather than one static blob —
+   a soft wide halo plus a brighter, tighter core, each breathing at
+   its own pace so the light never looks perfectly synced or static.
+   "ellipse" (rather than a forced circle) lets both layers follow the
+   box's own wide-and-short proportions. Screen blend lets the color
+   bloom into the dark background like actual light rather than
+   sitting on top of it as a flat tint. */
+.theme-glow::before,
+.theme-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--glow), transparent 70%);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.theme-glow::before {
+  filter: blur(100px);
+}
+
+.theme-glow::after {
+  inset: 20%;
+  filter: blur(56px);
+}
+
+.theme-glow.is-active::before {
+  animation: theme-glow-halo 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.theme-glow.is-active::after {
+  animation: theme-glow-core 4.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: -1.6s;
+}
+
+@keyframes theme-glow-halo {
+  0%   { transform: translate(0, 0) scale(0.92); opacity: 0.5; }
+  50%  { transform: translate(7px, -6px) scale(1.1); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(0.92); opacity: 0.5; }
+}
+
+@keyframes theme-glow-core {
+  0%, 100% { transform: scale(0.88); opacity: 0.78; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.theme-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.97) rotate(-1.2deg);
+  transition: opacity 480ms var(--ease), transform 480ms var(--ease);
+  filter: drop-shadow(0 26px 50px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.theme-img.is-active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.theme-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+
+.theme-swatches {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.theme-swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, var(--swatch-accent), var(--swatch-bg) 72%);
+  border: 1px solid var(--hairline-strong);
+  transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+
+.theme-swatch:hover { transform: translateY(-2px); }
+
+.theme-swatch[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px var(--ink), 0 0 0 5px var(--hairline-strong);
+}
+
+.theme-disclaimer {
+  max-width: 40ch;
+  margin-inline: auto;
+  font-size: 0.85rem;
+  color: var(--muted-2);
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -731,7 +1157,37 @@ code {
   font-family: var(--font-mono);
 }
 
-.download-panel .btn { margin-top: auto; }
+.download-panel .btn { margin-top: 0.85rem; }
+
+.version-badge {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.4rem 0.8rem 0.4rem 0.65rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hairline-strong);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  transition: border-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+
+.version-badge:hover { border-color: var(--paper); color: var(--paper); }
+
+.version-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted-2);
+  transition: background var(--fast) var(--ease);
+}
+
+.version-badge.is-resolved .version-badge-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
 
 .release-note {
   margin-top: 1rem;
@@ -1206,6 +1662,49 @@ code {
 .faq-a-content .release-note { margin-top: 0.15rem; }
 
 /* --------------------------------------------------------------------------
+   Tech specs
+   -------------------------------------------------------------------------- */
+.specs-groups {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.spec-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.spec-table {
+  border-top: 1px solid var(--hairline);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 0.75rem 1.5rem;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.spec-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.spec-value {
+  font-size: 0.95rem;
+  color: var(--paper);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .spec-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+/* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
 .footer {
@@ -1270,6 +1769,37 @@ code {
 
 .footer-links a:hover { color: var(--paper); }
 
+.footnotes {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--hairline);
+}
+
+.footnotes ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1.4rem;
+  list-style: decimal;
+}
+
+.footnotes li {
+  font-size: 0.8rem;
+  color: var(--muted-2);
+  line-height: 1.6;
+  scroll-margin-top: 6rem;
+  transition: color var(--dur) var(--ease);
+}
+
+.footnotes li:target { color: var(--muted); }
+
+.footnote-back {
+  margin-left: 0.3rem;
+  color: var(--muted-2);
+  text-decoration: none;
+}
+
+.footnote-back:hover { color: var(--paper); }
+
 .footer-bottom {
   display: flex;
   align-items: center;
@@ -1329,6 +1859,8 @@ code {
   .nav-toggle { display: flex; }
 
   .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .tour-phone-float { width: min(70vw, 280px); }
+  .theme-frame { width: min(66vw, 260px); }
   .steps { grid-template-columns: 1fr; gap: 2.5rem; }
   .steps::before { display: none; }
   .download-grid { grid-template-columns: 1fr; }
@@ -1342,6 +1874,12 @@ code {
   .hero-stats { flex-wrap: wrap; justify-content: center; row-gap: 0.6rem; }
 
   .features-grid { grid-template-columns: 1fr; }
+  .tour-tabs { scroll-snap-type: x proximity; justify-content: flex-start; }
+  .tour-tab { scroll-snap-align: start; min-width: 148px; }
+  .tour-phone-float { width: min(78vw, 260px); }
+  .theme-frame { width: min(72vw, 240px); }
+  .theme-swatches { gap: 0.7rem; }
+  .theme-swatch { width: 30px; height: 30px; }
   .amount-grid { grid-template-columns: repeat(2, 1fr); }
   .tier-grid { grid-template-columns: 1fr; }
   .req-list { grid-template-columns: 1fr; }
