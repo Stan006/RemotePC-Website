@@ -42,7 +42,19 @@ if (navToggle && navPanel) {
     navToggle.innerHTML = closeIcon;
   };
 
-  navToggle.addEventListener('click', () => {
+  navToggle.addEventListener('click', (e) => {
+    // Without this, opening the menu replaces the icon inside this
+    // button (see openMobileMenu), detaching whatever element the tap
+    // actually landed on. The same click event then keeps bubbling up
+    // to the "close on outside tap" listener below, which checks
+    // navToggle.contains(e.target) — but that target has just been
+    // removed from the DOM, so the check reports "outside" and closes
+    // the menu in the same tick it opened. Net effect on mobile (where
+    // a tap almost always lands on the icon graphic, not the button's
+    // bare padding): the menu looks like it doesn't open, or only
+    // opens once in a while. Stopping propagation keeps this tap from
+    // ever reaching that listener.
+    e.stopPropagation();
     if (navPanel.classList.contains('open')) {
       closeMobileMenu();
     } else {
