@@ -331,6 +331,64 @@ code {
 .nav-toggle:active { background: var(--ink-panel); }
 
 /* --------------------------------------------------------------------------
+   Rename notice — sits directly below the header
+   -------------------------------------------------------------------------- */
+.rename-notice {
+  border-bottom: 1px solid var(--hairline);
+  background: var(--danger-soft);
+}
+
+.rename-notice-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 0;
+}
+
+.rename-notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--danger);
+}
+
+.rename-notice-icon svg { width: 19px; height: 19px; }
+
+.rename-notice-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.rename-notice-text strong { color: var(--paper); font-weight: 600; }
+
+.rename-notice-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+
+.rename-notice-close:hover { background: rgba(255, 107, 107, 0.16); color: var(--paper); }
+.rename-notice-close svg { width: 15px; height: 15px; }
+
+.rename-notice.is-hidden { display: none; }
+
+@media (max-width: 640px) {
+  .rename-notice-text { font-size: 0.825rem; }
+}
+
+/* --------------------------------------------------------------------------
    Buttons
    -------------------------------------------------------------------------- */
 .btn {

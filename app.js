@@ -19,6 +19,28 @@ document.querySelectorAll('.faq-q').forEach(button => {
 });
 
 // ============================================================
+// Rename notice dismiss
+// ============================================================
+const renameNotice = document.getElementById('renameNotice');
+const renameNoticeClose = document.getElementById('renameNoticeClose');
+const RENAME_NOTICE_KEY = 'remotepc-rename-notice-dismissed';
+
+if (renameNotice && renameNoticeClose) {
+  if (localStorage.getItem(RENAME_NOTICE_KEY) === '1') {
+    renameNotice.classList.add('is-hidden');
+  }
+
+  renameNoticeClose.addEventListener('click', () => {
+    renameNotice.classList.add('is-hidden');
+    try {
+      localStorage.setItem(RENAME_NOTICE_KEY, '1');
+    } catch (e) {
+      /* localStorage unavailable — notice still dismisses for this session */
+    }
+  });
+}
+
+// ============================================================
 // Mobile nav toggle
 // ============================================================
 const navToggle = document.getElementById('navToggle');
